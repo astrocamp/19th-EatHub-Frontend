@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import './assets/styles/app.css';
+</script>
 
 <!-- src/App.vue -->
 <template>

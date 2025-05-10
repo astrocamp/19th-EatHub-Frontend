@@ -3,8 +3,8 @@
     <h1>Home</h1>
     <nav>
       <ul>
-        <li><a href="/signup">註冊</a></li>
-        <li><a href="/login">登入</a></li>
+        <li><a class="btn" href="/signup">註冊</a></li>
+        <li><a class="btn" href="/login">登入</a></li>
       </ul>
     </nav>
   </div>

@@ -17,7 +17,7 @@
       <section>
         <input v-model="password" type="password" placeholder="Password" />
       </section>
-      <button type="submit">Signup</button>
+      <button class="btn btn-primary" type="submit">Signup</button>
       <hr />
       <router-link to="/login">登入</router-link> <span>/</span>
       <router-link to="/">回首頁</router-link>
@@ -29,6 +29,7 @@
 
 <script>
 import axios from '../axios';
+import '../assets/styles/app.css';
 
 export default {
   data() {

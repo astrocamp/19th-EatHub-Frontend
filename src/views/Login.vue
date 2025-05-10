@@ -3,8 +3,13 @@
     <h1>Login</h1>
     <form @submit.prevent="handleLogin">
       <input v-model="email" placeholder="Email" />
-      <input v-model="password" type="password" placeholder="Password" />
-      <button type="submit">Login</button>
+      <input
+        class="input"
+        v-model="password"
+        type="password"
+        placeholder="Password"
+      />
+      <button class="btn btn-primary" type="submit">Login</button>
     </form>
     <p>還沒有帳號？<router-link to="/signup">註冊</router-link></p>
     <router-link to="/">回首頁</router-link>
