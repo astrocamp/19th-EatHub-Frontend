@@ -2,7 +2,9 @@
   <!-- 外層容器設定固定寬度模擬手機螢幕 -->
   <div class="bg-gray-300 sm:flex sm:justify-center">
     <div class="w-full sm:w-[390px] bg-white shadow-lg">
-      <Navbar></Navbar>
+
+    <Navbar></Navbar>
+
       <!-- 主要內容區域 -->
       <div class="min-h-[calc(100vh-64px)]">
         <div class="px-4 py-4">
@@ -17,9 +19,9 @@
             />
           </div>
 
-          <!-- 餐廳名稱和導航按鈕 -->
+        <!-- 餐廳名稱和導航按鈕 -->
           <div class="flex justify-between items-center mb-1">
-            <!-- 左側：icon + 商家名稱 -->
+        <!-- 左側：icon + 商家名稱 -->
             <div class="flex items-center">
               <font-awesome-icon
                 :icon="['fas', 'home']"
@@ -29,26 +31,21 @@
                 {{ restaurant.name || '藤原豆腐店' }}
               </h1>
             </div>
-            <!-- 最愛按鈕 -->
-            <div class="flex items-center space-x-2"></div>
-            <button @click="toggleFavorite" class="btn btn-circle btn-lg">
-              <font-awesome-icon
-                :icon="[isFavorite ? 'fas' : 'far', 'heart']"
-                class="text-2xl"
-                :class="isFavorite ? 'text-red-500' : 'text-gray-500'"
-              />
+        <!-- 最愛按鈕 -->
+      <div class="flex items-center space-x-2"></div>
+        <button @click="toggleFavorite" class="btn btn-circle btn-lg">
+        <font-awesome-icon 
+        :icon="[isFavorite ? 'fas' : 'far', 'heart']" 
+        class="text-2xl" 
+        :class="isFavorite ? 'text-red-500' : 'text-gray-500'" 
+         />
+         </button>
+
+        <!-- 導航按鈕 -->
+            <button @click="navigateToAddress" class="btn btn-circle btn-lg flex items-center space-x-1">
+            <font-awesome-icon :icon="['fas', 'location-arrow']" class="text-3xl" />
             </button>
-            <!-- 導航按鈕 -->
-            <button
-              @click="navigateToAddress"
-              class="btn btn-circle btn-lg flex items-center space-x-1"
-            >
-              <font-awesome-icon
-                :icon="['fas', 'location-arrow']"
-                class="text-3xl"
-              />
-            </button>
-          </div>
+      </div>            
 
           <!-- 評分區塊 -->
           <div class="flex items-center mb-1">
@@ -137,21 +134,69 @@
           </div>
 
           <!-- 領取優惠券按鈕 -->
-          <button
-            @click="toggleCoupon"
-            :class="[
-              'btn w-full rounded-lg mb-6 border transition-colors duration-300',
-              couponClaimed
-                ? 'bg-white text-black border-black'
-                : 'bg-black text-white border-black',
-            ]"
-          >
-            <font-awesome-icon
-              :icon="couponClaimed ? ['fas', 'check'] : ['fas', 'ticket']"
-              class="mr-2"
-            />
-            {{ couponClaimed ? '已領取優惠券' : coupon?.title || '領取優惠券' }}
-          </button>
+<button 
+    @click="handleCouponClick"
+    :class="[
+      'btn w-full rounded-lg mb-2 border transition-colors duration-300',
+      couponClaimed ? 'bg-white text-black border-black' : 
+        isExpired ? 'bg-gray-300 text-gray-700 border-gray-400' : 
+        isNotStarted ? 'bg-gray-300 text-gray-700 border-gray-400' : 'bg-black text-white border-black'
+    ]"
+    :disabled="isExpired || isNotStarted"
+  >
+    <font-awesome-icon 
+      :icon="couponClaimed ? ['fas', 'check'] : isExpired ? ['fas', 'clock'] : isNotStarted ? ['fas', 'clock'] : ['fas', 'ticket']" 
+      class="mr-2" 
+    />
+    {{ couponButtonText }}
+  </button>
+
+<!-- 優惠券詳細資訊 (新增區塊) -->
+<div v-if="coupon" class="bg-gray-50 rounded-lg p-4 mb-6">
+    <div class="mb-2 flex justify-between items-center">
+      <h4 class="text-sm font-bold">優惠券詳細資訊</h4>
+    </div>
+    
+    <div class="space-y-2 text-sm">
+      <div>
+        <span class="text-gray-500">序號：</span>
+        <span class="font-medium">{{ coupon.serialNumber }}</span>
+      </div>
+      <div>
+        <span class="text-gray-500">折扣類型：</span>
+        <span class="font-medium">
+          {{ coupon.discountType === 'percentage' ? '折扣' : '金額折抵' }}
+        </span>
+      </div>
+      <div>
+        <span class="text-gray-500">折扣值：</span>
+        <span class="font-medium text-red-500">
+          {{ coupon.discountType === 'percentage' ? `${coupon.discountValue}%` : `${coupon.discountValue}元` }}
+        </span>
+      </div>
+      <div>
+        <span class="text-gray-500">有效期間：</span>
+        <span class="font-medium">{{ formatDate(coupon.startedAt) }} - {{ formatDate(coupon.endedAt) }}</span>
+      </div>
+      <div v-if="coupon.description">
+        <span class="text-gray-500">使用說明：</span>
+        <p class="mt-1 text-gray-700">{{ coupon.description }}</p>
+      </div>
+    </div>
+    
+    <div v-if="!isExpired && !isNotStarted && !couponClaimed" class="mt-3 text-xs text-gray-500">
+      點擊上方按鈕領取優惠券
+    </div>
+    <div v-else-if="couponClaimed" class="mt-3 text-xs text-gray-500">
+      使用時向店家出示此頁面
+    </div>
+    <div v-else-if="isNotStarted" class="mt-3 text-xs text-gray-500">
+      請於活動開始後再來領取
+    </div>
+    <div v-else-if="isExpired" class="mt-3 text-xs text-gray-500">
+      此優惠券已過期
+    </div>
+  </div>
 
           <!-- 最新動態區塊 -->
           <div class="mb-6">
@@ -273,6 +318,7 @@
             </div>
           </div>
         </div>
+
       </div>
       <Footer></Footer>
     </div>
@@ -287,26 +333,33 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import axios from '@/axios';
 
-const isFavorite = ref(false);
+// 添加變量定義
+  const reviews = ref([])
+  const isFavorite = ref(false)
 // 切換最愛狀態的方法
-const toggleFavorite = async () => {
-  try {
-    const restaurantId = route.params.id;
-
-    // 依據目前狀態決定要呼叫的API動作
-    const action = isFavorite.value ? 'remove' : 'add';
-
-    // 呼叫後端 API (這裡需按照你的後端 API 路徑調整)
-    await axios.post(`/restaurants/${restaurantId}/favorites/${action}`);
-
-    // 更新本地狀態
-    isFavorite.value = !isFavorite.value;
-  } catch (error) {
-    console.error('Error updating favorite status:', error);
-    alert('更新最愛狀態失敗，請稍後再試');
+  const toggleFavorite = async () => {
+  // 先檢查登入狀態
+  const isLoggedIn = await checkAuth()
+  if (!isLoggedIn) {
+    alert('請先登入才能收藏餐廳')
+    return
   }
-};
-
+  try {
+    const restaurantId = route.params.id
+    
+  if (isFavorite.value) {
+  await axios.delete(`/restaurants/${restaurantId}/favorite/`)
+} else {
+  await axios.post(`/restaurants/${restaurantId}/favorite/`)
+}
+    // 更新本地狀態
+  isFavorite.value = !isFavorite.value
+    
+  } catch (error) {
+    console.error('Error updating favorite status:', error)
+    alert('更新最愛狀態失敗，請稍後再試')
+  }
+}
 // 使用 useRoute 取得路由資訊
 const route = useRoute();
 
@@ -354,7 +407,9 @@ const openHours = reactive({
   sunday: null,
 });
 
-const reviews = ref([
+
+
+reviews.value = [
   {
     user: {
       userName: '美食喜相逢',
@@ -366,51 +421,8 @@ const reviews = ref([
     createdAt: '2025-01-15T14:30:00Z',
     imageUrl: null,
   },
-  {
-    user: {
-      userName: '愛放炮的阿姨',
-      imageUrl: 'https://picsum.photos/40/40?random=1',
-      uuid: 'user-uuid-1',
-    },
-    rating: 5,
-    content: '湯頭濃郁，麵條Q彈，叉燒肉入口即化...',
-    createdAt: '2025-01-15T14:30:00Z',
-    imageUrl: null,
-  },
-  {
-    user: {
-      userName: '陳小溪',
-      imageUrl: 'https://picsum.photos/40/40?random=1',
-      uuid: 'user-uuid-1',
-    },
-    rating: 5,
-    content: '唯一美中不足的是用餐時間人比較多，需要排隊等候。...',
-    createdAt: '2025-01-15T14:30:00Z',
-    imageUrl: null,
-  },
-  {
-    user: {
-      userName: '美食愛好者',
-      imageUrl: 'https://picsum.photos/40/40?random=1',
-      uuid: 'user-uuid-1',
-    },
-    rating: 5,
-    content: '這裡的拉麵真的超級好吃！...',
-    createdAt: '2025-01-15T14:30:00Z',
-    imageUrl: null,
-  },
-  {
-    user: {
-      userName: '美食愛好者',
-      imageUrl: 'https://picsum.photos/40/40?random=1',
-      uuid: 'user-uuid-1',
-    },
-    rating: 5,
-    content: '這裡的拉麵真的超級好吃！...',
-    createdAt: '2025-01-15T14:30:00Z',
-    imageUrl: null,
-  },
-]);
+  
+]
 
 const displayedReviewsCount = ref(3);
 const reviewsIncrement = 15;
@@ -439,9 +451,9 @@ const fetchRestaurantData = async () => {
     const restaurantId = route.params.id;
 
     // 從後端取得資料
-    const response = await axios.get(`/restaurants/:id`);
-    const data = response.data;
-
+const response = await axios.get(`/restaurants/${restaurantId}`)
+    const data = response.data
+    
     // 更新餐廳資料
     if (data && data.result) {
       // 更新餐廳資料
@@ -470,9 +482,14 @@ const fetchRestaurantData = async () => {
       if (data.result.promotion) {
         promotion.value = data.result.promotion;
       }
-
-      if (data.result.coupon) {
-        coupon.value = data.result.coupon;
+      
+      // 設定優惠券（如果有資料才覆蓋）
+        if (data.result.coupon) {
+        coupon.value = data.result.coupon
+        // 檢查後端回傳的已領取狀態（這裡假設後端會回傳 isClaimed 欄位）
+        if (data.result.coupon.isClaimed) {
+          couponClaimed.value = true
+        }
       }
 
       // 設定評論（如果有資料才覆蓋）
@@ -491,23 +508,74 @@ const fetchRestaurantData = async () => {
   }
 };
 
-// 修正 toggleCoupon 方法
-const toggleCoupon = () => {
-  couponClaimed.value = !couponClaimed.value;
-};
 
+// 領取優惠券的方法
 const claimCoupon = async () => {
   try {
-    const restaurantId = route.params.id;
-    await axios.post(
-      `/restaurants/${restaurantId}/coupons/${coupon.value.uuid}/claim`
-    );
-    couponClaimed.value = true;
+    const restaurantId = route.params.id
+    await axios.post(`/coupons/${coupon.value.uuid}/claim/`) 
+    couponClaimed.value = true
   } catch (error) {
-    console.error('Error claiming coupon:', error);
-    alert('領取優惠券失敗，請稍後再試');
+       console.error('Error claiming coupon:', error)
+    if (error.response) {
+    if (error.response.status === 401) {
+      alert('請先登入')
+    } else if (error.response.status === 403) {
+      alert('您已領取過此優惠券')
+    } else {
+      alert('領取優惠券失敗：' + (error.response.data.message || '請稍後再試'))
+    }
+  } else {
+    alert('網路連線問題，請稍後再試')
   }
-};
+}
+}
+
+// 計算屬性：優惠券是否已過期
+const isExpired = computed(() => {
+  if (!coupon.value || !coupon.value.endedAt) return false
+  const endDate = new Date(coupon.value.endedAt)
+  return endDate < new Date()
+})
+
+// 計算屬性：優惠券活動是否尚未開始
+const isNotStarted = computed(() => {
+  if (!coupon.value || !coupon.value.startedAt) return false
+  const startDate = new Date(coupon.value.startedAt)
+  return startDate > new Date()
+})
+
+// 計算屬性：優惠券按鈕文字
+const couponButtonText = computed(() => {
+  if (couponClaimed.value) return '已領取優惠券'
+  if (isExpired.value) return '活動已結束'
+  if (isNotStarted.value) return '活動尚未開始'
+  return coupon.value?.title || '領取優惠券'
+})
+
+// 處理優惠券按鈕點擊事件
+const handleCouponClick = async () => { 
+  if (isExpired.value) {
+     alert('活動已結束')
+     return
+  }
+  if (isNotStarted.value) {
+    alert('活動尚未開始')
+    return
+  }
+  if (!couponClaimed.value) {
+    // 檢查登入狀態
+    const isLoggedIn = await checkAuth()
+    if (!isLoggedIn) {
+      alert('請先登入才能領取優惠券')
+      return
+    }
+    await claimCoupon()
+  } else {
+    alert('您已領取過此優惠券')
+  }
+}
+
 
 const navigateToAddress = () => {
   if (restaurant.address) {
@@ -531,8 +599,18 @@ const formatDate = (dateString) => {
 
 // 組件載入時執行
 onMounted(() => {
-  fetchRestaurantData();
-});
+  fetchRestaurantData()
+})
+
+// 當要使用收藏我的最愛與優惠券功能時，檢查是否已經登入
+const checkAuth = async () => {
+  try {
+    const response = await axios.get('/auth/me')
+    return true // 認證有效
+  } catch (error) {
+    return false // 認證無效
+  }
+}
 </script>
 
 <style scoped>
