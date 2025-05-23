@@ -16,24 +16,18 @@
           />
           <div role="tabpanel" class="tab-content p-4">
             <div class="space-y-2">
-              <div class="flex gap-4 items-center">
+              <div
+                class="flex gap-4 items-center"
+                v-for="flavorsOption in flavorsOptions"
+              >
                 <label class="flex items-center gap-1">
                   <input
                     type="checkbox"
-                    value="中式"
+                    :value="flavorsOption"
                     v-model="flavors"
                     class="checkbox"
                   />
-                  <span>中式</span>
-                </label>
-                <label class="flex items-center gap-1">
-                  <input
-                    type="checkbox"
-                    value="日式"
-                    v-model="flavors"
-                    class="checkbox"
-                  />
-                  <span>日式</span>
+                  <span>{{ flavorsOption }}</span>
                 </label>
               </div>
             </div>
@@ -48,24 +42,18 @@
           />
           <div role="tabpanel" class="tab-content p-4">
             <div class="space-y-2">
-              <div class="flex gap-4 items-center">
+              <div
+                class="flex gap-4 items-center"
+                v-for="mainsOption in mainsOptions"
+              >
                 <label class="flex items-center gap-1">
                   <input
                     type="checkbox"
-                    value="牛肉"
+                    :value="mainsOption"
                     v-model="mains"
                     class="checkbox"
                   />
-                  <span>牛肉</span>
-                </label>
-                <label class="flex items-center gap-1">
-                  <input
-                    type="checkbox"
-                    value="豬肉"
-                    v-model="mains"
-                    class="checkbox"
-                  />
-                  <span>豬肉</span>
+                  <span>{{ mainsOption }}</span>
                 </label>
               </div>
             </div>
@@ -80,16 +68,10 @@
           />
           <div role="tabpanel" class="tab-content p-4">
             <div class="space-y-2">
-              <div class="flex gap-4 items-center">
-                <label class="flex items-center gap-1">
-                  <input
-                    type="checkbox"
-                    value="燉飯"
-                    v-model="staples"
-                    class="checkbox"
-                  />
-                  <span>燉飯</span>
-                </label>
+              <div
+                class="flex gap-4 items-center"
+                v-for="staplesOption in staplesOptions"
+              >
                 <label class="flex items-center gap-1">
                   <input
                     type="checkbox"
@@ -97,7 +79,7 @@
                     v-model="staples"
                     class="checkbox"
                   />
-                  <span>火鍋</span>
+                  <span>{{ staplesOption }}</span>
                 </label>
               </div>
             </div>
@@ -204,16 +186,60 @@ onMounted(() => {
       },
       (err) => {
         error.value = err.message;
-      }
+      },
     );
   } else {
     error.value = '此瀏覽器不支援 Geolocation';
   }
 });
 
-const flavorsOptions = ['中式', '日式'];
-const mainsOptions = ['豬肉', '牛肉'];
-const staplesOptions = ['火鍋', '燉飯'];
+const flavorsOptions = [
+  '中式',
+  '台式',
+  '日式',
+  '泰式',
+  '韓式',
+  '越式',
+  '港式',
+  '椒麻',
+  '咖哩',
+  '麻辣',
+  '酸辣',
+  '碳烤',
+  '番茄',
+  '水煮',
+  '滷/燉',
+  '清蒸',
+  '泡菜',
+  '什錦',
+  '酥炸',
+  '味增',
+  '香煎',
+];
+const mainsOptions = ['牛肉', '豬肉', '雞肉', '羊肉', '鮮魚', '海鮮', '蔬菜'];
+const staplesOptions = [
+  '火鍋',
+  '燉飯',
+  '便當',
+  '炒飯',
+  '丼飯',
+  '酸菜魚',
+  '湯麵',
+  '乾麵',
+  '義大利麵',
+  '刀削麵',
+  '水餃',
+  '健康餐',
+  '冬粉',
+  '漢堡',
+  '壽司',
+  '鐵板燒',
+  '比薩',
+  '通心麵',
+  '排餐',
+  '板條',
+  '包子',
+];
 
 const flavors = ref(flavorsOptions);
 const mains = ref(mainsOptions);
@@ -235,7 +261,7 @@ const getRecommendations = async () => {
   try {
     const { data } = await axios.post(
       'http://localhost:8000/api/v1/restaurants/',
-      payload
+      payload,
     );
     store.setSelections(payload);
     store.setResults(data.result);
