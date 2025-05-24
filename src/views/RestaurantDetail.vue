@@ -274,7 +274,7 @@ const reviews = ref([]);
 const handleAddReviewClick = async () => {
   const isLoggedIn = await checkAuth(); 
   if (!isLoggedIn) {
-    alert('請先登入後才能留言');
+    alert('請先登入後才能評論');
     return;
   }
   showModal.value = true;
@@ -284,12 +284,6 @@ const handleAddReviewClick = async () => {
 // 將評論同步到後端
 
 const submitReview = async (data) => {
-  const isLoggedIn = await checkAuth();
-  if (!isLoggedIn) {
-    alert('請先登入才能評論');
-    return;
-  }
-
   try {
     const restaurantUuid = route.params.id;
 
