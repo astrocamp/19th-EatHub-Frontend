@@ -71,15 +71,19 @@ const auth = useAuthStore();
 const { user } = storeToRefs(auth);
 
 onMounted(async () => {
-  try {
-    const res = await axios.get('auth/me');
-    auth.user = {
-      uuid: res.data.user_uuid,
-      userName: res.data.userName,
-      email: res.data.email,
-    };
-  } catch {
-    auth.user = null;
+  if (user.value) {
+    try {
+      const res = await axios.get('auth/me');
+      auth.user = {
+        uuid: res.data.user_uuid,
+        userName: res.data.userName,
+        email: res.data.email,
+      };
+    } catch (error) {
+      if (error.response?.status === 401) {
+        auth.user = null;
+      }
+    }
   }
 });
 
