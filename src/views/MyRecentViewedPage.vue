@@ -19,9 +19,10 @@
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
-import { toRef } from 'vue';
 import { useRestaurantStore } from '@/stores/restaurant';
+import { storeToRefs } from 'pinia';
 
 const store = useRestaurantStore();
-const restaurants = toRef(store, 'recentViewedRestaurants');
+const { recentViewedRestaurants } = storeToRefs(store);
+const restaurants = recentViewedRestaurants;
 </script>

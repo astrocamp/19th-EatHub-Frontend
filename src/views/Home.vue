@@ -165,8 +165,9 @@
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
+import { useAlertStore } from '@/stores/alert';
 
-import axios from 'axios';
+import axios from '@/axios';
 import { ref, onMounted, computed } from 'vue';
 import { useRestaurantStore } from '@/stores/restaurant';
 
@@ -265,14 +266,12 @@ const getRecommendations = async () => {
   };
 
   try {
-    const { data } = await axios.post(
-      'http://localhost:8000/api/v1/restaurants/',
-      payload,
-    );
+    const { data } = await axios.post('restaurants/', payload);
     store.setSelections(payload);
     store.setResults(data.result);
-  } catch (err) {
-    alert('取得推薦失敗');
+  } catch {
+    const alert = useAlertStore();
+    alert.trigger('取得推薦失敗', 'error');
   } finally {
     isLoading.value = false;
   }

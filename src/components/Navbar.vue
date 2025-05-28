@@ -66,7 +66,9 @@ import { onMounted } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { storeToRefs } from 'pinia';
 import axios from '@/axios';
+import { useAlertStore } from '@/stores/alert';
 
+const alert = useAlertStore();
 const auth = useAuthStore();
 const { user } = storeToRefs(auth);
 
@@ -92,7 +94,7 @@ const handleLogout = async () => {
   if (window.google?.accounts?.id) {
     window.google.accounts.id.disableAutoSelect();
   }
-  window.location.href = '/';
+  alert.trigger('登出成功', 'success');
 };
 
 defineProps({});

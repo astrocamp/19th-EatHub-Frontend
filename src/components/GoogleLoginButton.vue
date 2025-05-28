@@ -9,11 +9,11 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
 import axios from '@/axios';
 import { useAuthStore } from '@/stores/auth';
+import { useAlertStore } from '@/stores/alert';
 
-const router = useRouter();
+const alert = useAlertStore();
 const authStore = useAuthStore();
 
 function loadGoogleSdk() {
@@ -31,28 +31,32 @@ function loadGoogleSdk() {
 const handleGoogleLogin = async () => {
   await loadGoogleSdk();
 
-  window.google.accounts.oauth2.initTokenClient({
-    client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-    scope: 'profile email',
-    callback: async (res) => {
-      const access_token = res.access_token;
-      if (!access_token) return alert('無法取得 Google access_token');
+  window.google.accounts.oauth2
+    .initTokenClient({
+      client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+      scope: 'profile email',
+      callback: async (res) => {
+        const access_token = res.access_token;
+        if (!access_token)
+          return alert.trigger('無法取得 Google access_token', 'error');
 
-      try {
-        const loginRes = await axios.post('auth/google-login/', { access_token });
-        const meRes = await axios.get('auth/me');
-        authStore.user = {
-          uuid: meRes.data.user_uuid,
-          userName: loginRes.data.user.userName,
-          email: loginRes.data.user.email,
-        };
-
-        alert('Google 登入成功');
-        window.location.href = '/';
-      } catch (err) {
-        alert('登入失敗，請稍後再試');
-      }
-    },
-  }).requestAccessToken();
+        try {
+          const loginRes = await axios.post('auth/google-login/', {
+            access_token,
+          });
+          const meRes = await axios.get('auth/me');
+          authStore.user = {
+            uuid: meRes.data.user_uuid,
+            userName: loginRes.data.user.userName,
+            email: loginRes.data.user.email,
+          };
+          alert.trigger('Google 登入成功', 'success');
+          window.location.href = '/';
+        } catch {
+          alert.trigger('登入失敗，請稍後再試', 'error');
+        }
+      },
+    })
+    .requestAccessToken();
 };
 </script>

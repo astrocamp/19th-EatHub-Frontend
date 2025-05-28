@@ -96,10 +96,10 @@
           couponClaimed
             ? 'bg-white text-black border-black'
             : isExpired
-            ? 'bg-gray-300 text-gray-700'
-            : isNotStarted
-            ? 'bg-gray-300 text-gray-700'
-            : 'bg-black text-white',
+              ? 'bg-gray-300 text-gray-700'
+              : isNotStarted
+                ? 'bg-gray-300 text-gray-700'
+                : 'bg-black text-white',
         ]"
         :disabled="isExpired || isNotStarted"
       >
@@ -162,91 +162,108 @@
       </div>
 
       <!--  評論區塊 -->
-            <div class="mb-6">
-              <div class="flex justify-between items-center mb-3">
-                <h3 class="text-base font-bold">
-                  評論
-                  <span class="text-sm text-gray-500 font-normal">
-                    (共 {{ reviews.length }} 則)
-                  </span>
-                </h3>
-                <button @click="handleAddReviewClick" class="btn btn-sm bg-gray-300 border-0 rounded-3xl px-6 cursor-pointer">
-                  ＋ 新增
-                </button>
-              </div>
-  
-              <div class="space-y-3">
-                <div
-                  v-if="reviews.length === 0"
-                  class="text-center py-8 text-gray-500"
-                >
-                  暫無評論
-                </div>
-  
+      <div class="mb-6">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="text-base font-bold">
+            評論
+            <span class="text-sm text-gray-500 font-normal">
+              (共 {{ reviews.length }} 則)
+            </span>
+          </h3>
+          <button
+            @click="handleAddReviewClick"
+            class="btn btn-sm bg-gray-300 border-0 rounded-3xl px-6 cursor-pointer"
+          >
+            ＋ 新增
+          </button>
+        </div>
 
-              <ReviewModal
-                v-if="showModal"
-                :show="showModal"
-                :userName="user?.userName || ''"
-                userAvatar="https://cdn-icons-png.flaticon.com/512/266/266033.png"
-                @close="showModal = false"
-                @submit="submitReview"
-              />
-          
-      <!--  顯示在畫面上的樣式 -->
-      <div v-for="(review, index) in reviews" :key="index" class="bg-gray-100 rounded-lg p-4">
-                  <div class="flex items-start">
-                    <div class="avatar">
-                      <div class="w-10 rounded-full">
-                        <img :src="'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"  />
-                      </div>
-                    </div>
-                    <div class="ml-3 flex-1">
-  
-                      <div class="flex flex-col items-left mb-1">
-                      <div v-if="review.user">
-                      <h4 class="font-semibold text-sm text-black">{{ review.user.userName }}</h4>
-                      </div>
-                      <div class="flex items-center">
-                        <font-awesome-icon :icon="['fas', 'star']" class="text-yellow-400 text-xs " />
-                        <span class="ml-1 text-xs text-gray-600">{{ review.rating }}</span>
-                      </div>
-                      </div>
-  
-                      <p class="text-sm text-gray-700">{{ review.content }}</p>
-                      <img v-if="review.imageUrl" :src="review.imageUrl" alt="上傳圖片" class="mt-2 max-w-xs w-full rounded-lg object-cover"/>
-                    </div>
+        <div class="space-y-3">
+          <div
+            v-if="reviews.length === 0"
+            class="text-center py-8 text-gray-500"
+          >
+            暫無評論
+          </div>
+
+          <ReviewModal
+            v-if="showModal"
+            :show="showModal"
+            :userName="user?.userName || ''"
+            userAvatar="https://cdn-icons-png.flaticon.com/512/266/266033.png"
+            @close="showModal = false"
+            @submit="submitReview"
+          />
+
+          <!--  顯示在畫面上的樣式 -->
+          <div
+            v-for="(review, index) in reviews"
+            :key="index"
+            class="bg-gray-100 rounded-lg p-4"
+          >
+            <div class="flex items-start">
+              <div class="avatar">
+                <div class="w-10 rounded-full">
+                  <img
+                    :src="'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"
+                  />
+                </div>
+              </div>
+              <div class="ml-3 flex-1">
+                <div class="flex flex-col items-left mb-1">
+                  <div v-if="review.user">
+                    <h4 class="font-semibold text-sm text-black">
+                      {{ review.user.userName }}
+                    </h4>
+                  </div>
+                  <div class="flex items-center">
+                    <font-awesome-icon
+                      :icon="['fas', 'star']"
+                      class="text-yellow-400 text-xs"
+                    />
+                    <span class="ml-1 text-xs text-gray-600">{{
+                      review.rating
+                    }}</span>
                   </div>
                 </div>
 
-               
+                <p class="text-sm text-gray-700">{{ review.content }}</p>
+                <img
+                  v-if="review.imageUrl"
+                  :src="review.imageUrl"
+                  alt="上傳圖片"
+                  class="mt-2 max-w-xs w-full rounded-lg object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- 查看更多按鈕 -->
-        <button
-          v-if="hasMoreReviews"
-          @click="loadMoreReviews"
-          class="btn btn-outline btn-sm w-full mt-4"
-        >
-          查看更多
-          <font-awesome-icon :icon="['fas', 'chevron-right']" class="ml-1" />
-          <span class="text-xs text-gray-500 ml-1">
-            (還有 {{ reviews.length - displayedReviewsCount }} 則)
-          </span>
-        </button>
-
-        <div
-          v-else-if="reviews.length > 5"
-          class="text-center text-sm text-gray-500 mt-4"
-        >
-          已顯示所有評論
-        </div>
       </div>
-    <!-- </div> -->
+    </div>
 
-    <Footer />
+    <!-- 查看更多按鈕 -->
+    <button
+      v-if="hasMoreReviews"
+      @click="loadMoreReviews"
+      class="btn btn-outline btn-sm w-full mt-4"
+    >
+      查看更多
+      <font-awesome-icon :icon="['fas', 'chevron-right']" class="ml-1" />
+      <span class="text-xs text-gray-500 ml-1">
+        (還有 {{ reviews.length - displayedReviewsCount }} 則)
+      </span>
+    </button>
+
+    <div
+      v-else-if="reviews.length > 5"
+      class="text-center text-sm text-gray-500 mt-4"
+    >
+      已顯示所有評論
+    </div>
+  </div>
+  <!-- </div> -->
+
+  <Footer />
   <!-- </div> -->
 </template>
 
@@ -261,6 +278,9 @@ import ReviewModal from '@/components/AddReview.vue';
 
 import { useAuthStore } from '../stores/auth';
 import { storeToRefs } from 'pinia';
+import { useAlertStore } from '@/stores/alert';
+
+const alert = useAlertStore();
 
 const auth = useAuthStore();
 const { user } = storeToRefs(auth);
@@ -269,17 +289,14 @@ const { user } = storeToRefs(auth);
 const showModal = ref(false);
 const reviews = ref([]);
 
-
-
 const handleAddReviewClick = async () => {
-  const isLoggedIn = await checkAuth(); 
+  const isLoggedIn = await checkAuth();
   if (!isLoggedIn) {
-    alert('請先登入後才能評論');
+    alert.trigger('請先登入才能評論', 'error');
     return;
   }
   showModal.value = true;
 };
-
 
 // 將評論同步到後端
 
@@ -294,7 +311,7 @@ const submitReview = async (data) => {
 
     // 若有圖片則附加
     if (data.imageFile) {
-      formData.append('image', data.imageFile); 
+      formData.append('image', data.imageFile);
     }
 
     const response = await axios.post(
@@ -304,16 +321,12 @@ const submitReview = async (data) => {
 
     // 成功後加入評論列表最前面
     reviews.value.unshift(response.data);
-    alert('評論送出成功');
+    alert.trigger('評論送出成功', 'success');
     showModal.value = false;
-
-  } catch (err) {
-    alert('評論失敗');
+  } catch {
+    alert.trigger('評論失敗', 'error');
   }
 };
-
-
-
 
 //-----
 
@@ -396,19 +409,19 @@ const couponDetails = computed(() => {
         ? `${coupon.value.discountValue}%`
         : `${coupon.value.discountValue}元`,
     有效期間: `${formatDate(coupon.value.startedAt)} - ${formatDate(
-      coupon.value.endedAt
+      coupon.value.endedAt,
     )}`,
   };
 });
 
 // 計算屬性：當前應該顯示的評論
 const displayedReviews = computed(() =>
-  reviews.value.slice(0, displayedReviewsCount.value)
+  reviews.value.slice(0, displayedReviewsCount.value),
 );
 
 // 計算屬性：是否還有更多評論可以顯示
 const hasMoreReviews = computed(
-  () => displayedReviewsCount.value < reviews.value.length
+  () => displayedReviewsCount.value < reviews.value.length,
 );
 
 // 計算屬性：優惠券是否已過期
@@ -451,12 +464,12 @@ const navigateToAddress = () => {
   if (placeId.value) {
     window.open(
       `https://www.google.com/maps/place/?q=place_id:${placeId.value}`,
-      '_blank'
+      '_blank',
     );
   } else if (restaurant.latitude && restaurant.longitude) {
     window.open(
       `https://www.google.com/maps?q=${restaurant.latitude},${restaurant.longitude}`,
-      '_blank'
+      '_blank',
     );
   }
 };
@@ -465,7 +478,7 @@ const navigateToAddress = () => {
 const toggleFavorite = async () => {
   const isLoggedIn = await checkAuth();
   if (!isLoggedIn) {
-    alert('請先登入才能收藏餐廳');
+    alert.trigger('請先登入才能收藏餐廳', 'error');
     return;
   }
 
@@ -478,28 +491,28 @@ const toggleFavorite = async () => {
     }
     isFavorite.value = !isFavorite.value;
   } catch (error) {
-    alert('更新最愛狀態失敗，請稍後再試');
+    alert.trigger('更新最愛狀態失敗，請稍後再試', 'error');
   }
 };
 
 // 方法：處理優惠券按鈕點擊
 const handleCouponClick = async () => {
   if (isExpired.value) {
-    alert('活動已結束');
+    alert.trigger('活動已結束', 'error');
     return;
   }
   if (isNotStarted.value) {
-    alert('活動尚未開始');
+    alert.trigger('活動尚未開始', 'error');
     return;
   }
   if (couponClaimed.value) {
-    alert('您已領取過此優惠券');
+    alert.trigger('您已領取過此優惠券', 'error');
     return;
   }
 
   const isLoggedIn = await checkAuth();
   if (!isLoggedIn) {
-    alert('請先登入才能領取優惠券');
+    alert.trigger('請先登入才能領取優惠券', 'error');
     return;
   }
 
@@ -508,7 +521,7 @@ const handleCouponClick = async () => {
     couponClaimed.value = true;
   } catch (error) {
     const message = error.response?.data?.message || '請稍後再試';
-    alert('領取優惠券失敗：' + message);
+    alert.trigger(`領取優惠券失敗：${message}`, 'error');
   }
 };
 
@@ -580,9 +593,9 @@ const fetchRestaurantData = async () => {
     }
   } catch (error) {
     if (error.response?.status === 404) {
-      alert('找不到該餐廳資料');
+      alert.trigger('找不到該餐廳資料', 'error');
     } else {
-      alert('載入餐廳資料失敗，請稍後再試');
+      alert.trigger('載入餐廳資料失敗，請稍後再試', 'error');
     }
   }
 };

@@ -6,7 +6,7 @@
     >
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
-          <h1 class="text-2xl font-bold text-center">會員登入</h1>
+          <h1 class="text-2xl font-bold text-center">店家登入</h1>
 
           <form @submit.prevent="handleLogin" class="space-y-4">
             <input
@@ -19,18 +19,17 @@
               class="input input-bordered w-full"
               v-model="password"
               type="password"
-              placeholder="Password"
+              placeholder="密碼"
               required
             />
             <button class="btn btn-primary w-full" type="submit">登入</button>
           </form>
-          <div class="divider">或</div>
-          <GoogleLoginButton />
+        
 
           <div class="text-center space-y-2">
             <p>
               還沒有帳號？
-              <router-link to="/signup" class="link link-hover text-primary"
+              <router-link to="/merchant-signup" class="link link-hover text-primary"
                 >註冊</router-link
               >
             </p>
@@ -51,9 +50,7 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
-import GoogleLoginButton from '@/components/GoogleLoginButton.vue';
-import { useAlertStore } from '@/stores/alert';
-const alert = useAlertStore();
+
 
 const email = ref('');
 const password = ref('');
@@ -62,7 +59,6 @@ const router = useRouter();
 const handleLogin = async () => {
   const authStore = useAuthStore();
   await authStore.login(email.value, password.value);
-  alert.trigger('登入成功 🎉', 'success');
-  router.push('/');
+  router.push('/'); //路徑等TOM做好再修改
 };
 </script>

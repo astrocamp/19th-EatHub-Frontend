@@ -16,29 +16,38 @@
       class="flex border border-gray-300 rounded-xl p-6 bg-white text-black hover:shadow-lg cursor-pointer gap-4"
       @click="showQr = true"
     >
-      <!-- 圖片區 -->
-      <img
-        :src="
-          coupon.coupon.restaurant?.image_url ||
-          'https://via.placeholder.com/96'
-        "
-        alt="店家圖片"
-        class="w-24 h-24 object-cover rounded-md bg-gray-100"
-      />
+      <!-- 圖片區／預設 icon -->
+      <div
+        class="w-24 h-24 bg-gray-100 flex items-center justify-center rounded-md overflow-hidden"
+      >
+        <img
+          v-if="couponData.restaurant?.imageUrl"
+          :src="couponData.restaurant.imageUrl"
+          alt="店家圖片"
+          class="w-full h-full object-cover"
+        />
+        <font-awesome-icon
+          v-else
+          :icon="['fas', 'receipt']"
+          class="text-gray-400 text-3xl"
+        />
+      </div>
 
       <!-- 文字區 -->
       <div class="flex-1 flex flex-col justify-between">
         <div class="text-lg font-bold">
-          {{ coupon.coupon.restaurant?.name || '（無餐廳名稱）' }}
+          {{ couponData.restaurant?.name || '（無餐廳名稱）' }}
         </div>
-        <div class="text-sm mt-2">優惠方案：{{ discountText }}</div>
+        <div class="text-sm mt-2">
+          優惠方案：{{ couponData.discount || '（無折扣資料）' }}
+        </div>
         <div class="text-sm">
-          有效期限：{{ formatDate(coupon.coupon.ended_at) }}
+          有效期限：{{ formatDate(couponData.endedAt) || '（未提供）' }}
         </div>
       </div>
     </div>
 
-    <!--  QR Code 彈窗 -->
+    <!-- QR Code 彈窗 -->
     <div
       v-if="showQr"
       class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
@@ -47,17 +56,17 @@
       <div class="bg-white text-black p-6 rounded-xl text-center w-[280px]">
         <div class="text-lg font-bold mb-4">優惠券 QR Code</div>
         <img
-          :src="`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${coupon.uuid}`"
+          :src="`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${uuid}`"
           alt="QR Code"
           class="mx-auto"
         />
         <p class="text-sm mt-3">
-          使用期限：{{ formatDate(coupon.coupon.ended_at) }}
+          使用期限：{{ formatDate(couponData.endedAt) || '（未提供）' }}
         </p>
       </div>
     </div>
 
-    <!--  刪除確認彈窗 -->
+    <!-- 刪除確認彈窗 -->
     <div
       v-if="showConfirm"
       class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
@@ -89,14 +98,19 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import axios from '@/axios';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useAlertStore } from '@/stores/alert';
+
+const alert = useAlertStore();
 
 const props = defineProps({
   coupon: Object,
 });
 const emit = defineEmits(['deleted']);
+
+const { coupon: couponData, uuid } = props.coupon;
 
 const showQr = ref(false);
 const showConfirm = ref(false);
@@ -106,19 +120,12 @@ const formatDate = (str) => {
   return new Date(str).toLocaleDateString();
 };
 
-const discountText = computed(() => {
-  const type = props.coupon?.coupon?.discount_type;
-  const value = props.coupon?.coupon?.discount_value;
-  if (!type || value == null) return '（無折扣資料）';
-  return type === 'amount' ? `折價 ${value} 元` : `折扣 ${value} %`;
-});
-
 const confirmDelete = async () => {
   try {
-    await axios.delete(`/user-coupons/${props.coupon.uuid}`);
-    emit('deleted', props.coupon.uuid);
-  } catch (err) {
-    alert('刪除失敗，請稍後再試');
+    await axios.delete(`/user-coupons/${uuid}`);
+    emit('deleted', uuid);
+  } catch {
+    alert.trigger('刪除失敗請稍後再試', 'error');
   } finally {
     showConfirm.value = false;
   }

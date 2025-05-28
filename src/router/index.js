@@ -8,7 +8,8 @@ const routes = [
   { path: '/', component: () => import('../views/Home.vue') },
   { path: '/login', component: () => import('../views/Login.vue') },
   { path: '/signup', component: () => import('../views/Signup.vue') },
-  { path: '/merchant-signup', component: () => import('../views/MerchantSignup.vue') },
+  { path: '/merchant/signup', component: () => import('../views/MerchantSignup.vue') },
+  { path: '/merchant/login', component: () => import('../views/MerchantLogin.vue') },
 
   {
     path: '/users/recent',
@@ -32,6 +33,12 @@ const routes = [
   {
     path: '/restaurants',
     component: () => import('../views/RestaurantsList.vue'),
+  },
+  {
+    path: '/merchant/coupons/:uuid/usage',
+    name: 'CouponUsage',
+    component: () => import('../views/CouponUsage.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/privacy-policy',

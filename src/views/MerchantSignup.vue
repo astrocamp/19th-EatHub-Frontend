@@ -39,14 +39,10 @@
           </section>
 
           <button class="btn btn-primary w-full">註冊</button>
-
-
-
           <div class="text-center space-x-2">
-            <router-link to="/login" class="link link-hover text-primary"
+            <router-link to="/merchant/login" class="link link-hover text-primary"
               >登入</router-link
             >
-            <!-- 待店家登入頁面完成後再補上 -->
             <span>/</span>
             <router-link to="/" class="link link-hover text-primary"
               >回首頁</router-link
@@ -69,12 +65,10 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
-import GoogleLoginButton from '@/components/GoogleLoginButton.vue';
+
 
 const router = useRouter();
 const authStore = useAuthStore();
-const firstName = ref('');
-const lastName = ref('');
 const userName = ref('');
 const email = ref('');
 const password = ref('');
@@ -91,14 +85,14 @@ const handleSignup = async () => {
       role.value
     );
     success.value = '註冊成功！請前往登入';
-    router.push('/login');
-    // 待店家登入頁面完成後再補上 
+    router.push('/merchant/login');
+    
   } catch (err) {
     if (err.response && err.response.data) {
       error.value = JSON.stringify(err.response.data);
       error.value = '';
-      router.push('/login');  
-      // 待店家登入頁面完成後再補上 
+      router.push('/merchant/login');  
+      
 
       
     } else {

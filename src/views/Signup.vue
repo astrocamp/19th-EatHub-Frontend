@@ -66,9 +66,6 @@
               >回首頁</router-link
             >
           </div>
-
-          <p v-if="error" class="text-red-500 text-center">{{ error }}</p>
-          <p v-if="success" class="text-green-500 text-center">{{ success }}</p>
         </form>
       </div>
     </section>
@@ -84,7 +81,9 @@ import { ref } from 'vue';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import GoogleLoginButton from '@/components/GoogleLoginButton.vue';
+import { useAlertStore } from '@/stores/alert';
 
+const alert = useAlertStore();
 const router = useRouter();
 const authStore = useAuthStore();
 const firstName = ref('');
@@ -92,8 +91,6 @@ const lastName = ref('');
 const userName = ref('');
 const email = ref('');
 const password = ref('');
-const error = ref('');
-const success = ref('');
 
 const handleSignup = async () => {
   try {
@@ -102,19 +99,17 @@ const handleSignup = async () => {
       lastName.value,
       userName.value,
       email.value,
-      password.value
+      password.value,
     );
-    success.value = '註冊成功！請前往登入';
+    alert.trigger('註冊成功！請前往登入', 'success');
     router.push('/login');
   } catch (err) {
     if (err.response && err.response.data) {
-      error.value = JSON.stringify(err.response.data);
-      error.value = '';
+      alert.trigger(`註冊失敗：${JSON.stringify(err.response.data)}`, 'error');
       router.push('/login');
     } else {
-      error.value = '註冊失敗';
+      alert.trigger('註冊失敗', 'error');
     }
-    success.value = '';
   }
 };
 </script>
