@@ -44,6 +44,11 @@
         <div class="text-sm">
           有效期限：{{ formatDate(couponData.endedAt) || '（未提供）' }}
         </div>
+        <p>
+          狀態：
+          <span v-if="isUsed" class="badge badge-success">已使用</span>
+          <span v-else class="badge badge-warning">未使用</span>
+        </p>
       </div>
     </div>
 
@@ -53,12 +58,15 @@
       class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
       @click.self="showQr = false"
     >
-      <div class="bg-white text-black p-6 rounded-xl text-center w-[280px]">
+      <div
+        class="bg-white text-black p-6 rounded-xl w-[280px] flex flex-col items-center text-center"
+      >
         <div class="text-lg font-bold mb-4">優惠券 QR Code</div>
         <img
-          :src="`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${uuid}`"
+          v-if="qrCodeDataUrl"
+          :src="qrCodeDataUrl"
           alt="QR Code"
-          class="mx-auto"
+          class="w-48 h-48 border rounded-lg object-contain"
         />
         <p class="text-sm mt-3">
           使用期限：{{ formatDate(couponData.endedAt) || '（未提供）' }}
@@ -98,19 +106,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from '@/axios';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useAlertStore } from '@/stores/alert';
+import QRCode from 'qrcode';
 
 const alert = useAlertStore();
+const qrCodeDataUrl = ref('');
 
 const props = defineProps({
   coupon: Object,
 });
 const emit = defineEmits(['deleted']);
 
-const { coupon: couponData, uuid } = props.coupon;
+const { coupon: couponData, uuid, isUsed } = props.coupon;
 
 const showQr = ref(false);
 const showConfirm = ref(false);
@@ -130,4 +140,14 @@ const confirmDelete = async () => {
     showConfirm.value = false;
   }
 };
+
+onMounted(async () => {
+  try {
+    qrCodeDataUrl.value = await QRCode.toDataURL(
+      `${window.location.origin}/user/coupons/${uuid}/confirm`,
+    );
+  } catch {
+    alert.trigger('產生 QR Code 失敗', 'error');
+  }
+});
 </script>

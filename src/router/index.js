@@ -59,6 +59,12 @@ const routes = [
     meta: { requiresAuth: true, requiresMerchant: true },
   },
   {
+    path: '/user/coupons/:uuid/confirm',
+    name: 'CouponConfirm',
+    component: () => import('@/views/CouponConfirm.vue'),
+    meta: { requiresAuth: true, requiresMerchant: true },
+  },
+  {
     path: '/privacy-policy',
     name: 'PrivacyPolicy',
     component: () => import('../views/PrivacyPolicy.vue'),
