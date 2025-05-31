@@ -1,40 +1,85 @@
 <template>
-  <!-- 外層容器設定固定寬度模擬手機螢幕 -->
-  <div class="container-outer">
-    <div class="container-inner">
+  <!-- 響應式外層容器 -->
+  <div class="w-full min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+    <div class="w-full min-h-screen text-white relative overflow-hidden">
       <!-- 導航欄 -->
-      <div class="navbar">
-        <div class="navbar-title">找不到頁面</div>
+      <div class="navbar bg-gradient-to-r from-blue-900/90 to-indigo-900/90 backdrop-blur-sm h-16 border-b border-white/10 relative z-10">
+        <div class="flex-1 justify-center">
+          <h1 class="text-xl font-bold text-center w-full">找不到頁面</h1>
+        </div>
       </div>
       
-      <!-- 星星背景 - 不再需要ref -->
-      <div class="stars-container">
-        <!-- 使用CSS生成的星星，不需要任何DOM元素 -->
+      <!-- 星星背景容器 -->
+      <div class="stars-container absolute inset-0 z-0"></div>
+      
+      <!-- 響應式主要內容區域 -->
+      <div class="min-h-[calc(100vh-8rem)] relative z-10 flex items-center justify-center px-4 py-8">
+        <div class="text-center max-w-4xl mx-auto">
+          <!-- 404 錯誤碼 - 響應式文字大小 -->
+          <div class="text-9xl sm:text-8xl md:text-9xl lg:text-[12rem] font-bold text-cyan-400 mb-6 leading-none error-glow">
+            404
+          </div>
+          
+          <!-- 主要訊息 - 響應式文字 -->
+          <h1 class="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            哎呀！您迷失在太空了
+          </h1>
+          
+          <!-- 副訊息 - 響應式文字 -->
+          <p class="text-2xl sm:text-3xl md:text-3xl lg:text-2xl mb-8 text-blue-200 max-w-2xl mx-auto">
+            您尋找的頁面似乎漂浮到了宇宙的另一端
+          </p>
+          
+          <!-- 太空人圖標 - 響應式大小 -->
+          <div class="astronaut mb-8 relative z-20" ref="astronaut">
+            <svg class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto text-white drop-shadow-lg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M17,13L12,18L7,13H10V9H14V13H17Z" />
+            </svg>
+          </div>
+          
+          <!-- 返回按鈕 - 響應式大小 -->
+          <button 
+            class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-3 px-8 sm:py-4 sm:px-10 md:py-5 md:px-12 text-base sm:text-lg md:text-xl rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/50"
+            @click="navigateToHome"
+          >
+            返回主頁
+          </button>
+        </div>
       </div>
       
-      <!-- 主要內容區域 -->
-      <div class="main-content">
-        <div class="error-code">404</div>
-        <h1 class="message">哎呀！您迷失在太空了</h1>
-        <p class="sub-message">您尋找的頁面似乎漂浮到了宇宙的另一端</p>
+      <!-- 公司 Logo - 響應式定位 -->
+      <div class="logo-container absolute top-16 sm:top-24 w-50 h-50 sm:w-60 sm:h-60 md:w-70 md:h-70 z-10">
+        <!-- 方法一: 使用圖片 Logo -->
+        <img 
+          src="/src/assets/images/logo.png" 
+          alt="EatHub Logo" 
+          class="w-full h-full object-contain"
+        />
         
-        <svg class="astronaut" viewBox="0 0 24 24" ref="astronaut">
-          <path fill="#ffffff" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M17,13L12,18L7,13H10V9H14V13H17Z" />
+        <!-- 方法二: 如果沒有圖片，使用文字 Logo (註解掉)
+        <div class="w-full h-full bg-gradient-to-br from-orange-400 to-red-500 rounded-lg shadow-lg shadow-orange-400/50 flex items-center justify-center">
+          <span class="text-white font-bold text-xs sm:text-sm md:text-base">EatHub</span>
+        </div>
+        -->
+        
+        <!-- 方法三: 使用 SVG Logo (註解掉)
+        <svg class="w-full h-full text-orange-500 drop-shadow-lg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V7L15,1H5C3.89,1 3,1.89 3,3V21A2,2 0 0,0 5,23H19A2,2 0 0,0 21,21V9M12,9C14.7,9 17,11.3 17,14C17,16.7 14.7,19 12,19C9.3,19 7,16.7 7,14C7,11.3 9.3,9 12,9Z"/>
         </svg>
-        
-        <button class="home-button" @click="navigateToHome">返回主頁</button>
+        -->
       </div>
       
-      <!-- 飛船 -->
-      <img class="ufo w-24 h-24 scale-250" src="@/assets/images/logo.png" alt="UFO Image" />
+      <!-- 行星 - 響應式定位和大小 -->
+      <div class="planet absolute bottom-8 sm:bottom-12 md:bottom-16 right-8 sm:right-12 md:right-16 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 shadow-lg shadow-purple-500/50 z-10"></div>
       
-      <!-- 行星 -->
-      <div class="planet"></div>
-      
-      <!-- 頁腳 -->
-      <div class="footer">
-        © {{ currentYear }} EatHub餐廳推薦 | 所有權利保留
-      </div>
+      <!-- 響應式頁腳 -->
+      <footer class="bg-gradient-to-r from-blue-900/90 to-indigo-900/90 backdrop-blur-sm text-blue-200 border-t border-white/10 relative z-10 py-4 px-4">
+        <div class="text-center">
+          <p class="text-xs sm:text-sm md:text-base">
+            © {{ currentYear }} EatHub餐廳推薦 | 所有權利保留
+          </p>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
@@ -54,9 +99,9 @@ const navigateToHome = () => {
   router.push('/');
 };
 
-// 滑鼠移動事件處理
+// 滑鼠移動事件處理 - 在小螢幕上禁用
 const handleMouseMove = (e) => {
-  if (!astronaut.value || window.innerWidth <= 640) return;
+  if (!astronaut.value || window.innerWidth <= 768) return;
   
   const x = e.clientX / window.innerWidth - 0.5;
   const y = e.clientY / window.innerHeight - 0.5;
@@ -64,89 +109,23 @@ const handleMouseMove = (e) => {
   astronaut.value.style.transform = `translateY(${y * 20}px) translateX(${x * 20}px) rotate(${x * 10}deg)`;
 };
 
-// 只使用一個onMounted鉤子
+// 生命週期掛載
 onMounted(() => {
-  // 添加滑鼠移動事件
   window.addEventListener('mousemove', handleMouseMove);
 });
 
-// 使用onUnmounted來清理事件監聽
+// 清理事件監聽
 onUnmounted(() => {
   window.removeEventListener('mousemove', handleMouseMove);
 });
 </script>
 
 <style scoped>
-/* 與您的前端設計保持一致的外層與內層容器 */
-.container-outer {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  background-color: #e5e7eb; /* bg-gray-300 */
-}
-
-.container-inner {
-  width: 100%;
-  background-color: #0a0e29; /* 深色背景配合太空主題 */
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-}
-
-@media (min-width: 640px) {  /* sm breakpoint */
-  .container-inner {
-    width: 390px;
-    min-height: 100vh;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-  }
-}
-
-/* 導航欄 */
-.navbar {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(10, 14, 41, 0.9);
-  position: relative;
-  z-index: 10;
-}
-
-.navbar-title {
-  font-weight: bold;
-  font-size: 1.25rem;
-  flex-grow: 1;
-  text-align: center;
-  color: #ffffff;
-}
-
-/* 頁腳 */
-.footer {
-  padding: 1rem;
-  background-color: rgba(10, 14, 41, 0.9);
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  position: relative;
-  z-index: 10;
-}
-
-/* 全新的CSS星星背景 */
+/* 星空背景效果 - 深藍漸層 */
 .stars-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  background: radial-gradient(ellipse at bottom, #0a0e29 0%, #050714 100%);
+  background: radial-gradient(ellipse at center, #1e3a8a 0%, #1e1b4b 50%, #0f0f23 100%);
 }
 
-/* 使用多個偽元素層創建星星 */
 .stars-container::before {
   content: "";
   position: absolute;
@@ -157,32 +136,22 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(1px 1px at 85% 80%, white 100%, transparent 100%),
-    radial-gradient(4px 4px at 80% 80%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 75% 75%, white 100%, transparent 100%),
-    radial-gradient(3px 3px at 80% 80%, #d4ff00 100%, transparent 100%),
-    radial-gradient(1px 1px at 35% 35%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 45% 15%, white 100%, transparent 100%),
-    radial-gradient(2px 2px at 55% 25%, #ff6b6b 100%, transparent 100%),
-    radial-gradient(1px 1px at 65% 35%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 75% 45%, white 100%, transparent 100%),
-    radial-gradient(3px 3px at 65% 35%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 75% 45%, white 100%, transparent 100%),
-    radial-gradient(4px 4px at 85% 55%, #ffffff 100%, transparent 100%),
-    radial-gradient(1px 1px at 95% 65%, white 100%, transparent 100%),
-    radial-gradient(2px 2px at 40% 30%, #6e8fff 100%, transparent 100%),
-    radial-gradient(2px 2px at 90% 15%, white 100%, transparent 100%),
-    radial-gradient(3px 3px at 30% 40%, white 100%, transparent 100%),
-    
-   
-    radial-gradient(5px 5px at 65% 90%, white 100%, transparent 100%);
+    radial-gradient(1px 1px at 20% 30%, #ffffff 100%, transparent 100%),
+    radial-gradient(2px 2px at 40% 70%, #06b6d4 100%, transparent 100%),
+    radial-gradient(1px 1px at 90% 40%, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 50% 50%, #ffffff 100%, transparent 100%),
+    radial-gradient(2px 2px at 80% 10%, #8b5cf6 100%, transparent 100%),
+    radial-gradient(1px 1px at 10% 90%, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, #ffffff 100%, transparent 100%),
+    radial-gradient(2px 2px at 60% 30%, #06d6a0 100%, transparent 100%),
+    radial-gradient(1px 1px at 30% 20%, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 80% 90%, #ffffff 100%, transparent 100%);
   background-repeat: repeat;
-  background-size: 200% 200%;
-  opacity: 0.5;
-  animation: twinkle 50s ease-in-out infinite;
+  background-size: 400px 400px;
+  opacity: 0.8;
+  animation: twinkle 30s ease-in-out infinite;
 }
 
-/* 第二層星星，不同位置 */
 .stars-container::after {
   content: "";
   position: absolute;
@@ -193,154 +162,128 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(1px 1px at 5% 5%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 15% 25%, #6e8fff 100%, transparent 100%),
-    radial-gradient(2px 2px at 50% 20%, white 100%, transparent 100%),
-    radial-gradient(2px 2px at 70% 35%, #ff6b6b 100%, transparent 100%),
-    radial-gradient(1px 1px at 40% 45%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 55% 55%, white 100%, transparent 100%),
-    radial-gradient(2px 2px at 80% 65%, #6e8fff 100%, transparent 100%),
-    radial-gradient(1px 1px at 25% 75%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 90% 85%, white 100%, transparent 100%),
-    radial-gradient(2px 2px at 30% 90%, #ff6b6b 100%, transparent 100%),
-    radial-gradient(1px 1px at 60% 95%, white 100%, transparent 100%),
-    radial-gradient(1px 1px at 75% 5%, white 100%, transparent 100%);
+    radial-gradient(1px 1px at 10% 20%, #ffffff 100%, transparent 100%),
+    radial-gradient(2px 2px at 30% 60%, #a855f7 100%, transparent 100%),
+    radial-gradient(1px 1px at 70% 30%, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 85% 70%, #ffffff 100%, transparent 100%),
+    radial-gradient(2px 2px at 25% 80%, #f59e0b 100%, transparent 100%),
+    radial-gradient(1px 1px at 50% 10%, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 95% 50%, #ffffff 100%, transparent 100%),
+    radial-gradient(2px 2px at 15% 40%, #06b6d4 100%, transparent 100%);
   background-repeat: repeat;
-  background-size: 200% 200%;
-  opacity: 0.8;
-  animation: twinkle 60s ease-in-out infinite reverse;
+  background-size: 350px 350px;
+  opacity: 0.6;
+  animation: twinkle 40s ease-in-out infinite reverse;
 }
 
 @keyframes twinkle {
-  0% { opacity: 0.7; background-position: 0% 0%; }
-  50% { opacity: 1; background-position: 100% 100%; }
-  100% { opacity: 0.7; background-position: 0% 0%; }
+  0% { opacity: 0.4; transform: rotate(0deg); }
+  50% { opacity: 1; transform: rotate(180deg); }
+  100% { opacity: 0.4; transform: rotate(360deg); }
 }
 
-.main-content {
-  text-align: center;
-  z-index: 1;
-  padding: 2rem;
-  position: relative;
-  min-height: calc(100vh - 128px); /* 減去導航欄和頁腳的高度 */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* 404 錯誤碼發光效果 - 青藍色 */
+.error-glow {
+  text-shadow: 
+    0 0 10px #06b6d4,
+    0 0 20px #06b6d4,
+    0 0 30px #06b6d4,
+    0 0 40px #0891b2;
 }
 
-.error-code {
-  font-size: 8rem;
-  font-weight: bold;
-  color: #6e8fff;
-  text-shadow: 0 0 10px rgba(110, 143, 255, 0.7);
-  margin-bottom: 1rem;
-  line-height: 1;
-}
-
-.message {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.sub-message {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.8;
-}
-
+/* 太空人浮動動畫 */
 .astronaut {
-  width: 150px;
-  height: 150px;
-  margin-bottom: 2rem;
-  animation: float 6s ease-in-out infinite;
-  position: relative;
-  z-index: 2;
+  animation: astronaut-float 6s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes astronaut-float {
   0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
-.home-button {
-  background-color: #6e8fff;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  margin-top: 1rem;
-  z-index: 2;
+/* Logo 移動動畫 - 響應式調整 */
+.logo-container {
+  animation: logo-move 18s ease-in-out infinite;
 }
 
-.home-button:hover {
-  background-color: #fb5800;
-  transform: scale(1.05);
-  box-shadow: 0 0 90px rgb(255, 255, 255);
+@keyframes logo-move {
+  0% { 
+    left: -20%; 
+    transform: rotate(-5deg) scale(1); 
+  }
+  25% { 
+    left: 20%; 
+    transform: rotate(-15deg) scale(1.1); 
+  }
+  50% { 
+    left: 50%; 
+    transform: rotate(0deg) scale(1.2); 
+  }
+  75% { 
+    left: 80%; 
+    transform: rotate(15deg) scale(1.1); 
+  }
+  100% { 
+    left: 120%; 
+    transform: rotate(5deg) scale(1); 
+  }
 }
 
-.ufo {
-  position: absolute;
-  width: 100px;
-  height: auto;
-  animation: moveUfo 15s linear infinite;
-  top: 100px;
-  z-index: 1;
-}
-
-@keyframes moveUfo {
-  0% { left: -150px; transform: rotate(10deg); }
-  50% { left: calc(100% + 150px); transform: rotate(-30deg); }
-  51% { left: calc(100% + 150px); transform: rotate(-30deg); }
-  100% { left: -150px; transform: rotate(10deg); }
-}
-
+/* 行星旋轉動畫 - 增強效果 */
 .planet {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #ff6b6b, #7873f5);
-  box-shadow: 0 0 20px rgba(120, 115, 245, 0.7);
-  animation: rotatePlanet 20s linear infinite;
-  bottom: 50px;
-  right: 50px;
-  z-index: 1;
+  animation: planet-rotate 33s linear infinite;
+  box-shadow: 
+    0 0 20px rgba(168, 85, 247, 0.6),
+    inset 0 0 20px rgba(236, 72, 153, 0.3);
 }
 
-@keyframes rotatePlanet {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes planet-rotate {
+  0% { 
+    transform: rotate(0deg) scale(1); 
+    box-shadow: 
+      0 0 20px rgba(168, 85, 247, 0.6),
+      inset 0 0 20px rgba(236, 72, 153, 0.3);
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.15); 
+    box-shadow: 
+      0 0 30px rgba(168, 85, 247, 0.8),
+      inset 0 0 30px rgba(236, 72, 153, 0.5);
+  }
+  100% { 
+    transform: rotate(360deg) scale(1); 
+    box-shadow: 
+      0 0 20px rgba(168, 85, 247, 0.6),
+      inset 0 0 20px rgba(236, 72, 153, 0.3);
+  }
 }
 
-@media (max-width: 768px) {
-  .error-code {
-    font-size: 5rem;
-  }
-  
-  .message {
-    font-size: 1.5rem;
-  }
-  
-  .astronaut {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .planet {
-    width: 60px;
-    height: 60px;
-    right: 20px;
-    bottom: 20px;
-  }
-  
-  .ufo {
-    width: 70px;
+/* 響應式斷點優化 */
+@media (max-width: 640px) {
+  .error-glow {
+    text-shadow: 
+      0 0 8px #06b6d4,
+      0 0 16px #06b6d4,
+      0 0 24px #06b6d4;
   }
 }
-</style>
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .error-glow {
+    text-shadow: 
+      0 0 12px #06b6d4,
+      0 0 24px #06b6d4,
+      0 0 36px #06b6d4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .error-glow {
+    text-shadow: 
+      0 0 15px #06b6d4,
+      0 0 30px #06b6d4,
+      0 0 45px #06b6d4,
+      0 0 60px #0891b2;
+  }
+}</style>
