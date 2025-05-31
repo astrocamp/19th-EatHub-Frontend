@@ -73,6 +73,11 @@ const routes = [
     name: 'NotFound',
     component: NotFound,
   },
+  {
+    path: '/merchant/promotions/:uuid',
+    name: 'PromotionDetail',
+    component: () => import('../views/PromotionDetail.vue'), 
+  },
 ];
 
 const router = createRouter({
