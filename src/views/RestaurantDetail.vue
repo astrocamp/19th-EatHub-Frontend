@@ -24,8 +24,15 @@
           <h1 class="text-xl font-bold">{{ restaurant.name }}</h1>
         </div>
 
-        <!-- 功能按鈕 -->
+
+        <!-- 分享/收藏/導航按鈕 -->
         <div class="flex space-x-2">
+          <ShareButton 
+           :restaurant-name="restaurant.name"
+           :restaurant-rating="restaurant.googleRating || '4.5'"
+      />
+     
+        
           <button @click="toggleFavorite" class="btn btn-circle">
             <font-awesome-icon
               :icon="[isFavorite ? 'fas' : 'far', 'heart']"
@@ -41,6 +48,7 @@
           </button>
         </div>
       </div>
+
 
       <!-- 評分和地址 -->
       <div class="flex items-center mb-1">
@@ -261,7 +269,8 @@
       已顯示所有評論
     </div>
   </div>
-  <!-- </div> -->
+  
+  
 
   <Footer />
   <!-- </div> -->
@@ -275,7 +284,7 @@ import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import axios from '@/axios';
 import ReviewModal from '@/components/AddReview.vue';
-
+import ShareButton from '@/components/ShareButton.vue';
 import { useAuthStore } from '../stores/auth';
 import { storeToRefs } from 'pinia';
 import { useAlertStore } from '@/stores/alert';
@@ -285,7 +294,6 @@ const alert = useAlertStore();
 const auth = useAuthStore();
 const { user } = storeToRefs(auth);
 
-//-----
 const showModal = ref(false);
 const reviews = ref([]);
 
@@ -297,6 +305,7 @@ const handleAddReviewClick = async () => {
   }
   showModal.value = true;
 };
+
 
 // 將評論同步到後端
 
