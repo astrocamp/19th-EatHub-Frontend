@@ -9,7 +9,7 @@ const routes = [
   { path: '/login', component: () => import('../views/Login.vue') },
   { path: '/signup', component: () => import('../views/Signup.vue') },
   { path: '/forgot-password', component: () => import('../views/ForgotPassword.vue')},
- 
+  { path: '/reset-password', component: () => import('../views/ResetPassword.vue')},
   {
     path: '/merchant/signup',
     component: () => import('../views/MerchantSignup.vue'),
@@ -103,6 +103,11 @@ const routes = [
     path: '/payments/success',
     name: 'PaymentSuccess',
     component: () => import('@/views/PaymentSuccess.vue'),
+  },
+  {
+    path: '/payments/ecpay-submit',
+    name: 'EcpaySubmit',
+    component: () => import('@/views/EcpaySubmit.vue'),
   },
 ];
 

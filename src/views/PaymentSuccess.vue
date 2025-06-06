@@ -10,6 +10,9 @@
         <p class="text-gray-700">感謝您升級為 VIP 商家！</p>
         <div class="mt-4 text-sm text-gray-600">
           訂單編號：<span class="font-mono">{{ orderData.orderId }}</span>
+        <p class="text-gray-700 mt-1">
+          VIP 有效期限：<span class="font-mono">{{ orderData.vipExpiry }}</span>
+        </p>
         </div>
         <button
           @click="goHome"
