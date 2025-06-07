@@ -3,7 +3,8 @@
   <div
     v-if="show"
     :class="[
-      'alert shadow-lg fixed top-5 right-5 z-50 transition-all duration-300',
+      'alert shadow-lg fixed top-10 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300',
+      'text-lg px-6 py-4 min-w-[280px] max-w-sm rounded-lg',
       typeClass,
     ]"
     role="alert"
