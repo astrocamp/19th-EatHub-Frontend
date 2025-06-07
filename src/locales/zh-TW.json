@@ -1,36 +1,41 @@
 {
-  "index": {
-    "title": "下一餐吃什麼？",
-    "ctaButton": "推薦美食",
-    "flavorLabel": "口味",
-    "stapleLabel": "主食",
-    "categoryLabel": "類型",
-    "recommendResultTitle": "推薦結果",
-    "seeMoreButton": "看更多",
-    "ratingLabel": "評分",
-    "confirmButton": "確認"
+  "alert": {
+    "missingEmail": "請輸入郵件地址",
+    "emailSent": "重設密碼郵件已發送，請檢查您的郵箱📬",
+    "emailNotFound": "找不到此郵件地址的用戶",
+    "sendFailed": "發送郵件失敗，請稍後再試",
+    "signupEmailUsed": "註冊失敗，該信箱已被註冊過。",
+    "signupFailed": "註冊失敗，請稍後再試。",
+    "googleTokenFailed": "無法取得 Google access_token",
+    "googleLoginSuccess": "Google 登入成功",
+    "googleLoginFailed": "登入失敗，請稍後再試"
   },
   "navbar": {
-    "signUp": "註冊",
-    "signIn": "登入",
-    "currentUser": "目前登入者：",
-    "myRecentView": "我的最近瀏覽",
-    "myFavorite": "我的收藏",
-    "myCoupon": "我的優惠券",
-    "logout": "登出"
+    "loggedInAs": "目前登入者：{userName}",
+    "recentViews": "我的最近瀏覽",
+    "favorites": "我的收藏",
+    "myCoupons": "我的優惠券",
+    "logout": "登出",
+    "signup": "註冊",
+    "login": "登入",
+    "merchantSignup": "店家註冊",
+    "merchantLogin": "店家登入",
+    "logoutSuccess": "登出成功"
   },
-  "signup": {
-    "title": "會員註冊",
-    "submitButton": "註冊"
+  "myCoupons": {
+    "title": "我的優惠券",
+    "empty": "目前尚未領取任何優惠券",
+    "unused": "未使用",
+    "used": "已使用",
+    "expired": "已過期"
   },
-  "login": {
-    "title": "會員登入",
-    "submitButton": "登入"
+  "myFavorites": {
+    "title": "我的收藏",
+    "empty": "尚未有收藏"
   },
-  "alert": {
-    "loginFailed": "登入失敗，請稍後再試",
-    "googleLoginSuccess": "Google 登入成功",
-    "googleLoginError": "無法取得 Google access_token"
+  "recentViews": {
+    "title": "我的最近瀏覽",
+    "empty": "尚未有瀏覽"
   },
   "footer": {
     "about": "關於我們",
@@ -39,6 +44,461 @@
     "contact": "聯絡我們",
     "terms": "條款與政策",
     "privacy": "隱私權條款",
-    "language": "語言選擇"
+    "language": "語言選擇",
+    "phone": "電話：02-123456789",
+    "hours": "營業時間：10:00-20:00",
+    "address": "地址：台北市中山區東海路1號"
+  },
+  "login": {
+    "title": "會員登入",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "忘記密碼",
+    "submit": "登入",
+    "orDivider": "或",
+    "noAccount": "還沒有帳號？",
+    "signupLink": "註冊",
+    "backHome": "回首頁"
+  },
+  "forgotPassword": {
+    "title": "忘記密碼",
+    "description": "請輸入註冊時的 Email📩，\n我們會寄送重設密碼的連結給您。",
+    "submit": "確認送出➡️"
+  },
+  "signup": {
+    "title": "會員註冊",
+    "firstNamePlaceholder": "Firstname",
+    "lastNamePlaceholder": "Lastname",
+    "userNamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "submitButton": "註冊",
+    "orDivider": "或",
+    "loginLink": "登入",
+    "homeLink": "回首頁",
+    "success": "註冊成功！請前往登入"
+  },
+  "google": {
+    "googleLogin": "使用 Google 帳號"
+  },
+  "index": {
+    "title": "下一餐吃什麼？",
+    "ctaButton": "推薦美食",
+    "flavorTab": "口味",
+    "mainTab": "主食",
+    "stapleTab": "類型",
+    "selectAll": "全選",
+    "clearAll": "全取消",
+    "confirm": "確認",
+    "chooseDishOptions": "請選擇餐點選項",
+    "recommendResultTitle": "推薦結果",
+    "noRecommendation": "尚未有推薦",
+    "seeMoreButton": "查看更多推薦",
+    "getRecommendationsFailed": "取得推薦失敗",
+    "completeSelection": "請完成選項設定",
+    "ensureSelection": "請確保以下選項都至少選擇一項：",
+    "atLeastOneFlavor": "口味：請至少選擇一種口味",
+    "atLeastOneMain": "主食：請至少選擇一種主食",
+    "atLeastOneStaple": "類型：請至少選擇一種類型",
+    "continueSetting": "我知道了，繼續設定",
+    "ratingLabel": "評分",
+    "close": "關閉"
+  },
+  "options": {
+    "中式": "中式",
+    "台式": "台式",
+    "日式": "日式",
+    "泰式": "泰式",
+    "韓式": "韓式",
+    "越式": "越式",
+    "港式": "港式",
+    "椒麻": "椒麻",
+    "咖哩": "咖哩",
+    "麻辣": "麻辣",
+    "酸辣": "酸辣",
+    "碳烤": "碳烤",
+    "番茄": "番茄",
+    "水煮": "水煮",
+    "滷/燉": "滷/燉",
+    "清蒸": "清蒸",
+    "泡菜": "泡菜",
+    "什錦": "什錦",
+    "酥炸": "酥炸",
+    "味增": "味增",
+    "香煎": "香煎",
+
+    "牛肉": "牛肉",
+    "豬肉": "豬肉",
+    "雞肉": "雞肉",
+    "羊肉": "羊肉",
+    "鮮魚": "鮮魚",
+    "海鮮": "海鮮",
+    "蔬菜": "蔬菜",
+
+    "火鍋": "火鍋",
+    "燉飯": "燉飯",
+    "便當": "便當",
+    "炒飯": "炒飯",
+    "丼飯": "丼飯",
+    "酸菜魚": "酸菜魚",
+    "湯麵": "湯麵",
+    "乾麵": "乾麵",
+    "義大利麵": "義大利麵",
+    "刀削麵": "刀削麵",
+    "水餃": "水餃",
+    "健康餐": "健康餐",
+    "冬粉": "冬粉",
+    "漢堡": "漢堡",
+    "壽司": "壽司",
+    "鐵板燒": "鐵板燒",
+    "比薩": "比薩",
+    "通心麵": "通心麵",
+    "排餐": "排餐",
+    "板條": "板條",
+    "包子": "包子"
+  },
+  "restaurantDetail": {
+    "ratingCountSuffix": "則",
+    "noReviews": "暫無評論",
+    "hasReviewed": "已評論",
+    "addReview": "＋ 新增",
+    "viewMore": "查看更多",
+    "viewAll": "已顯示所有評論",
+    "businessHours": "營業時間",
+    "review": "評論",
+    "reviewCountPrefix": "共",
+    "location": "地圖",
+    "imageAlt": "餐廳主圖片",
+    "addReviewSuccess": "評論送出成功",
+    "addReviewFailed": "評論失敗",
+    "pleaseLoginToReview": "請先登入才能評論",
+    "pleaseLoginToFavorite": "請先登入才能收藏餐廳",
+    "loadRestaurantFailed": "載入餐廳資料失敗",
+    "restaurantNotFound": "找不到餐廳資訊",
+    "monday": "星期一",
+    "tuesday": "星期二",
+    "wednesday": "星期三",
+    "thursday": "星期四",
+    "friday": "星期五",
+    "saturday": "星期六",
+    "sunday": "星期日",
+    "noData": "未提供"
+  },
+  "restaurantList": {
+    "title": "為您推薦"
+  },
+  "addReview": {
+    "ratingLabel": "評分",
+    "commentLabel": "評論內容",
+    "commentPlaceholder": "請輸入您的評論...",
+    "uploadPhoto": "上傳相片",
+    "submitButton": "送出評論",
+    "fileTooLarge": "檔案大小不能超過 1 MB，請重新再試"
+  },
+  "merchantDashboard": {
+    "regularBadge": "一般店家",
+    "regularHint": "您目前為 <strong>一般商家</strong>，升級為 VIP 可發佈更多優惠券與活動",
+    "upgradeNow": "立即升級！",
+    "tab": {
+      "coupon": "優惠券",
+      "promotion": "商家動態"
+    },
+    "create": {
+      "coupon": "新增優惠券",
+      "promotion": "新增商家動態"
+    },
+    "limitReached": {
+      "vip": {
+        "coupon": "VIP 已達優惠券上限，請聯繫 EatHub 團隊洽詢高級方案",
+        "promotion": "VIP 已達商家動態上限，請聯繫 EatHub 團隊洽詢高級方案"
+      },
+      "regular": {
+        "coupon": "一般商家已達優惠券上限，請升級",
+        "promotion": "一般商家已達商家動態上限，請升級"
+      }
+    }
+  },
+  "merchantLogin": {
+    "title": "店家登入",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "密碼",
+    "forgotPassword": "忘記密碼",
+    "login": "登入",
+    "noAccount": "還沒有帳號？",
+    "signup": "註冊",
+    "backHome": "回首頁",
+    "loginFailed": "登入失敗，請確認帳號密碼"
+  },
+  "merchantSignup": {
+    "title": "店家註冊",
+    "restaurantNamePlaceholder": "餐廳名稱",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "設定密碼",
+    "signup": "註冊",
+    "login": "登入",
+    "backHome": "回首頁",
+    "signupSuccess": "註冊成功！請前往登入",
+    "signupFailedEmailUsed": "註冊失敗，該信箱已被註冊過。",
+    "signupFailedGeneral": "註冊失敗，請稍後再試。"
+  },
+  "merchantCouponCard": {
+    "discount": "優惠內容",
+    "validUntil": "有效期限",
+    "total": "發行數量",
+    "claimed": "已領取",
+    "used": "已使用",
+    "confirmDelete": "確認刪除？",
+    "cancel": "取消",
+    "confirm": "確認刪除",
+    "deleteFailed": "刪除失敗，請稍後再試",
+    "notSet": "未設定",
+    "coupons": "張"
+  },
+  "merchantPromotionCard": {
+    "activePeriod": "活動期間:",
+    "confirmDelete": "確認刪除？",
+    "cancel": "取消",
+    "confirm": "確認刪除",
+    "deleteFailed": "刪除失敗，請稍後再試"
+  },
+  "paymentResult": {
+    "loading": "載入付款資訊中...",
+    "successTitle": "付款成功 🎉",
+    "successMessage": "感謝您升級為 VIP 商家！",
+    "orderId": "訂單編號：",
+    "backHome": "返回首頁",
+    "errorTitle": "付款資訊異常",
+    "noOrderId": "找不到訂單資訊，請確認付款是否成功。",
+    "fetchFailed": "查詢訂單資訊失敗，請聯絡客服。"
+  },
+  "merchantUpgradeModal": {
+    "vipBenefitsLine1": "升級為 VIP 店家可發佈更多優惠券與動態，享更多專屬權益",
+    "vipBenefitsLine2": "VIP 店家優惠券與動態可各發佈至多 3 則",
+    "monthlyPlan": "按月付款",
+    "yearlyPlan": "按年付款",
+    "price": "價格：",
+    "noPlans": "目前尚未開放購買方案，請稍後再試。",
+    "paymentMethod": "選擇付款方式",
+    "linePay": "LINEPAY",
+    "ecpay": "綠界支付（未開放）",
+    "goToPayment": "前往付款",
+    "close": "關閉",
+    "onlyLinePay": "目前僅支援 LINEPAY，綠界尚未開放",
+    "createOrderError": "建立訂單時發生錯誤，請稍後再試"
+  },
+  "couponConfirm": {
+    "title": "優惠券序號：",
+    "status": "狀態：",
+    "used": "已使用",
+    "unused": "未使用",
+    "confirmUse": "確認使用",
+    "loadFailed": "資料載入失敗",
+    "backToList": "返回列表"
+  },
+  "couponCreate": {
+    "title": "新增優惠券",
+    "serialNumberPlaceholder": "優惠券序號",
+    "titlePlaceholder": "優惠券標題",
+    "discountTypeAmount": "金額",
+    "discountTypePercent": "百分比",
+    "discountValuePlaceholder": "折扣數值",
+    "startDateLabel": "開始日期",
+    "endDateLabel": "結束日期",
+    "totalPlaceholder": "張數",
+    "descriptionPlaceholder": "優惠券詳細內容",
+    "submitButton": "確認送出"
+  },
+  "couponDetail": {
+    "validPeriod": "有效期間：",
+    "storeName": "店家名稱：",
+    "description": "說明：",
+    "discount": "優惠內容：",
+    "total": "總數：",
+    "claimed": "已領取：",
+    "used": "已使用：",
+    "viewUsage": "查看使用狀態",
+    "backToList": "返回列表"
+  },
+  "couponUsage": {
+    "back": "返回",
+    "searchEmailPlaceholder": "搜尋使用者 Email",
+    "table": {
+      "uuid": "流水號",
+      "userEmail": "使用者 Email",
+      "status": "使用狀態"
+    },
+    "used": "已使用",
+    "unused": "未使用"
+  },
+  "couponCard": {
+    "discountLabel": "優惠方案：",
+    "validUntil": "有效期限：",
+    "statusLabel": "狀態：",
+    "statusUsed": "已使用",
+    "statusUnused": "未使用",
+    "statusExpired": "已過期",
+    "tooltipUsed": "此優惠券已使用，無法再次使用",
+    "tooltipExpired": "此優惠券已過期，無法使用",
+    "qrTitle": "優惠券 QR Code",
+    "qrValidUntil": "使用期限：",
+    "qrError": "產生 QR Code 失敗"
+  },
+  "couponCarousel": {
+    "claimButton": "領取優惠券",
+    "claimedButton": "已領取",
+    "detailTitle": "優惠券詳細資訊",
+    "labelTitle": "標題：",
+    "labelDiscount": "折扣：",
+    "labelPeriod": "期間：",
+    "labelDescription": "使用說明：",
+    "statusClaimed": "已領取",
+    "statusUnclaimed": "尚未領取",
+    "claimSuccess": "優惠券領取成功",
+    "claimFailedPrefix": "領取優惠券失敗請稍後再試",
+    "claimFailedDefault": "請稍後再試"
+  },
+  "promotionDetail": {
+    "title": "動態名稱",
+    "imageAlt": "活動圖片",
+    "imageLoading": "活動圖片載入中...",
+    "sectionTitle": "動態詳細內容：",
+    "backButton": "返回動態列表",
+    "loadError": "載入活動資料失敗"
+  },
+  "promotionCreate": {
+    "pageTitle": "新增動態",
+    "titlePlaceholder": "動態標題",
+    "descriptionPlaceholder": "請輸入動態內容…",
+    "startDateLabel": "開始日期",
+    "endDateLabel": "結束日期",
+    "imageUploadHint": "請上傳 JPG、PNG、HEIC 格式的圖片，檔案大小不應超過 1MB，以確保圖片品質顯示。",
+    "submitButton": "確認送出",
+    "notMerchantWarning": "僅限商家帳戶可使用此功能。",
+    "createSuccess": "動態已成功建立！",
+    "createFailedPrefix": "送出失敗：",
+    "genericError": "送出失敗，請確認網路或伺服器狀態",
+    "authWarning": "僅限商家使用者新增優惠券"
+  },
+  "promotionCarousel": {
+    "latestPromotions": "最新動態",
+    "eventPeriod": "活動期間："
+  },
+  "slogan": {
+    "titleLine1": "下一餐？",
+    "titleLine2": "我們比你還急。",
+    "description": "EatHub 是一個專為選擇困難症設計的美食推薦平台。根據你的口味偏好與所在地位置，快速篩選出專屬於你的美食選項！"
+  },
+  "home": {
+    "title": "功能介紹",
+    "description": "探索 EatHub 為你準備的強大功能",
+    "feature1": {
+      "title": "智慧推薦在地美食",
+      "description": "整合 Google Map API 和 Open AI 的 API 進行智慧推薦，讓使用者輕鬆找到在地適合美食！"
+    },
+    "feature2": {
+      "title": "收藏和瀏覽餐廳紀錄",
+      "description": "使用者可以蒐藏並記錄瀏覽過的推薦美食餐廳，不用煩惱下一餐吃什麼，治癒你的選擇性障礙！"
+    },
+    "feature3": {
+      "title": "導航餐廳和評論分享",
+      "description": "透過一鍵式導航，可以直接導航享受美食，同時留下評論，紀錄和分享美食心得！"
+    },
+    "feature4": {
+      "title": "商家動態和優惠行銷",
+      "description": "提供後台讓商家可以上傳優惠券和商家動態，帶來整合行銷功效，吸引來客數量。"
+    }
+  },
+  "termsOfService": {
+    "title": "服務條款",
+    "sections": {
+      "introductionTitle": "一、服務簡介",
+      "introductionContent": "EatHub 為非商業性質的學習專案，目的是透過實作與展示網站功能，提供類似社群與餐飲推薦平台的互動體驗。本網站並非正式商業平台，所有內容僅供學習展示與非正式參考之用。",
+
+      "eligibilityTitle": "二、使用者資格",
+      "eligibilityContent": "本網站未限制未成年人註冊，若您為 13 歲以下之使用者，建議由家長或監護人陪同使用。",
+
+      "privacyTitle": "三、個人資料保護",
+      "privacyCollected": "本網站會蒐集以下個人資料：",
+      "privacyItems": {
+        "email": "電子郵件地址",
+        "name": "使用者名稱 / 姓名",
+        "content": "留言與上傳內容"
+      },
+      "privacyUsage": "蒐集資料僅用於下列目的：",
+      "privacyPurposes": {
+        "verify": "驗證使用者身份",
+        "service": "提供客製化服務（如留言、收藏、優惠券等）",
+        "optimize": "優化網站體驗與功能展示"
+      },
+      "privacyNote": "您的資料不會用於商業行銷，亦不會提供給第三方，除非為實現網站功能所必要（如第三方 API 整合時之必要資料交換）。",
+
+      "contentLicenseTitle": "四、使用者內容授權",
+      "contentLicenseContent": "使用者在本網站上傳之評論、照片與其他內容，視為授權 EatHub 團隊於展示、研究與非營利公開範圍內使用。",
+
+      "prohibitedTitle": "五、禁止行為",
+      "prohibitedItems": {
+        "illegal": "發佈違法、猥褻、誹謗或不實資訊",
+        "unauthorized": "上傳未經授權的肖像或著作內容",
+        "attack": "試圖破解、干擾網站運作或其他使用者帳號"
+      },
+
+      "thirdPartyTitle": "六、第三方服務說明",
+      "thirdPartyContent": "本網站整合 Google Place API、Cloudinary 與 OpenAI 等第三方服務。上述服務之內容與穩定性非我們所能控制，使用時請留意其各自的服務條款與隱私政策。",
+
+      "disclaimerTitle": "七、免責聲明",
+      "disclaimerContent": "EatHub 為教育展示用途，不保證資訊即時性與正確性。所有推薦資訊與評論僅供參考，不代表實際商家或合作立場。",
+
+      "updateTitle": "八、條款更新",
+      "updateContent": "本網站保留修改服務條款之權利。條款更新後將於本頁公佈，請您不定期查看。"
+    }
+  },
+  "privacyPolicy": {
+    "title": "隱私權條款",
+    "intro": "歡迎您使用「尋飽」（EatHub，以下簡稱「本網站」或「我們」）所提供的各項服務。為了保護您的個人資料與隱私權，我們根據相關法規制定本《隱私權條款》，請您詳閱以下內容。",
+
+    "section1Title": "一、我們如何蒐集您的資料",
+    "section1List": {
+      "registration": "註冊資訊：如姓名、電子郵件、使用者名稱、密碼等。",
+      "usage": "使用紀錄：如您瀏覽的頁面、搜尋關鍵字、點選的餐廳與收藏行為。",
+      "interaction": "互動內容：如評論、留言、上傳圖片等您主動輸入的內容。",
+      "device": "設備資訊：我們僅使用 Cookie 記錄登入狀態。我們不會主動記錄或儲存您的 IP 位置、瀏覽器類型或裝置資訊。"
+    },
+
+    "section2Title": "二、資料使用目的",
+    "section2List": {
+      "authentication": "驗證您的身份並提供帳號相關服務",
+      "recommendation": "優化推薦演算法，提供符合您偏好的餐廳資訊",
+      "support": "處理您提出的問題、建議或服務請求",
+      "notification": "發送服務更新、行銷活動或重要通知（您可選擇取消訂閱）",
+      "compliance": "符合法律義務或主管機關的要求"
+    },
+
+    "section3Title": "三、Cookie 與登入憑證技術",
+    "section3Description": "本網站使用 Cookie 技術以記錄登入狀態與提升使用體驗。登入後的驗證憑證（token）會存放於 Cookie 中，作為辨識身份之用。您可以透過瀏覽器設定限制或停用 Cookie，但可能會導致部分功能無法正常運作。",
+
+    "section4Title": "四、第三方服務",
+    "section4Description1": "本網站提供 Google 第三方登入功能。當您使用該登入方式時，Google 會提供您授權的個人資料（如姓名與電子郵件），我們僅會使用這些資訊來建立帳號與進行身份驗證。",
+    "section4Description2": "我們不會與 Google 或其他第三方共享您在網站上的使用行為，也不會用於行銷或其他目的。此外，本網站未使用 Google Analytics、Hotjar 等網站追蹤分析工具。",
+
+    "section5Title": "五、您的權利",
+    "section5List": {
+      "access": "查詢或閱覽您的個人資料",
+      "correction": "請求更正或刪除錯誤資料",
+      "withdrawal": "撤回同意，停止資料使用（可能導致部分功能無法使用）"
+    },
+    "section5Note": "如需行使上述權利，請透過客服信箱與我們聯繫，我們將於合理時間內處理。",
+
+    "section6Title": "六、資料保存與安全措施",
+    "section6Description1": "我們致力於保護您的個人資料安全，採取包括但不限於以下措施：",
+    "section6List": {
+      "encryption": "密碼經過加密儲存，不以明文保留",
+      "access": "僅限授權人員存取資料",
+      "deletion": "定期清除不再使用或過期的資料"
+    },
+    "section6Description2": "資料的保存期間依其使用目的而定，最長不超過法令所允許之期限。",
+
+    "section7Title": "七、條款修訂",
+    "section7Description": "我們保留隨時修改本條款的權利，任何變更將公告於本網站，並註明更新日期。若您在條款變更後繼續使用本網站，即視為您已同意新的內容。",
+
+    "lastUpdated": "最新更新日期：2025 年 5 月 20 日"
   }
 }

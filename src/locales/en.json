@@ -1,36 +1,41 @@
 {
-  "index": {
-    "title": "What should I eat next?",
-    "ctaButton": "Please recommend me some food!",
-    "flavorLabel": "Flavor",
-    "stapleLabel": "Staple",
-    "categoryLabel": "Category",
-    "recommendResultTitle": "Recommendation Result",
-    "seeMoreButton": "See More",
-    "ratingLabel": "Rating",
-    "confirmButton": "Confirm"
+  "alert": {
+    "missingEmail": "Please enter your email address",
+    "emailSent": "Password reset email has been sent, please check your mailbox📬",
+    "emailNotFound": "User with this email address not found",
+    "sendFailed": "Failed to send email, please try again later",
+    "signupEmailUsed": "Registration failed, this email has already been registered.",
+    "signupFailed": "Registration failed, please try again later.",
+    "googleTokenFailed": "Unable to get Google access_token",
+    "googleLoginSuccess": "Google login successful",
+    "googleLoginFailed": "Login failed, please try again later"
   },
   "navbar": {
-    "signUp": "Sign Up",
-    "signIn": "Log In",
-    "currentUser": "Logged in as:",
-    "myRecentView": "My Recent Views",
-    "myFavorite": "My Favorites",
-    "myCoupon": "My Coupons",
-    "logout": "Log Out"
+    "loggedInAs": "Currently logged in as: {userName}",
+    "recentViews": "My Recent Views",
+    "favorites": "My Favorites",
+    "myCoupons": "My Coupons",
+    "logout": "Logout",
+    "signup": "Sign Up",
+    "login": "Login",
+    "merchantSignup": "Merchant Sign Up",
+    "merchantLogin": "Merchant Login",
+    "logoutSuccess": "Logout successful"
   },
-  "signup": {
-    "title": "Sign Up",
-    "submitButton": "Register"
+  "myCoupons": {
+    "title": "My Coupons",
+    "empty": "No coupons have been claimed yet",
+    "unused": "Unused",
+    "used": "Used",
+    "expired": "Expired"
   },
-  "login": {
-    "title": "Log In",
-    "submitButton": "Log In"
+  "myFavorites": {
+    "title": "My Favorites",
+    "empty": "No favorites yet"
   },
-  "alert": {
-    "loginFailed": "Login failed. Please try again later.",
-    "googleLoginSuccess": "Google login successful",
-    "googleLoginError": "Failed to obtain Google access_token"
+  "recentViews": {
+    "title": "My Recent Views",
+    "empty": "No recent views yet"
   },
   "footer": {
     "about": "About Us",
@@ -39,6 +44,461 @@
     "contact": "Contact Us",
     "terms": "Terms & Policies",
     "privacy": "Privacy Policy",
-    "language": "Language"
+    "language": "Language Selection",
+    "phone": "Phone: 02-123456789",
+    "hours": "Business Hours: 10:00-20:00",
+    "address": "Address: No.1, Donghai Rd., Zhongshan Dist., Taipei City"
+  },
+  "login": {
+    "title": "Member Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "Forgot Password",
+    "submit": "Login",
+    "orDivider": "or",
+    "noAccount": "Don't have an account?",
+    "signupLink": "Sign Up",
+    "backHome": "Back to Home"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "description": "Please enter the Email📩 you used to register,\nWe will send you a password reset link.",
+    "submit": "Confirm & Send➡️"
+  },
+  "signup": {
+    "title": "Member Registration",
+    "firstNamePlaceholder": "Firstname",
+    "lastNamePlaceholder": "Lastname",
+    "userNamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "submitButton": "Sign Up",
+    "orDivider": "or",
+    "loginLink": "Login",
+    "homeLink": "Back to Home",
+    "success": "Registration successful! Please proceed to login"
+  },
+  "google": {
+    "googleLogin": "Sign in with Google Account"
+  },
+  "index": {
+    "title": "What to eat for your next meal?",
+    "ctaButton": "Recommend Food",
+    "flavorTab": "Flavor",
+    "mainTab": "Main Ingredient",
+    "stapleTab": "Type",
+    "selectAll": "Select All",
+    "clearAll": "Clear All",
+    "confirm": "Confirm",
+    "chooseDishOptions": "Please select meal options",
+    "recommendResultTitle": "Recommendation Results",
+    "noRecommendation": "No recommendations yet",
+    "seeMoreButton": "See More Recommendations",
+    "getRecommendationsFailed": "Failed to get recommendations",
+    "completeSelection": "Please complete option settings",
+    "ensureSelection": "Please ensure that at least one option is selected for each of the following:",
+    "atLeastOneFlavor": "Flavor: Please select at least one flavor",
+    "atLeastOneMain": "Main Ingredient: Please select at least one main ingredient",
+    "atLeastOneStaple": "Type: Please select at least one type",
+    "continueSetting": "Got it, continue setting",
+    "ratingLabel": "Rating",
+    "close": "Close"
+  },
+  "options": {
+    "中式": "Chinese",
+    "台式": "Taiwanese",
+    "日式": "Japanese",
+    "泰式": "Thai",
+    "韓式": "Korean",
+    "越式": "Vietnamese",
+    "港式": "Hong Kong Style",
+    "椒麻": "Sichuan Pepper",
+    "咖哩": "Curry",
+    "麻辣": "Spicy",
+    "酸辣": "Sweet & Sour",
+    "碳烤": "Grilled",
+    "番茄": "Tomato",
+    "水煮": "Boiled",
+    "滷/燉": "Braised/Stewed",
+    "清蒸": "Steamed",
+    "泡菜": "Pickled",
+    "什錦": "Mixed",
+    "酥炸": "Deep Fried",
+    "味增": "Miso",
+    "香煎": "Pan-fried",
+
+    "牛肉": "Beef",
+    "豬肉": "Pork",
+    "雞肉": "Chicken",
+    "羊肉": "Lamb",
+    "鮮魚": "Fresh Fish",
+    "海鮮": "Seafood",
+    "蔬菜": "Vegetables",
+
+    "火鍋": "Hot Pot",
+    "燉飯": "Risotto",
+    "便當": "Bento",
+    "炒飯": "Fried Rice",
+    "丼飯": "Rice Bowl",
+    "酸菜魚": "Sour Cabbage Fish",
+    "湯麵": "Soup Noodles",
+    "乾麵": "Dry Noodles",
+    "義大利麵": "Pasta",
+    "刀削麵": "Hand-cut Noodles",
+    "水餃": "Dumplings",
+    "健康餐": "Healthy Meal",
+    "冬粉": "Glass Noodles",
+    "漢堡": "Burger",
+    "壽司": "Sushi",
+    "鐵板燒": "Teppanyaki",
+    "比薩": "Pizza",
+    "通心麵": "Macaroni",
+    "排餐": "Steak",
+    "板條": "Rice Noodles",
+    "包子": "Steamed Buns"
+  },
+  "restaurantDetail": {
+    "ratingCountSuffix": "reviews",
+    "noReviews": "No reviews yet",
+    "hasReviewed": "Reviewed",
+    "addReview": "＋ Add",
+    "viewMore": "View More",
+    "viewAll": "All reviews displayed",
+    "businessHours": "Business Hours",
+    "review": "Reviews",
+    "reviewCountPrefix": "Total",
+    "location": "Map",
+    "imageAlt": "Restaurant main image",
+    "addReviewSuccess": "Review submitted successfully",
+    "addReviewFailed": "Review submission failed",
+    "pleaseLoginToReview": "Please login first to review",
+    "pleaseLoginToFavorite": "Please login first to favorite restaurant",
+    "loadRestaurantFailed": "Failed to load restaurant data",
+    "restaurantNotFound": "Restaurant information not found",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "noData": "Not provided"
+  },
+  "restaurantList": {
+    "title": "Recommended for You"
+  },
+  "addReview": {
+    "ratingLabel": "Rating",
+    "commentLabel": "Comment",
+    "commentPlaceholder": "Please enter your review...",
+    "uploadPhoto": "Upload Photo",
+    "submitButton": "Submit Review",
+    "fileTooLarge": "File size cannot exceed 1 MB. Please try again."
+  },
+  "merchantDashboard": {
+    "regularBadge": "Regular Merchant",
+    "regularHint": "You are currently a <strong>Regular Merchant</strong>, upgrade to VIP to publish more coupons and promotions",
+    "upgradeNow": "Upgrade Now!",
+    "tab": {
+      "coupon": "Coupons",
+      "promotion": "Merchant Updates"
+    },
+    "create": {
+      "coupon": "Add Coupon",
+      "promotion": "Add Merchant Update"
+    },
+    "limitReached": {
+      "vip": {
+        "coupon": "VIP coupon limit reached, please contact EatHub team for premium plans",
+        "promotion": "VIP merchant update limit reached, please contact EatHub team for premium plans"
+      },
+      "regular": {
+        "coupon": "Regular merchant coupon limit reached, please upgrade",
+        "promotion": "Regular merchant update limit reached, please upgrade"
+      }
+    }
+  },
+  "merchantLogin": {
+    "title": "Merchant Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "Forgot Password",
+    "login": "Login",
+    "noAccount": "Don't have an account?",
+    "signup": "Sign Up",
+    "backHome": "Back to Home",
+    "loginFailed": "Login failed, please check your credentials"
+  },
+  "merchantSignup": {
+    "title": "Merchant Registration",
+    "restaurantNamePlaceholder": "Restaurant Name",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Set Password",
+    "signup": "Sign Up",
+    "login": "Login",
+    "backHome": "Back to Home",
+    "signupSuccess": "Registration successful! Please proceed to login",
+    "signupFailedEmailUsed": "Registration failed, this email has already been registered.",
+    "signupFailedGeneral": "Registration failed, please try again later."
+  },
+  "merchantCouponCard": {
+    "discount": "Discount Details",
+    "validUntil": "Valid Until",
+    "total": "Total Issued",
+    "claimed": "Claimed",
+    "used": "Used",
+    "confirmDelete": "Confirm delete?",
+    "cancel": "Cancel",
+    "confirm": "Confirm Delete",
+    "deleteFailed": "Delete failed, please try again later",
+    "notSet": "Not Set",
+    "coupons": "coupons"
+  },
+  "merchantPromotionCard": {
+    "activePeriod": "Active Period:",
+    "confirmDelete": "Confirm delete?",
+    "cancel": "Cancel",
+    "confirm": "Confirm Delete",
+    "deleteFailed": "Delete failed, please try again later"
+  },
+  "paymentResult": {
+    "loading": "Loading payment information...",
+    "successTitle": "Payment Successful 🎉",
+    "successMessage": "Thank you for upgrading to VIP Merchant!",
+    "orderId": "Order ID:",
+    "backHome": "Back to Home",
+    "errorTitle": "Payment Information Error",
+    "noOrderId": "Order information not found, please confirm if payment was successful.",
+    "fetchFailed": "Failed to query order information, please contact customer service."
+  },
+  "merchantUpgradeModal": {
+    "vipBenefitsLine1": "Upgrade to VIP Merchant to publish more coupons and updates, enjoy more exclusive benefits",
+    "vipBenefitsLine2": "VIP Merchants can publish up to 3 coupons and updates each",
+    "monthlyPlan": "Monthly Payment",
+    "yearlyPlan": "Annual Payment",
+    "price": "Price:",
+    "noPlans": "Purchase plans are not currently available, please try again later.",
+    "paymentMethod": "Select Payment Method",
+    "linePay": "LINEPAY",
+    "ecpay": "ECPay (Not Available)",
+    "goToPayment": "Proceed to Payment",
+    "close": "Close",
+    "onlyLinePay": "Currently only supports LINEPAY, ECPay is not yet available",
+    "createOrderError": "Error occurred while creating order, please try again later"
+  },
+  "couponConfirm": {
+    "title": "Coupon Serial Number:",
+    "status": "Status:",
+    "used": "Used",
+    "unused": "Unused",
+    "confirmUse": "Confirm Use",
+    "loadFailed": "Data loading failed",
+    "backToList": "Back to List"
+  },
+  "couponCreate": {
+    "title": "Add Coupon",
+    "serialNumberPlaceholder": "Coupon Serial Number",
+    "titlePlaceholder": "Coupon Title",
+    "discountTypeAmount": "Amount",
+    "discountTypePercent": "Percentage",
+    "discountValuePlaceholder": "Discount Value",
+    "startDateLabel": "Start Date",
+    "endDateLabel": "End Date",
+    "totalPlaceholder": "Quantity",
+    "descriptionPlaceholder": "Coupon Detailed Description",
+    "submitButton": "Confirm Submit"
+  },
+  "couponDetail": {
+    "validPeriod": "Valid Period:",
+    "storeName": "Store Name:",
+    "description": "Description:",
+    "discount": "Discount Details:",
+    "total": "Total:",
+    "claimed": "Claimed:",
+    "used": "Used:",
+    "viewUsage": "View Usage Status",
+    "backToList": "Back to List"
+  },
+  "couponUsage": {
+    "back": "Back",
+    "searchEmailPlaceholder": "Search User Email",
+    "table": {
+      "uuid": "Serial Number",
+      "userEmail": "User Email",
+      "status": "Usage Status"
+    },
+    "used": "Used",
+    "unused": "Unused"
+  },
+  "couponCard": {
+    "discountLabel": "Discount Offer:",
+    "validUntil": "Valid Until:",
+    "statusLabel": "Status:",
+    "statusUsed": "Used",
+    "statusUnused": "Unused",
+    "statusExpired": "Expired",
+    "tooltipUsed": "This coupon has been used and cannot be used again",
+    "tooltipExpired": "This coupon has expired and cannot be used",
+    "qrTitle": "Coupon QR Code",
+    "qrValidUntil": "Valid Until:",
+    "qrError": "Failed to generate QR Code"
+  },
+  "couponCarousel": {
+    "claimButton": "Claim Coupon",
+    "claimedButton": "Claimed",
+    "detailTitle": "Coupon Details",
+    "labelTitle": "Title:",
+    "labelDiscount": "Discount:",
+    "labelPeriod": "Period:",
+    "labelDescription": "Usage Instructions:",
+    "statusClaimed": "Claimed",
+    "statusUnclaimed": "Not Claimed",
+    "claimSuccess": "Coupon claimed successfully",
+    "claimFailedPrefix": "Failed to claim coupon, please try again later",
+    "claimFailedDefault": "Please try again later"
+  },
+  "promotionDetail": {
+    "title": "Update Title",
+    "imageAlt": "Event Image",
+    "imageLoading": "Event image loading...",
+    "sectionTitle": "Update Details:",
+    "backButton": "Back to Update List",
+    "loadError": "Failed to load event data"
+  },
+  "promotionCreate": {
+    "pageTitle": "Add Update",
+    "titlePlaceholder": "Update Title",
+    "descriptionPlaceholder": "Please enter update content…",
+    "startDateLabel": "Start Date",
+    "endDateLabel": "End Date",
+    "imageUploadHint": "Please upload JPG, PNG, HEIC format images, file size should not exceed 1MB to ensure image quality display.",
+    "submitButton": "Confirm Submit",
+    "notMerchantWarning": "This feature is only available to merchant accounts.",
+    "createSuccess": "Update has been successfully created!",
+    "createFailedPrefix": "Submission failed:",
+    "genericError": "Submission failed, please check network or server status",
+    "authWarning": "Only merchant users can add coupons"
+  },
+  "promotionCarousel": {
+    "latestPromotions": "Latest Updates",
+    "eventPeriod": "Event Period:"
+  },
+  "slogan": {
+    "titleLine1": "Next meal?",
+    "titleLine2": "We're more eager than you are.",
+    "description": "EatHub is a food recommendation platform designed specifically for those with choice paralysis. Based on your taste preferences and location, quickly filter out food options that are exclusively yours!"
+  },
+  "home": {
+    "title": "Feature Introduction",
+    "description": "Explore the powerful features EatHub has prepared for you",
+    "feature1": {
+      "title": "Smart Local Food Recommendations",
+      "description": "Integrating Google Map API and Open AI's API for smart recommendations, allowing users to easily find suitable local cuisine!"
+    },
+    "feature2": {
+      "title": "Favorite and Restaurant Browsing Records",
+      "description": "Users can collect and record browsed recommended restaurants, no need to worry about what to eat next, curing your choice paralysis!"
+    },
+    "feature3": {
+      "title": "Restaurant Navigation and Review Sharing",
+      "description": "Through one-click navigation, you can directly navigate to enjoy food, while leaving reviews to record and share your food experiences!"
+    },
+    "feature4": {
+      "title": "Merchant Updates and Promotional Marketing",
+      "description": "Providing a backend for merchants to upload coupons and merchant updates, bringing integrated marketing effectiveness and attracting customer numbers."
+    }
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "sections": {
+      "introductionTitle": "1. Service Introduction",
+      "introductionContent": "EatHub is a non-commercial learning project aimed at providing interactive experiences similar to social and dining recommendation platforms through implementation and demonstration of website functions. This website is not an official commercial platform, and all content is for learning demonstration and informal reference only.",
+
+      "eligibilityTitle": "2. User Eligibility",
+      "eligibilityContent": "This website does not restrict minor registration. If you are under 13 years old, it is recommended to use under parental or guardian supervision.",
+
+      "privacyTitle": "3. Personal Data Protection",
+      "privacyCollected": "This website collects the following personal data:",
+      "privacyItems": {
+        "email": "Email address",
+        "name": "Username / Name",
+        "content": "Comments and uploaded content"
+      },
+      "privacyUsage": "Collected data is only used for the following purposes:",
+      "privacyPurposes": {
+        "verify": "Verify user identity",
+        "service": "Provide customized services (such as comments, favorites, coupons, etc.)",
+        "optimize": "Optimize website experience and function demonstration"
+      },
+      "privacyNote": "Your data will not be used for commercial marketing, nor will it be provided to third parties, unless necessary to implement website functions (such as necessary data exchange during third-party API integration).",
+
+      "contentLicenseTitle": "4. User Content License",
+      "contentLicenseContent": "Reviews, photos and other content uploaded by users on this website are deemed to authorize the EatHub team to use within the scope of demonstration, research and non-profit public use.",
+
+      "prohibitedTitle": "5. Prohibited Behaviors",
+      "prohibitedItems": {
+        "illegal": "Publishing illegal, obscene, defamatory or false information",
+        "unauthorized": "Uploading unauthorized portrait or copyrighted content",
+        "attack": "Attempting to hack, interfere with website operation or other user accounts"
+      },
+
+      "thirdPartyTitle": "6. Third-Party Service Description",
+      "thirdPartyContent": "This website integrates third-party services such as Google Place API, Cloudinary and OpenAI. The content and stability of the above services are beyond our control. Please pay attention to their respective terms of service and privacy policies when using.",
+
+      "disclaimerTitle": "7. Disclaimer",
+      "disclaimerContent": "EatHub is for educational demonstration purposes and does not guarantee the timeliness and accuracy of information. All recommendation information and reviews are for reference only and do not represent the actual merchant or partnership position.",
+
+      "updateTitle": "8. Terms Update",
+      "updateContent": "This website reserves the right to modify the terms of service. Terms updates will be announced on this page, please check from time to time."
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "intro": "Welcome to use the various services provided by \"EatHub\" (hereinafter referred to as \"this website\" or \"we\"). To protect your personal data and privacy, we have formulated this \"Privacy Policy\" in accordance with relevant regulations. Please read the following content carefully.",
+
+    "section1Title": "1. How We Collect Your Data",
+    "section1List": {
+      "registration": "Registration information: such as name, email, username, password, etc.",
+      "usage": "Usage records: such as pages you browse, search keywords, restaurants you click on and favorite behaviors.",
+      "interaction": "Interactive content: such as reviews, comments, uploaded images and other content you actively input.",
+      "device": "Device information: We only use cookies to record login status. We do not actively record or store your IP location, browser type or device information."
+    },
+
+    "section2Title": "2. Data Usage Purpose",
+    "section2List": {
+      "authentication": "Verify your identity and provide account-related services",
+      "recommendation": "Optimize recommendation algorithms to provide restaurant information that matches your preferences",
+      "support": "Handle questions, suggestions or service requests you raise",
+      "notification": "Send service updates, marketing activities or important notifications (you can choose to unsubscribe)",
+      "compliance": "Comply with legal obligations or requirements from competent authorities"
+    },
+
+    "section3Title": "3. Cookie and Login Credential Technology",
+    "section3Description": "This website uses Cookie technology to record login status and improve user experience. Authentication credentials (tokens) after login will be stored in cookies for identity recognition purposes. You can limit or disable cookies through browser settings, but this may cause some functions to not work properly.",
+
+    "section4Title": "4. Third-Party Services",
+    "section4Description1": "This website provides Google third-party login functionality. When you use this login method, Google will provide your authorized personal data (such as name and email), and we will only use this information to create accounts and perform identity verification.",
+    "section4Description2": "We will not share your usage behavior on the website with Google or other third parties, nor will we use it for marketing or other purposes. In addition, this website does not use website tracking analysis tools such as Google Analytics or Hotjar.",
+
+    "section5Title": "5. Your Rights",
+    "section5List": {
+      "access": "Query or view your personal data",
+      "correction": "Request correction or deletion of incorrect data",
+      "withdrawal": "Withdraw consent and stop data use (may cause some functions to be unavailable)"
+    },
+    "section5Note": "If you need to exercise the above rights, please contact us through customer service email, and we will handle it within a reasonable time.",
+
+    "section6Title": "6. Data Retention and Security Measures",
+    "section6Description1": "We are committed to protecting the security of your personal data and take measures including but not limited to the following:",
+    "section6List": {
+      "encryption": "Passwords are encrypted and stored, not retained in plain text",
+      "access": "Only authorized personnel can access data",
+      "deletion": "Regularly clear data that is no longer used or expired"
+    },
+    "section6Description2": "The retention period of data depends on its purpose of use and does not exceed the maximum period allowed by law.",
+
+    "section7Title": "7. Terms Revision",
+    "section7Description": "We reserve the right to modify these terms at any time. Any changes will be announced on this website and marked with the update date. If you continue to use this website after the terms change, it is deemed that you have agreed to the new content.",
+
+    "lastUpdated": "Last Updated: May 20, 2025"
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <div class="p-6 min-h-screen">
-    <h1 class="text-2xl font-bold mb-4">我的優惠券</h1>
+    <h1 class="text-2xl font-bold mb-4">{{ t('myCoupons.title') }}</h1>
 
     <!-- 分頁按鈕 -->
     <div class="tabs mb-6">
@@ -10,21 +10,21 @@
         :class="{ 'tab-active': activeTab === 'unused' }"
         @click="activeTab = 'unused'"
       >
-        未使用
+        {{ t('myCoupons.unused') }}
       </button>
       <button
         class="tab"
         :class="{ 'tab-active': activeTab === 'used' }"
         @click="activeTab = 'used'"
       >
-        已使用
+        {{ t('myCoupons.used') }}
       </button>
       <button
         class="tab"
         :class="{ 'tab-active': activeTab === 'expired' }"
         @click="activeTab = 'expired'"
       >
-        已過期
+        {{ t('myCoupons.expired') }}
       </button>
     </div>
 
@@ -33,7 +33,7 @@
       v-if="filteredCoupons.length === 0"
       class="text-center text-gray-400 mt-8"
     >
-      此分類下尚無優惠券
+      {{ t('myCoupons.empty') }}
     </div>
 
     <!-- 優惠券清單 -->
@@ -54,7 +54,9 @@ import axios from '@/axios';
 import CouponCard from '@/components/CouponCard.vue';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const coupons = ref([]);
 const activeTab = ref('unused');
 

@@ -1,9 +1,9 @@
 <template>
   <Navbar></Navbar>
   <div class="p-6 min-h-screen">
-    <h1 class="text-2xl font-bold mb-4">我的最近瀏覽</h1>
+    <h1 class="text-2xl font-bold mb-4">{{ t('recentViews.title') }}</h1>
 
-    <div v-if="restaurants.length === 0">尚未有瀏覽</div>
+    <div v-if="restaurants.length === 0">{{ t('recentViews.empty') }}</div>
     <div v-else class="grid gap-4">
       <RestaurantCard
         v-for="r in restaurants"
@@ -22,7 +22,9 @@ import RestaurantCard from '@/components/RestaurantCard.vue';
 import { useRestaurantStore } from '@/stores/restaurant';
 import { ref, onMounted } from 'vue';
 import axios from '@/axios';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const store = useRestaurantStore();
 const restaurants = ref([]);
 
@@ -44,6 +46,4 @@ onMounted(async () => {
     console.error('取得最近瀏覽餐廳失敗', err);
   }
 });
-
-
 </script>

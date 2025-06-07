@@ -5,42 +5,52 @@
       class="flex transition-transform duration-500"
       :style="`transform: translateX(-${currentIndex * 100}%);`"
     >
-      
       <div
         v-for="(coupon, index) in coupons"
         :key="coupon.uuid"
-        class="w-full flex-shrink-0 mt-4 "
+        class="w-full flex-shrink-0 mt-4"
       >
         <div class="bg-gray-100 rounded-lg p-4">
-         
-
           <!-- 詳細內容 -->
-          <h4 class="text-base md:text-xl font-bold mb-2">優惠券詳細資訊</h4>
+          <h4 class="text-base md:text-xl font-bold mb-2">
+            {{ t('couponCarousel.detailTitle') }}
+          </h4>
           <div class="space-y-2 text-sm">
             <div>
-              <span class="text-gray-500 text-base md:text-lg">標題：</span>
-              <span class="font-medium text-base md:text-lg">{{ coupon.title }}</span>
+              <span class="text-gray-500 text-base md:text-lg">{{
+                t('couponCarousel.labelTitle')
+              }}</span>
+              <span class="font-medium text-base md:text-lg">{{
+                coupon.title
+              }}</span>
             </div>
             <div>
-              <span class="text-gray-500 text-base md:text-lg">折扣：</span>
+              <span class="text-gray-500 text-base md:text-lg">{{
+                t('couponCarousel.labelDiscount')
+              }}</span>
               <span class="font-medium text-red-500 text-base md:text-lg">{{
                 coupon.discount
               }}</span>
             </div>
             <div>
-              <span class="text-gray-500 text-base md:text-lg">期間：</span>
+              <span class="text-gray-500 text-base md:text-lg">
+                {{ t('couponCarousel.labelPeriod') }}
+              </span>
               <span class="font-medium text-base md:text-lg">
                 {{ formatDate(coupon.startedAt) }} ~
                 {{ formatDate(coupon.endedAt) }}
               </span>
             </div>
             <div v-if="coupon.description">
-              <span class="text-gray-500 text-base md:text-lg">使用說明：</span>
-              <p class="text-gray-700 text-base md:text-lg mb-4">{{ coupon.description }}</p>
+              <span class="text-gray-500 text-base md:text-lg">
+                {{ t('couponCarousel.labelDescription') }}
+              </span>
+              <p class="text-gray-700 text-base md:text-lg mb-4">
+                {{ coupon.description }}
+              </p>
             </div>
           </div>
 
-         
           <button
             @click="claimCoupon(coupon.uuid)"
             :class="[
@@ -51,17 +61,20 @@
             ]"
             :disabled="claimedLocal[coupon.uuid]"
           >
-            <font-awesome-icon :icon="['fas', 'ticket-alt']" class="mr-2 " />
-            {{ claimedLocal[coupon.uuid] ? '已領取' : '領取優惠券' }}
+            <font-awesome-icon :icon="['fas', 'ticket-alt']" class="mr-2" />
+            {{
+              claimedLocal[coupon.uuid]
+                ? t('couponCarousel.statusClaimed')
+                : t('couponCarousel.statusUnclaimed')
+            }}
           </button>
-
         </div>
       </div>
     </div>
   </div>
 
   <!-- 點點控制器 -->
-  <div v-if="coupons.length > 1" class="flex justify-center mt-3 space-x-2 ">
+  <div v-if="coupons.length > 1" class="flex justify-center mt-3 space-x-2">
     <button
       v-for="(dot, index) in coupons.length"
       :key="index"
@@ -75,7 +88,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted, reactive } from 'vue';
 import axios from '@/axios';
+import { useAlertStore } from '@/stores/alert';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
+const alert = useAlertStore();
 const props = defineProps({
   coupons: { type: Array, required: true },
   claimedStatus: { type: Object, default: () => ({}) },
@@ -111,10 +128,11 @@ const claimCoupon = async (uuid) => {
   try {
     await axios.post(`/coupons/${uuid}/claim/`);
     claimedLocal[uuid] = true;
-    alert('優惠券領取成功');
+    alert.trigger(t('couponCarousel.claimSuccess'), 'success');
   } catch (error) {
-    const message = error.response?.data?.message || '請稍後再試';
-    alert(`領取優惠券失敗：${message}`);
+    const message =
+      error.response?.data?.message || t('couponCarousel.claimFailedDefault');
+    alert.trigger(t('couponCarousel.claimFailedPrefix') + message, 'error');
   }
 };
 

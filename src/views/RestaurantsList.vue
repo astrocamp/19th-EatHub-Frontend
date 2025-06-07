@@ -4,7 +4,7 @@
     <div class="bg-white">
       <div class="flex justify-center items-center mx-auto py-5">
         <h1 class="text-2xl font-bold mb-4">
-          為您推薦
+          {{ t('restaurantList.title') }}
           <span v-if="dishResult">：{{ dishResult }}</span>
         </h1>
       </div>
@@ -35,7 +35,9 @@ import Footer from '@/components/Footer.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
 import { computed, onMounted } from 'vue';
 import { useRestaurantStore } from '@/stores/restaurant';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const store = useRestaurantStore();
 const topTenRestaurants = computed(() => store.restaurants.slice(0, 12));
 
@@ -45,14 +47,12 @@ const handleRecentViewedRestaurant = (r) => {
   store.addRecentViewedUuid(r.uuid);
 };
 
-
 onMounted(() => {
   window.scrollTo(0, 0);
 });
 </script>
 
 <style scoped>
-
 .min-h-screen {
   position: relative;
   top: 0;
