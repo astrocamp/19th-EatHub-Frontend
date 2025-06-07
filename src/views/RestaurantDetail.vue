@@ -230,6 +230,7 @@
 <script setup>
 import { ref, reactive, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import axios from '@/axios';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
@@ -259,6 +260,7 @@ const claimedStatus = ref({});
 const reviews = ref([]);
 const showModal = ref(false);
 const hasReviewed = ref(false);
+const router = useRouter();
 
 const displayedCount = ref(5);
 const displayedReviews = computed(() =>
@@ -310,7 +312,11 @@ const fetchRestaurantData = async () => {
 
     store.addRecentViewedUuid(restaurantUuid);
   } catch (error) {
-    alert.trigger('載入餐廳資料失敗', 'error');
+    if (error.response && error.response.status === 404) {
+      router.push({ name: 'NotFound' }); 
+    } else {
+      alert.trigger('載入餐廳資料失敗', 'error');
+    }
   }
 };
 

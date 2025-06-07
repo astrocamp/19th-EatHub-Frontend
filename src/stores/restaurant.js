@@ -51,8 +51,6 @@ export const useRestaurantStore = defineStore(
       if (recentViewedUuids.value.length > 12) {
         recentViewedUuids.value = recentViewedUuids.value.slice(0, 12);
       }
-      console.log('加入 UUID:', uuid);
-      console.log('目前 recentViewedUuids:', recentViewedUuids.value);
     };
 
 
