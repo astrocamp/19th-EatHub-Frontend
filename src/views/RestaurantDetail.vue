@@ -251,6 +251,7 @@
 <script setup>
 import { ref, reactive, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import axios from '@/axios';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
@@ -275,11 +276,6 @@ const openHours = reactive({});
 const mapUrl = ref('');
 const placeId = ref('');
 const store = useRestaurantStore();
-
-onMounted(() => {
-  const restaurantUuid = route.params.id;
-  store.addRecentViewedUuid(restaurantUuid);
-});
 const isFavorite = ref(false);
 const promotions = ref([]);
 const coupons = ref([]);
@@ -287,6 +283,7 @@ const claimedStatus = ref({});
 const reviews = ref([]);
 const showModal = ref(false);
 const hasReviewed = ref(false);
+const router = useRouter();
 
 const displayedCount = ref(5);
 const displayedReviews = computed(() =>
@@ -325,8 +322,14 @@ const fetchRestaurantData = async () => {
     isFavorite.value = data.userStatus?.hasFavorited || false;
     reviews.value = data.reviews || [];
     hasReviewed.value = data.userStatus?.hasReviewed || false;
+
+    store.addRecentViewedUuid(restaurantUuid);
   } catch (error) {
-    alert.trigger(t('restaurantDetail.loadRestaurantFailed'), 'error');
+    if (error.response && error.response.status === 404) {
+      router.push({ name: 'NotFound' }); 
+    } else {
+      alert.trigger(t('restaurantDetail.loadRestaurantFailed'), 'error');
+    }
   }
 };
 
@@ -390,4 +393,8 @@ const navigateToAddress = () => {
 };
 
 onMounted(fetchRestaurantData);
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
 </script>
