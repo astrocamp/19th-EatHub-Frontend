@@ -8,7 +8,7 @@
         <div role="tablist" class="tabs tabs-bordered mb-4">
           <button
             role="tab"
-            class="tab"
+            class="tab text-base md:text-xl font-medium text-neutral"
             :class="{ 'tab-active': activeTab === 'flavors' }"
             @click="activeTab = 'flavors'"
           >
@@ -16,7 +16,7 @@
           </button>
           <button
             role="tab"
-            class="tab"
+            class="tab text-base md:text-xl font-medium text-neutral"
             :class="{ 'tab-active': activeTab === 'mains' }"
             @click="activeTab = 'mains'"
           >
@@ -24,7 +24,7 @@
           </button>
           <button
             role="tab"
-            class="tab"
+            class="tab text-base md:text-xl font-medium text-neutral"
             :class="{ 'tab-active': activeTab === 'staples' }"
             @click="activeTab = 'staples'"
           >
@@ -34,10 +34,10 @@
 
         <!-- 全選 / 全取消 -->
         <div class="flex justify-end gap-2 mb-4">
-          <button class="btn btn-xs" @click="selectAll">
+          <button class="btn" @click="selectAll">
             {{ t('index.selectAll') }}
           </button>
-          <button class="btn btn-xs" @click="clearAll">
+          <button class="btn" @click="clearAll">
             {{ t('index.clearAll') }}
           </button>
         </div>
@@ -49,7 +49,7 @@
           <button
             v-for="item in currentOptions"
             :key="item"
-            class="btn btn-sm rounded-full"
+            class="btn btn-sm md:btn-lg rounded-full font-normal"
             @click="toggleCurrent(item)"
             :class="{
               'bg-[var(--color-neutral)] text-white':
@@ -62,7 +62,7 @@
         </div>
 
         <div class="modal-action mt-6">
-          <button class="btn btn-primary w-full" @click="confirmSelections">
+          <button class="btn btn-primary w-full text-white rounded-xl text-base md:text-xl py-6 hover:btn-secondary" @click="confirmSelections">
             {{ t('index.confirm') }}
           </button>
         </div>
@@ -85,8 +85,8 @@
           {{ t('index.completeSelection') }}
         </h3>
         <div class="space-y-2">
-          <p class="text-gray-700">{{ t('index.ensureSelection') }}</p>
-          <ul class="list-disc list-inside space-y-1 ml-4">
+          <p class="text-gray-700 text-base md:tex-xl">{{ t('index.ensureSelection') }}</p>
+          <ul class="list-disc list-inside space-y-1 ml-4 text-base md:text-xl">
             <li v-if="flavors.length === 0" class="text-error">
               {{ t('index.atLeastOneFlavor') }}
             </li>
@@ -99,10 +99,8 @@
           </ul>
         </div>
         <div class="modal-action">
-          <button class="btn btn-primary" @click="closeValidationModal">
-            {{ t('index.continueSetting') }}
-          </button>
-          <button class="btn btn-outline" @click="closeValidationModal">
+     
+          <button class="btn btn-outline text-base md:text-xl rounded-xl" @click="closeValidationModal">
             {{ t('index.close') }}
           </button>
         </div>
