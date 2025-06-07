@@ -54,7 +54,7 @@
           <div>
             <button
               @click="handleSubmit"
-              class="w-full bg-primary hover:bg-[rgb(87,57,33)] text-white font-medium py-4 px-6 rounded-xl cursor-pointer"
+              class="w-full btn bg-primary hover:bg-[rgb(87,57,33)] text-white font-medium py-6 px-6 rounded-xl cursor-pointer text-sm md:text-lg"
             >
               {{ t('forgotPassword.submit') }}
             </button>
