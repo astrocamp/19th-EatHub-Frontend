@@ -1,7 +1,7 @@
 <template>
   <!-- 頂部導航欄 -->
   <div
-    class="navbar bg-white px-4 py-10 shadow-md flex justify-between items-center fixed z-50 top-0 left-0 w-ful h-16"
+    class="navbar bg-white px-4 py-10 shadow-md flex justify-between items-center fixed z-50 top-0 left-0 w-full h-16"
   >
     <!-- 左邊 Logo 區 -->
     <div class="flex items-center">
@@ -9,114 +9,104 @@
         <img
           src="@/assets/images/logo.png"
           alt="Logo"
-          class="w-40 mr-2 md:ml-10 mt-4"
+          class="w-40 mr-2 md:ml-10 "
         />
       </a>
     </div>
 
     <!-- 中間選單項目 (大螢幕顯示) -->
-    <nav class="hidden md:flex items-center space-x-10 flex-1 justify-end">
+    <nav class="hidden lg:flex items-center space-x-10 flex-1 justify-end mr-10">
       <template v-if="user">
-        <span class="text-gray-700">{{
+        <span class="text-primary font-medium">{{
           t('navbar.loggedInAs', { userName: user.userName })
         }}</span>
         <a
           href="/users/recent"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center nav-link "
         >
-          <font-awesome-icon :icon="['fas', 'clock']" class="nav-icon mr-1" />
+          
           {{ t('navbar.recentViews') }}
         </a>
         <a
           href="/users/favorites"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center nav-link"
         >
-          <font-awesome-icon :icon="['fas', 'heart']" class="nav-icon mr-1" />
+          
           {{ t('navbar.favorites') }}
         </a>
         <a
           href="/users/coupons"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center nav-link"
         >
-          <font-awesome-icon :icon="['fas', 'ticket']" class="nav-icon mr-1" />
+          
           {{ t('navbar.myCoupons') }}
         </a>
         <button
           @click="handleLogout"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center cursor-pointer nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center cursor-pointer nav-link"
         >
-          <font-awesome-icon
-            :icon="['fas', 'sign-out-alt']"
-            class="nav-icon mr-1"
-          />
+          
           {{ t('navbar.logout') }}
         </button>
       </template>
       <template v-else>
         <a
           href="/signup"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary  transition-colors flex items-center nav-link"
         >
-          <font-awesome-icon
-            :icon="['fas', 'user-plus']"
-            class="nav-icon mr-1"
-          />
+        
           {{ t('navbar.signup') }}
         </a>
         <a
           href="/login"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center nav-link"
         >
-          <font-awesome-icon
-            :icon="['fas', 'right-to-bracket']"
-            class="nav-icon mr-1"
-          />
+      
           {{ t('navbar.login') }}
         </a>
         <a
           href="/merchant/signup"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center nav-link"
         >
-          <font-awesome-icon :icon="['fas', 'store']" class="nav-icon mr-1" />
+     
           {{ t('navbar.merchantSignup') }}
         </a>
         <a
           href="/merchant/login"
-          class="text-gray-700 hover:text-red-500 transition-colors flex items-center nav-link"
+          class="font-medium text-neutral hover:text-primary transition-colors flex items-center nav-link"
         >
-          <font-awesome-icon :icon="['fas', 'shop']" class="nav-icon mr-1" />
           {{ t('navbar.merchantLogin') }}
         </a>
       </template>
     </nav>
 
     <!-- 右邊 漢堡選單 (小螢幕顯示) -->
-    <div class="flex-none md:hidden">
+    <div class="flex-none lg:hidden">
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle">
           <font-awesome-icon
             :icon="['fas', 'bars']"
-            class="text-3xl text-[rgb(226,102,55)] mt-4"
+            class="text-3xl text-primary mr-4"
           />
         </label>
         <ul
           v-if="user"
           tabindex="0"
-          class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          class="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm"
         >
           <li>
-            <a href="#" class="text-sm">{{
+            <a href="#" class="text-sm text-neutral font-medium">{{
               t('navbar.loggedInAs', { userName: user.userName })
             }}</a>
           </li>
           <li>
             <a
               href="/users/recent"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'clock']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.recentViews') }}
             </a>
@@ -124,11 +114,11 @@
           <li>
             <a
               href="/users/favorites"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'heart']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.favorites') }}
             </a>
@@ -136,23 +126,23 @@
           <li>
             <a
               href="/users/coupons"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'ticket']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.myCoupons') }}
             </a>
           </li>
           <li>
             <button
-              class="flex items-center w-full text-left hover:text-red-500 mobile-nav-link"
+              class="flex items-center w-full text-left hover:text-primary mobile-nav-link text-neutral font-medium"
               @click="handleLogout"
             >
               <font-awesome-icon
                 :icon="['fas', 'sign-out-alt']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.logout') }}
             </button>
@@ -166,11 +156,11 @@
           <li>
             <a
               href="/signup"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary  mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'user-plus']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.signup') }}
             </a>
@@ -178,11 +168,11 @@
           <li>
             <a
               href="/login"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'right-to-bracket']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.login') }}
             </a>
@@ -190,11 +180,11 @@
           <li>
             <a
               href="/merchant/signup"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium" 
             >
               <font-awesome-icon
                 :icon="['fas', 'store']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.merchantSignup') }}
             </a>
@@ -202,11 +192,11 @@
           <li>
             <a
               href="/merchant/login"
-              class="flex items-center hover:text-red-500 mobile-nav-link"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'shop']"
-                class="nav-icon mr-2"
+                class="nav-icon mr-2 text-neutral"
               />
               {{ t('navbar.merchantLogin') }}
             </a>
@@ -287,7 +277,7 @@ nav button:hover {
 
 /* 漢堡選單項目懸停效果 */
 .mobile-nav-link:hover {
-  background-color: #f3f4f6;
+  background-color: rgb(87, 57, 33);
   transition: background-color 0.2s ease;
 }
 </style>

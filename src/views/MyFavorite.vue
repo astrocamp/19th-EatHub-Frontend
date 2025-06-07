@@ -1,10 +1,10 @@
 <template>
   <Navbar></Navbar>
-  <div class="p-6 min-h-screen">
-    <h1 class="text-2xl font-bold mb-4">>{{ t('myFavorites.title') }}</h1>
+  <div class="p-6 max-w-screen-lg mx-auto pt-30 mb-20">
+    <h1 class="text-2xl md:text-3xl text-neutral text-center font-bold mb-8">{{ t('myFavorites.title') }}</h1>
 
     <div v-if="restaurants.length === 0">{{ t('myFavorites.empty') }}</div>
-    <div v-else class="grid gap-4">
+    <div v-else class="grid gap-6 grid-cols-1 md:grid-cols-2">
       <RestaurantCard
         v-for="r in restaurants"
         :key="r.placeId"

@@ -2,14 +2,14 @@
   <div class="">
     <Navbar></Navbar>
     <section
-      class="min-h-screen flex items-center justify-center bg-base-200 p-4"
+      class="min-h-screen flex items-center justify-center bg-base-200 p-6 pt-30"
     >
       <div class="w-full max-w-md">
         <form
           @submit.prevent="handleSignup"
           class="bg-base-100 shadow-xl rounded-xl p-8 space-y-4"
         >
-          <h1 class="text-2xl font-bold text-center mb-6">
+          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6">
             {{ t('signup.title') }}
           </h1>
 
@@ -55,7 +55,7 @@
             />
           </section>
 
-          <button class="btn btn-primary w-full">{{ t('signup.submitButton') }}</button>
+          <button class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg">{{ t('signup.submitButton') }}</button>
           <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
             {{ errorMessage }}
           </p>

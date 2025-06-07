@@ -3,12 +3,12 @@
     <section class="min-h-screen flex items-center justify-center bg-base-200 p-4">
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
-          <h1 class="text-2xl font-bold text-center text-black">重設密碼</h1>
+          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center">重設密碼</h1>
   
           <div class="space-y-4">
 
             <div>
-              <p class="text-sm text-gray-600 mb-1">請輸入新密碼</p>
+              <p class="text-base md:text-lg text-gray-600 mb-1">請輸入新密碼</p>
               <input
                 type="password"
                 v-model="newPassword"
@@ -17,7 +17,7 @@
             </div>
   
             <div>
-              <p class="text-sm text-gray-600 mb-1">再次確認新密碼</p>
+              <p class="text-base md:text-lg text-gray-600 mb-1">再次確認新密碼</p>
               <input
                 type="password"
                 v-model="confirmPassword"
@@ -28,7 +28,7 @@
    
             <button
               @click="handleReset"
-              class="btn btn-primary w-full"
+              class="btn btn-primary w-full rounded-xl text-white text-sm md:text-lg hover:bg-neutral py-6"
             >
               確定重設
             </button>

@@ -2,11 +2,11 @@
   <div>
     <Navbar></Navbar>
     <section
-      class="min-h-screen flex items-center justify-center bg-base-200 p-4"
+      class="min-h-screen flex items-center justify-center bg-base-200 p-6"
     >
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
-          <h1 class="text-2xl font-bold text-center">{{ t('login.title') }}</h1>
+          <h1 class="text-2xl md:text-3xl font-bold text-center text-neutral">{{ t('login.title') }}</h1>
 
           <form @submit.prevent="handleLogin" class="space-y-4">
             <input
@@ -27,11 +27,11 @@
             <div class="flex gap-3">
               <router-link
                 to="/forgot-password"
-                class="btn btn-outline btn-primary flex-1"
+                class="btn btn-outline btn-primary flex-1 text-sm md:text-lg rounded-xl"
               >
                 {{ t('login.forgotPassword') }}
               </router-link>
-              <button class="btn btn-primary flex-2" type="submit">
+              <button class="btn btn-primary flex-1 text-white text-sm md:text-lg rounded-xl hover:bg-neutral" type="submit">
                 {{ t('login.submit') }}
               </button>
             </div>
