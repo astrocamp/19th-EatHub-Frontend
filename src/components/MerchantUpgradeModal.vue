@@ -3,7 +3,7 @@
     class="fixed inset-0 bg-[rgba(0,0,0,0.9)] z-50 flex justify-center items-center"
   >
     <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-full">
-      <!-- 升級訊息 -->
+      <!-- 升級提示訊息 -->
       <div
         v-if="message"
         class="mb-4 text-sm text-orange-600 bg-orange-100 p-2 rounded"
@@ -11,19 +11,19 @@
         ⚠️ {{ message }}
       </div>
 
-      <!-- 升級固定說明 -->
+      <!-- VIP 升級說明 -->
       <div class="mb-4 text-sm text-gray-700 flex items-center gap-2">
         <font-awesome-icon
           :icon="['fa-solid', 'fa-crown']"
           class="text-yellow-500"
         />
         <span>
-          <div>升級為 VIP 店家可發佈更多優惠券與動態，享更多專屬權益</div>
-          <div>VIP 店家優惠券與動態可各發佈至多 3 則</div>
+          <div>{{ t('merchantUpgradeModal.vipBenefitsLine1') }}</div>
+          <div>{{ t('merchantUpgradeModal.vipBenefitsLine2') }}</div>
         </span>
       </div>
 
-      <!-- Tab 切換 -->
+      <!-- 付款方案 Tab -->
       <div class="flex gap-4 mb-4">
         <button
           v-for="plan in plans"
@@ -32,16 +32,22 @@
           :class="activePlan === plan.planType ? 'btn-primary' : 'btn-outline'"
           @click="activePlan = plan.planType"
         >
-          {{ plan.planType === 'monthly' ? '按月付款' : '按年付款' }}
+          {{
+            plan.planType === 'monthly'
+              ? t('merchantUpgradeModal.monthlyPlan')
+              : t('merchantUpgradeModal.yearlyPlan')
+          }}
         </button>
       </div>
 
-      <!-- 價格顯示 -->
+      <!-- 顯示價格 -->
       <div class="mb-2 text-sm">
-        價格：
-        <template v-if="currentPlan"> NT${{ currentPlan.amount }} </template>
+        {{ t('merchantUpgradeModal.price') }}
+        <template v-if="currentPlan">NT${{ currentPlan.amount }}</template>
         <template v-else>
-          <span class="text-gray-500">目前尚未開放購買方案，請稍後再試。</span>
+          <span class="text-gray-500">
+            {{ t('merchantUpgradeModal.noPlans') }}
+          </span>
         </template>
       </div>
 
@@ -52,14 +58,14 @@
           :class="selectedGateway === 'linepay' ? 'btn-success' : 'btn-outline'"
           @click="selectedGateway = 'linepay'"
         >
-          LINEPAY
+          {{ t('merchantUpgradeModal.linePay') }}
         </button>
         <button
           class="btn"
           :class="selectedGateway === 'ecpay' ? 'btn-success' : 'btn-outline'"
           @click="selectedGateway = 'ecpay'"
         >
-          綠界支付
+          {{ t('merchantUpgradeModal.ecpay') }}
         </button>
       </div>
 
@@ -70,13 +76,15 @@
           :disabled="!selectedGateway || isPaying"
           @click="pay"
         >
-          前往付款
+          {{ t('merchantUpgradeModal.goToPayment') }}
         </button>
       </div>
 
-      <!-- 關閉按鈕 -->
+      <!-- 關閉 -->
       <div class="mt-6 text-right">
-        <button class="btn btn-sm" @click="$emit('close')">關閉</button>
+        <button class="btn btn-sm" @click="$emit('close')">
+          {{ t('merchantUpgradeModal.close') }}
+        </button>
       </div>
     </div>
   </div>
@@ -85,7 +93,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import axios from '@/axios';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 // 傳入 props
 defineProps({ message: String });
 
@@ -122,7 +132,9 @@ const pay = async () => {
       window.location.href = `/payments/ecpay-submit?${params.toString()}`;
     }
   } catch (err) {
-    alert(err.response?.data?.error || '建立訂單時發生錯誤，請稍後再試');
+    alert(
+      err.response?.data?.error || t('merchantUpgradeModal.createOrderError'),
+    );
   } finally {
     isPaying.value = false;
   }

@@ -83,7 +83,7 @@ const handleLogin = async () => {
   errorMessage.value = '';
   try {
     await authStore.login(email.value, password.value);
-    alert.trigger('登入成功 🎉', 'success');
+    alert.trigger(t('alert.loginSuccess'), 'success');
     router.push('/');
   } catch (error) {
     errorMessage.value = error?.response?.data?.error;

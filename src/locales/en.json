@@ -8,7 +8,15 @@
     "signupFailed": "Registration failed, please try again later.",
     "googleTokenFailed": "Unable to get Google access_token",
     "googleLoginSuccess": "Google login successful",
-    "googleLoginFailed": "Login failed, please try again later"
+    "googleLoginFailed": "Login failed, please try again later",
+    "loginSuccess": "Login successful 🎉",
+    "createSuccess": "Created successfully",
+    "createForbidden": "You are not authorized to add more coupons",
+    "createFailed": "Failed to create. Please try again later",
+    "merchantOnly": "Only merchant users can add coupons"
+  },
+  "common": {
+    "notProvided": "Not provided"
   },
   "navbar": {
     "loggedInAs": "Currently logged in as: {userName}",
@@ -195,9 +203,12 @@
     "fileTooLarge": "File size cannot exceed 1 MB. Please try again."
   },
   "merchantDashboard": {
-    "regularBadge": "Regular Merchant",
-    "regularHint": "You are currently a <strong>Regular Merchant</strong>, upgrade to VIP to publish more coupons and promotions",
-    "upgradeNow": "Upgrade Now!",
+    "regularBadge": "Regular Store",
+    "vipHint": "VIP Expiry Date: <span class='font-mono'>{vipExpiry}</span>",
+    "vipExpireSoon": "⏳ VIP expiring soon (in {days} days)",
+    "upgradeNow": "Renew Now",
+    "regularHint": "You are currently a <strong>regular store</strong>. Upgrade to VIP to publish more coupons and promotions.",
+    "upgradeButton": "Upgrade Now!",
     "tab": {
       "coupon": "Coupons",
       "promotion": "Merchant Updates"
@@ -219,7 +230,6 @@
   },
   "merchantLogin": {
     "title": "Merchant Login",
-    "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
     "forgotPassword": "Forgot Password",
     "login": "Login",
@@ -231,14 +241,17 @@
   "merchantSignup": {
     "title": "Merchant Registration",
     "restaurantNamePlaceholder": "Restaurant Name",
-    "emailPlaceholder": "Email",
     "passwordPlaceholder": "Set Password",
     "signup": "Sign Up",
     "login": "Login",
     "backHome": "Back to Home",
     "signupSuccess": "Registration successful! Please proceed to login",
     "signupFailedEmailUsed": "Registration failed, this email has already been registered.",
-    "signupFailedGeneral": "Registration failed, please try again later."
+    "signupFailedGeneral": "Registration failed, please try again later.",
+    "invalidEmail": "Invalid email format.",
+    "passwordTooShort": "Password is too short. Minimum 8 characters.",
+    "passwordTooCommon": "Password is too common. Please choose a more secure one.",
+    "passwordNumericOnly": "Password cannot be all numbers."
   },
   "merchantCouponCard": {
     "discount": "Discount Details",
@@ -265,6 +278,7 @@
     "successTitle": "Payment Successful 🎉",
     "successMessage": "Thank you for upgrading to VIP Merchant!",
     "orderId": "Order ID:",
+    "vipExpiry": "VIP Expiry Date:",
     "backHome": "Back to Home",
     "errorTitle": "Payment Information Error",
     "noOrderId": "Order information not found, please confirm if payment was successful.",
