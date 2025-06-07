@@ -39,7 +39,7 @@
           </section>
 
           <button class="btn btn-primary w-full">註冊</button>
-          <p v-if="errorMessage" class="text-red-500 text-sm text-center mt-2">
+          <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
             {{ errorMessage }}
           </p>
           <div class="text-center space-x-2">
@@ -81,6 +81,14 @@ const success = ref('');
 const role = ref('merchant');
 const errorMessage = ref('');
 
+const errorMap = {
+  'user with this email already exists.': '此信箱已被註冊，請重新輸入。',
+  'Enter a valid email address.': '信箱格式錯誤。',
+  'This password is too short. It must contain at least 8 characters.': '密碼太短，至少 8 字元。',
+  'This password is too common.': '密碼太常見，請換一個更安全的密碼。',
+  'This password is entirely numeric.': '密碼不能全為數字。',
+};
+
 const handleSignup = async () => {
   errorMessage.value = '';
   try {
@@ -96,11 +104,13 @@ const handleSignup = async () => {
   } catch (err) {
     const errors = err.response?.data;
     if (errors && typeof errors === 'object') {
-     const firstField = Object.keys(errors)[0];
-      const firstError = errors[firstField?.[0]];
-      errorMessage.value = firstError || '註冊失敗，該信箱已被註冊過。';
+      const allMessages = Object.values(errors)
+        .flat() // 把多欄位陣列展平
+        .map(msg => errorMap[msg] || msg); // 對每條訊息做中文翻譯
+
+      errorMessage.value = allMessages.join('\n'); // 換行顯示所有錯誤
     } else {
-      errorMessage.value = '註冊失敗，請稍後再試。'
+      errorMessage.value = '註冊失敗，請稍後再試';
     }
     success.value = '';
   }

@@ -55,10 +55,8 @@
             />
           </section>
 
-          <button class="btn btn-primary w-full">
-            {{ t('signup.submitButton') }}
-          </button>
-          <p v-if="errorMessage" class="text-red-500 text-sm text-center mt-2">
+          <button class="btn btn-primary w-full">{{ t('signup.submitButton') }}</button>
+          <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
             {{ errorMessage }}
           </p>
 
@@ -102,24 +100,37 @@ const email = ref('');
 const password = ref('');
 const errorMessage = ref('');
 
+const errorMap = {
+  'user with this email already exists.': '此信箱已被註冊，請重新輸入。',
+  'Enter a valid email address.': '信箱格式錯誤。',
+  'This password is too short. It must contain at least 8 characters.': '密碼太短，至少 8 字元。',
+  'This password is too common.': '密碼太常見，請換一個更安全的密碼。',
+  'This password is entirely numeric.': '密碼不能全為數字。',
+};
+
 const handleSignup = async () => {
   errorMessage.value = '';
+
   try {
     await authStore.signup(
       firstName.value,
       lastName.value,
       userName.value,
       email.value,
-      password.value,
+      password.value
     );
     alert.trigger(t('signup.success'), 'success');
     router.push('/login');
+
   } catch (err) {
     const errors = err.response?.data;
+
     if (errors && typeof errors === 'object') {
-      const firstField = Object.keys(errors)[0];
-      const firstError = errors[firstField?.[0]];
-      errorMessage.value = firstError || t('alert.signupEmailUsed');
+      const allMessages = Object.values(errors)
+        .flat() // 把多欄位陣列展平
+        .map(msg => errorMap[msg] || msg); // 對每條訊息做中文翻譯
+
+      errorMessage.value = allMessages.join('\n'); // 換行顯示所有錯誤
     } else {
       errorMessage.value = t('alert.signupFailed');
     }
