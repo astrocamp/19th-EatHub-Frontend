@@ -6,7 +6,7 @@
     >
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
-          <h1 class="text-2xl font-bold text-center">店家登入</h1>
+          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center">店家登入</h1>
 
           <form @submit.prevent="handleLogin" class="space-y-4">
             <input
@@ -25,11 +25,11 @@
             <div class="flex gap-3">
             <router-link 
                 to="/forgot-password" 
-                class="btn btn-outline btn-primary flex-1"
+                class="btn btn-outline btn-primary flex-1 rounded-xl text-sm md:text-lg"
               >
                 忘記密碼
               </router-link>
-            <button class="btn btn-primary flex-2" type="submit">登入</button>
+            <button class="btn btn-primary flex-1 rounded-xl text-white text-sm md:text-lg" type="submit">登入</button>
             </div>
           </form>
           <p v-if="errorMessage" class="text-red-500 text-sm text-center mt-2">

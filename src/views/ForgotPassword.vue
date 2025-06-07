@@ -6,8 +6,8 @@
     <div class="w-full max-w-md">
       <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
         <!-- 標題區域 -->
-        <div class="text-black px-6 pt-4 rounded-t-lg">
-          <h1 class="text-2xl font-bold text-center">
+        <div class="text-neutral px-6 pt-4 rounded-t-lg">
+          <h1 class="text-2xl font-bold text-center md:text-3xl">
             {{ t('forgotPassword.title') }}
           </h1>
         </div>
@@ -54,7 +54,7 @@
           <div>
             <button
               @click="handleSubmit"
-              class="w-full bg-primary hover:bg-[rgb(87,57,33)] text-white font-medium py-4 px-6 rounded-lg cursor-pointer"
+              class="w-full bg-primary hover:bg-[rgb(87,57,33)] text-white font-medium py-4 px-6 rounded-xl cursor-pointer"
             >
               {{ t('forgotPassword.submit') }}
             </button>

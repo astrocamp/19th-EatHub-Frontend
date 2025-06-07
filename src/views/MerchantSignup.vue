@@ -9,7 +9,7 @@
           @submit.prevent="handleSignup"
           class="bg-base-100 shadow-xl rounded-xl p-8 space-y-4"
         >
-          <h1 class="text-2xl font-bold text-center mb-6">店家註冊</h1>
+          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6">店家註冊</h1>
 
 
           <section>
@@ -38,7 +38,7 @@
             />
           </section>
 
-          <button class="btn btn-primary w-full">註冊</button>
+          <button class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg">註冊</button>
           <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
             {{ errorMessage }}
           </p>
