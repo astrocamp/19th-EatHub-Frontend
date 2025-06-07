@@ -8,7 +8,15 @@
     "signupFailed": "회원가입에 실패했습니다. 잠시 후 다시 시도해주세요.",
     "googleTokenFailed": "Google access_token을 가져올 수 없습니다",
     "googleLoginSuccess": "Google 로그인 성공",
-    "googleLoginFailed": "로그인에 실패했습니다. 잠시 후 다시 시도해주세요"
+    "googleLoginFailed": "로그인에 실패했습니다. 잠시 후 다시 시도해주세요",
+    "loginSuccess": "로그인 성공 🎉",
+    "createSuccess": "성공적으로 추가되었습니다",
+    "createForbidden": "더 이상 쿠폰을 추가할 수 있는 권한이 없습니다",
+    "createFailed": "추가에 실패했습니다. 잠시 후 다시 시도해주세요",
+    "merchantOnly": "쿠폰은 가맹점 사용자만 추가할 수 있습니다"
+  },
+  "common": {
+    "notProvided": "미제공"
   },
   "navbar": {
     "loggedInAs": "현재 로그인: {userName}",
@@ -196,8 +204,11 @@
   },
   "merchantDashboard": {
     "regularBadge": "일반 매장",
-    "regularHint": "현재 <strong>일반 매장</strong>입니다. VIP로 업그레이드하시면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다",
-    "upgradeNow": "지금 업그레이드!",
+    "vipHint": "VIP 유효 기간: <span class='font-mono'>{vipExpiry}</span>",
+    "vipExpireSoon": "⏳ VIP 만료 임박 (남은 기간 {days}일)",
+    "upgradeNow": "지금 갱신하기",
+    "regularHint": "현재는 <strong>일반 매장</strong>입니다. VIP로 업그레이드하면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다.",
+    "upgradeButton": "지금 업그레이드!",
     "tab": {
       "coupon": "쿠폰",
       "promotion": "매장 소식"
@@ -219,7 +230,6 @@
   },
   "merchantLogin": {
     "title": "매장 로그인",
-    "emailPlaceholder": "Email",
     "passwordPlaceholder": "비밀번호",
     "forgotPassword": "비밀번호 찾기",
     "login": "로그인",
@@ -231,14 +241,17 @@
   "merchantSignup": {
     "title": "매장 등록",
     "restaurantNamePlaceholder": "음식점명",
-    "emailPlaceholder": "Email",
     "passwordPlaceholder": "비밀번호 설정",
     "signup": "가입하기",
     "login": "로그인",
     "backHome": "홈으로",
     "signupSuccess": "가입 완료! 로그인해주세요",
     "signupFailedEmailUsed": "가입에 실패했습니다. 해당 이메일이 이미 등록되어 있습니다.",
-    "signupFailedGeneral": "가입에 실패했습니다. 잠시 후 다시 시도해주세요."
+    "signupFailedGeneral": "가입에 실패했습니다. 잠시 후 다시 시도해주세요.",
+    "invalidEmail": "이메일 형식이 올바르지 않습니다.",
+    "passwordTooShort": "비밀번호가 너무 짧습니다. 최소 8자 이상이어야 합니다.",
+    "passwordTooCommon": "비밀번호가 너무 흔합니다. 더 안전한 비밀번호로 변경해 주세요.",
+    "passwordNumericOnly": "비밀번호는 숫자만으로 구성될 수 없습니다."
   },
   "merchantCouponCard": {
     "discount": "할인 내용",
@@ -265,6 +278,7 @@
     "successTitle": "결제 완료 🎉",
     "successMessage": "VIP 매장으로 업그레이드해주셔서 감사합니다!",
     "orderId": "주문번호:",
+    "vipExpiry": "VIP 유효 기간:",
     "backHome": "홈으로 돌아가기",
     "errorTitle": "결제 정보 오류",
     "noOrderId": "주문 정보를 찾을 수 없습니다. 결제가 완료되었는지 확인해주세요.",
