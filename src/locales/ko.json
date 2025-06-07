@@ -1,44 +1,504 @@
 {
-  "index": {
-    "title": "다음 식사는 뭐 먹지?",
-    "ctaButton": "맛집을 추천해 주세요!",
-    "flavorLabel": "맛",
-    "stapleLabel": "주식",
-    "categoryLabel": "카테고리",
-    "recommendResultTitle": "추천 결과",
-    "seeMoreButton": "더 보기",
-    "ratingLabel": "평점",
-    "confirmButton": "확인"
+  "alert": {
+    "missingEmail": "이메일 주소를 입력해주세요",
+    "emailSent": "비밀번호 재설정 메일이 발송되었습니다. 메일함을 확인해주세요📬",
+    "emailNotFound": "해당 이메일 주소의 사용자를 찾을 수 없습니다",
+    "sendFailed": "메일 발송에 실패했습니다. 잠시 후 다시 시도해주세요",
+    "signupEmailUsed": "회원가입에 실패했습니다. 해당 이메일이 이미 등록되어 있습니다.",
+    "signupFailed": "회원가입에 실패했습니다. 잠시 후 다시 시도해주세요.",
+    "googleTokenFailed": "Google access_token을 가져올 수 없습니다",
+    "googleLoginSuccess": "Google 로그인 성공",
+    "googleLoginFailed": "로그인에 실패했습니다. 잠시 후 다시 시도해주세요"
   },
   "navbar": {
-    "signUp": "회원가입",
-    "signIn": "로그인",
-    "currentUser": "현재 로그인 사용자:",
-    "myRecentView": "최근 본 항목",
-    "myFavorite": "즐겨찾기",
-    "myCoupon": "내 쿠폰",
-    "logout": "로그아웃"
+    "loggedInAs": "현재 로그인: {userName}",
+    "recentViews": "최근 본 목록",
+    "favorites": "즐겨찾기",
+    "myCoupons": "내 쿠폰",
+    "logout": "로그아웃",
+    "signup": "회원가입",
+    "login": "로그인",
+    "merchantSignup": "매장 등록",
+    "merchantLogin": "매장 로그인",
+    "logoutSuccess": "로그아웃 완료"
   },
-  "signup": {
-    "title": "회원 가입",
-    "submitButton": "가입하기"
+  "myCoupons": {
+    "title": "내 쿠폰",
+    "empty": "현재 받은 쿠폰이 없습니다",
+    "unused": "미사용",
+    "used": "사용완료",
+    "expired": "만료됨"
   },
-  "login": {
-    "title": "로그인",
-    "submitButton": "로그인하기"
+  "myFavorites": {
+    "title": "즐겨찾기",
+    "empty": "즐겨찾기가 없습니다"
   },
-  "alert": {
-    "loginFailed": "로그인에 실패했습니다. 나중에 다시 시도해주세요.",
-    "googleLoginSuccess": "Google 로그인 성공",
-    "googleLoginError": "Google access_token을 가져올 수 없습니다"
+  "recentViews": {
+    "title": "최근 본 목록",
+    "empty": "최근 본 목록이 없습니다"
   },
   "footer": {
-    "about": "회사 소개",
-    "socialMedia": "소셜 미디어",
+    "about": "회사소개",
+    "socialMedia": "소셜미디어",
     "services": "서비스",
     "contact": "문의하기",
-    "terms": "이용약관 및 정책",
-    "privacy": "개인정보 보호정책",
-    "language": "언어 선택"
+    "terms": "약관 및 정책",
+    "privacy": "개인정보 처리방침",
+    "language": "언어 선택",
+    "phone": "전화: 02-123456789",
+    "hours": "영업시간: 10:00-20:00",
+    "address": "주소: 서울시 중구 동해로 1번지"
+  },
+  "login": {
+    "title": "회원 로그인",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "forgotPassword": "비밀번호 찾기",
+    "submit": "로그인",
+    "orDivider": "또는",
+    "noAccount": "계정이 없으신가요?",
+    "signupLink": "회원가입",
+    "backHome": "홈으로"
+  },
+  "forgotPassword": {
+    "title": "비밀번호 찾기",
+    "description": "가입 시 사용한 Email을 입력해주세요📩,\n비밀번호 재설정 링크를 보내드립니다.",
+    "submit": "전송하기➡️"
+  },
+  "signup": {
+    "title": "회원가입",
+    "firstNamePlaceholder": "Firstname",
+    "lastNamePlaceholder": "Lastname",
+    "userNamePlaceholder": "Username",
+    "passwordPlaceholder": "Password",
+    "submitButton": "가입하기",
+    "orDivider": "또는",
+    "loginLink": "로그인",
+    "homeLink": "홈으로",
+    "success": "회원가입 완료! 로그인해주세요"
+  },
+  "google": {
+    "googleLogin": "Google 계정으로 로그인"
+  },
+  "index": {
+    "title": "다음 식사는 뭘 먹을까요?",
+    "ctaButton": "맛집 추천",
+    "flavorTab": "맛",
+    "mainTab": "주재료",
+    "stapleTab": "종류",
+    "selectAll": "전체선택",
+    "clearAll": "전체해제",
+    "confirm": "확인",
+    "chooseDishOptions": "메뉴 옵션을 선택해주세요",
+    "recommendResultTitle": "추천 결과",
+    "noRecommendation": "아직 추천이 없습니다",
+    "seeMoreButton": "더 많은 추천 보기",
+    "getRecommendationsFailed": "추천을 가져오는데 실패했습니다",
+    "completeSelection": "옵션 설정을 완료해주세요",
+    "ensureSelection": "다음 옵션들을 최소 하나씩은 선택해주세요:",
+    "atLeastOneFlavor": "맛: 최소 하나의 맛을 선택해주세요",
+    "atLeastOneMain": "주재료: 최소 하나의 주재료를 선택해주세요",
+    "atLeastOneStaple": "종류: 최소 하나의 종류를 선택해주세요",
+    "continueSetting": "알겠습니다, 계속 설정하기",
+    "ratingLabel": "평점",
+    "close": "닫기"
+  },
+  "options": {
+    "中式": "중식",
+    "台式": "대만식",
+    "日式": "일식",
+    "泰式": "태국식",
+    "韓式": "한식",
+    "越式": "베트남식",
+    "港式": "홍콩식",
+    "椒麻": "마라",
+    "咖哩": "카레",
+    "麻辣": "매운맛",
+    "酸辣": "새콤매콤",
+    "碳烤": "숯불구이",
+    "番茄": "토마토",
+    "水煮": "삶은",
+    "滷/燉": "조림/찜",
+    "清蒸": "찜",
+    "泡菜": "김치",
+    "什錦": "모듬",
+    "酥炸": "튀김",
+    "味增": "된장",
+    "香煎": "팬구이",
+
+    "牛肉": "소고기",
+    "豬肉": "돼지고기",
+    "雞肉": "닭고기",
+    "羊肉": "양고기",
+    "鮮魚": "생선",
+    "海鮮": "해산물",
+    "蔬菜": "채소",
+
+    "火鍋": "훠궈",
+    "燉飯": "리조또",
+    "便當": "도시락",
+    "炒飯": "볶음밥",
+    "丼飯": "덮밥",
+    "酸菜魚": "신채어",
+    "湯麵": "국물면",
+    "乾麵": "비빔면",
+    "義大利麵": "파스타",
+    "刀削麵": "칼국수",
+    "水餃": "만두",
+    "健康餐": "건강식",
+    "冬粉": "당면",
+    "漢堡": "햄버거",
+    "壽司": "스시",
+    "鐵板燒": "철판구이",
+    "比薩": "피자",
+    "通心麵": "파스타",
+    "排餐": "스테이크",
+    "板條": "쌀국수",
+    "包子": "찐빵"
+  },
+  "restaurantDetail": {
+    "ratingCountSuffix": "개",
+    "noReviews": "리뷰가 없습니다",
+    "hasReviewed": "리뷰 작성함",
+    "addReview": "＋ 추가",
+    "viewMore": "더보기",
+    "viewAll": "모든 리뷰를 표시했습니다",
+    "businessHours": "영업시간",
+    "review": "리뷰",
+    "reviewCountPrefix": "총",
+    "location": "지도",
+    "imageAlt": "음식점 대표 이미지",
+    "addReviewSuccess": "리뷰 작성 완료",
+    "addReviewFailed": "리뷰 작성 실패",
+    "pleaseLoginToReview": "리뷰 작성을 위해 먼저 로그인해주세요",
+    "pleaseLoginToFavorite": "음식점 즐겨찾기를 위해 먼저 로그인해주세요",
+    "loadRestaurantFailed": "음식점 정보 로딩에 실패했습니다",
+    "restaurantNotFound": "음식점 정보를 찾을 수 없습니다",
+    "monday": "월요일",
+    "tuesday": "화요일",
+    "wednesday": "수요일",
+    "thursday": "목요일",
+    "friday": "금요일",
+    "saturday": "토요일",
+    "sunday": "일요일",
+    "noData": "미제공"
+  },
+  "restaurantList": {
+    "title": "추천 맛집"
+  },
+  "addReview": {
+    "ratingLabel": "평점",
+    "commentLabel": "리뷰 내용",
+    "commentPlaceholder": "리뷰를 입력해 주세요...",
+    "uploadPhoto": "사진 업로드",
+    "submitButton": "리뷰 제출",
+    "fileTooLarge": "파일 크기는 1MB를 초과할 수 없습니다. 다시 시도해 주세요."
+  },
+  "merchantDashboard": {
+    "regularBadge": "일반 매장",
+    "regularHint": "현재 <strong>일반 매장</strong>입니다. VIP로 업그레이드하시면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다",
+    "upgradeNow": "지금 업그레이드!",
+    "tab": {
+      "coupon": "쿠폰",
+      "promotion": "매장 소식"
+    },
+    "create": {
+      "coupon": "쿠폰 추가",
+      "promotion": "매장 소식 추가"
+    },
+    "limitReached": {
+      "vip": {
+        "coupon": "VIP 쿠폰 한도에 도달했습니다. EatHub 팀에 고급 플랜 문의해주세요",
+        "promotion": "VIP 매장 소식 한도에 도달했습니다. EatHub 팀에 고급 플랜 문의해주세요"
+      },
+      "regular": {
+        "coupon": "일반 매장 쿠폰 한도에 도달했습니다. 업그레이드해주세요",
+        "promotion": "일반 매장 소식 한도에 도달했습니다. 업그레이드해주세요"
+      }
+    }
+  },
+  "merchantLogin": {
+    "title": "매장 로그인",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "비밀번호",
+    "forgotPassword": "비밀번호 찾기",
+    "login": "로그인",
+    "noAccount": "계정이 없으신가요?",
+    "signup": "가입하기",
+    "backHome": "홈으로",
+    "loginFailed": "로그인에 실패했습니다. 계정과 비밀번호를 확인해주세요"
+  },
+  "merchantSignup": {
+    "title": "매장 등록",
+    "restaurantNamePlaceholder": "음식점명",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "비밀번호 설정",
+    "signup": "가입하기",
+    "login": "로그인",
+    "backHome": "홈으로",
+    "signupSuccess": "가입 완료! 로그인해주세요",
+    "signupFailedEmailUsed": "가입에 실패했습니다. 해당 이메일이 이미 등록되어 있습니다.",
+    "signupFailedGeneral": "가입에 실패했습니다. 잠시 후 다시 시도해주세요."
+  },
+  "merchantCouponCard": {
+    "discount": "할인 내용",
+    "validUntil": "유효기간",
+    "total": "발행 수량",
+    "claimed": "받은 개수",
+    "used": "사용 완료",
+    "confirmDelete": "삭제하시겠습니까?",
+    "cancel": "취소",
+    "confirm": "삭제 확인",
+    "deleteFailed": "삭제에 실패했습니다. 잠시 후 다시 시도해주세요",
+    "notSet": "설정되지 않음",
+    "coupons": "장"
+  },
+  "merchantPromotionCard": {
+    "activePeriod": "활동 기간:",
+    "confirmDelete": "삭제하시겠습니까?",
+    "cancel": "취소",
+    "confirm": "삭제 확인",
+    "deleteFailed": "삭제에 실패했습니다. 잠시 후 다시 시도해주세요"
+  },
+  "paymentResult": {
+    "loading": "결제 정보 로딩 중...",
+    "successTitle": "결제 완료 🎉",
+    "successMessage": "VIP 매장으로 업그레이드해주셔서 감사합니다!",
+    "orderId": "주문번호:",
+    "backHome": "홈으로 돌아가기",
+    "errorTitle": "결제 정보 오류",
+    "noOrderId": "주문 정보를 찾을 수 없습니다. 결제가 완료되었는지 확인해주세요.",
+    "fetchFailed": "주문 정보 조회에 실패했습니다. 고객센터에 문의해주세요."
+  },
+  "merchantUpgradeModal": {
+    "vipBenefitsLine1": "VIP 매장으로 업그레이드하면 더 많은 쿠폰과 소식을 등록할 수 있고, 전용 혜택을 누릴 수 있습니다",
+    "vipBenefitsLine2": "VIP 매장은 쿠폰과 소식을 각각 최대 3개까지 등록할 수 있습니다",
+    "monthlyPlan": "월 결제",
+    "yearlyPlan": "연 결제",
+    "price": "가격:",
+    "noPlans": "현재 구매 가능한 플랜이 없습니다. 잠시 후 다시 시도해주세요.",
+    "paymentMethod": "결제 방법 선택",
+    "linePay": "LINEPAY",
+    "ecpay": "녹계 결제 (미개방)",
+    "goToPayment": "결제하기",
+    "close": "닫기",
+    "onlyLinePay": "현재 LINEPAY만 지원하며, 녹계는 아직 개방되지 않았습니다",
+    "createOrderError": "주문 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요"
+  },
+  "couponConfirm": {
+    "title": "쿠폰 번호:",
+    "status": "상태:",
+    "used": "사용완료",
+    "unused": "미사용",
+    "confirmUse": "사용 확인",
+    "loadFailed": "데이터 로딩 실패",
+    "backToList": "목록으로 돌아가기"
+  },
+  "couponCreate": {
+    "title": "쿠폰 추가",
+    "serialNumberPlaceholder": "쿠폰 번호",
+    "titlePlaceholder": "쿠폰 제목",
+    "discountTypeAmount": "금액",
+    "discountTypePercent": "퍼센트",
+    "discountValuePlaceholder": "할인 값",
+    "startDateLabel": "시작일",
+    "endDateLabel": "종료일",
+    "totalPlaceholder": "장수",
+    "descriptionPlaceholder": "쿠폰 상세 내용",
+    "submitButton": "등록하기"
+  },
+  "couponDetail": {
+    "validPeriod": "유효기간:",
+    "storeName": "매장명:",
+    "description": "설명:",
+    "discount": "할인 내용:",
+    "total": "총수:",
+    "claimed": "받은 개수:",
+    "used": "사용 완료:",
+    "viewUsage": "사용 현황 보기",
+    "backToList": "목록으로 돌아가기"
+  },
+  "couponUsage": {
+    "back": "돌아가기",
+    "searchEmailPlaceholder": "사용자 Email 검색",
+    "table": {
+      "uuid": "일련번호",
+      "userEmail": "사용자 Email",
+      "status": "사용 상태"
+    },
+    "used": "사용완료",
+    "unused": "미사용"
+  },
+  "couponCard": {
+    "discountLabel": "할인 혜택:",
+    "validUntil": "유효기간:",
+    "statusLabel": "상태:",
+    "statusUsed": "사용완료",
+    "statusUnused": "미사용",
+    "statusExpired": "만료됨",
+    "tooltipUsed": "이 쿠폰은 이미 사용되어 재사용할 수 없습니다",
+    "tooltipExpired": "이 쿠폰은 만료되어 사용할 수 없습니다",
+    "qrTitle": "쿠폰 QR Code",
+    "qrValidUntil": "사용기한:",
+    "qrError": "QR Code 생성 실패"
+  },
+  "couponCarousel": {
+    "claimButton": "쿠폰 받기",
+    "claimedButton": "받기 완료",
+    "detailTitle": "쿠폰 상세 정보",
+    "labelTitle": "제목:",
+    "labelDiscount": "할인:",
+    "labelPeriod": "기간:",
+    "labelDescription": "사용 안내:",
+    "statusClaimed": "받기 완료",
+    "statusUnclaimed": "아직 받지 않음",
+    "claimSuccess": "쿠폰 받기 완료",
+    "claimFailedPrefix": "쿠폰 받기에 실패했습니다",
+    "claimFailedDefault": "잠시 후 다시 시도해주세요"
+  },
+  "promotionDetail": {
+    "title": "소식 제목",
+    "imageAlt": "이벤트 이미지",
+    "imageLoading": "이벤트 이미지 로딩 중...",
+    "sectionTitle": "소식 상세 내용:",
+    "backButton": "소식 목록으로 돌아가기",
+    "loadError": "이벤트 데이터 로딩 실패"
+  },
+  "promotionCreate": {
+    "pageTitle": "소식 추가",
+    "titlePlaceholder": "소식 제목",
+    "descriptionPlaceholder": "소식 내용을 입력해주세요…",
+    "startDateLabel": "시작일",
+    "endDateLabel": "종료일",
+    "imageUploadHint": "JPG, PNG, HEIC 형식의 이미지를 업로드해주세요. 파일 크기는 1MB를 초과하지 않도록 하여 이미지 품질 표시를 보장해주세요.",
+    "submitButton": "등록하기",
+    "notMerchantWarning": "매장 계정만 이 기능을 사용할 수 있습니다.",
+    "createSuccess": "소식이 성공적으로 등록되었습니다!",
+    "createFailedPrefix": "등록 실패:",
+    "genericError": "등록에 실패했습니다. 네트워크나 서버 상태를 확인해주세요",
+    "authWarning": "매장 사용자만 쿠폰을 추가할 수 있습니다"
+  },
+  "promotionCarousel": {
+    "latestPromotions": "최신 소식",
+    "eventPeriod": "이벤트 기간:"
+  },
+  "slogan": {
+    "titleLine1": "다음 식사?",
+    "titleLine2": "우리가 당신보다 더 급해요.",
+    "description": "EatHub는 선택 장애를 위해 설계된 맛집 추천 플랫폼입니다. 당신의 입맛 취향과 위치에 따라 당신만을 위한 맛집 옵션을 빠르게 선별해드립니다!"
+  },
+  "home": {
+    "title": "기능 소개",
+    "description": "EatHub가 준비한 강력한 기능들을 탐색해보세요",
+    "feature1": {
+      "title": "스마트 로컬 맛집 추천",
+      "description": "Google Map API와 Open AI의 API를 통합한 스마트 추천으로 사용자가 쉽게 현지 맛집을 찾을 수 있도록 도와드립니다!"
+    },
+    "feature2": {
+      "title": "즐겨찾기와 음식점 방문 기록",
+      "description": "사용자는 추천받은 맛집을 즐겨찾기하고 방문 기록을 남길 수 있어, 다음 식사 걱정 없이 선택 장애를 치료해드립니다!"
+    },
+    "feature3": {
+      "title": "음식점 내비게이션과 리뷰 공유",
+      "description": "원클릭 내비게이션으로 바로 맛집으로 안내받고, 리뷰를 남겨 맛집 경험을 기록하고 공유할 수 있습니다!"
+    },
+    "feature4": {
+      "title": "매장 소식과 할인 마케팅",
+      "description": "매장이 쿠폰과 매장 소식을 업로드할 수 있는 백오피스를 제공하여 통합 마케팅 효과를 가져오고 고객 유치 수를 늘립니다."
+    }
+  },
+  "termsOfService": {
+    "title": "서비스 약관",
+    "sections": {
+      "introductionTitle": "1. 서비스 소개",
+      "introductionContent": "EatHub는 비상업적 성격의 학습 프로젝트로, 실습과 웹사이트 기능 시연을 통해 소셜 및 맛집 추천 플랫폼과 유사한 상호작용 경험을 제공하는 것을 목적으로 합니다. 본 웹사이트는 정식 상업 플랫폼이 아니며, 모든 내용은 학습 시연 및 비공식 참고용으로만 사용됩니다.",
+
+      "eligibilityTitle": "2. 사용자 자격",
+      "eligibilityContent": "본 웹사이트는 미성년자의 가입을 제한하지 않으나, 13세 미만 사용자의 경우 부모나 보호자의 동반 사용을 권장합니다.",
+
+      "privacyTitle": "3. 개인정보 보호",
+      "privacyCollected": "본 웹사이트는 다음과 같은 개인정보를 수집합니다:",
+      "privacyItems": {
+        "email": "이메일 주소",
+        "name": "사용자명 / 성명",
+        "content": "댓글 및 업로드 내용"
+      },
+      "privacyUsage": "수집된 데이터는 다음 목적으로만 사용됩니다:",
+      "privacyPurposes": {
+        "verify": "사용자 신원 확인",
+        "service": "맞춤형 서비스 제공 (댓글, 즐겨찾기, 쿠폰 등)",
+        "optimize": "웹사이트 경험 및 기능 시연 최적화"
+      },
+      "privacyNote": "귀하의 데이터는 상업적 마케팅에 사용되지 않으며, 웹사이트 기능 구현에 필요한 경우(제3자 API 통합 시 필요한 데이터 교환 등)를 제외하고는 제3자에게 제공되지 않습니다.",
+
+      "contentLicenseTitle": "4. 사용자 콘텐츠 라이선스",
+      "contentLicenseContent": "사용자가 본 웹사이트에 업로드한 리뷰, 사진 및 기타 콘텐츠는 EatHub 팀이 시연, 연구 및 비영리 공개 범위 내에서 사용할 수 있도록 라이선스를 부여한 것으로 간주됩니다.",
+
+      "prohibitedTitle": "5. 금지 행위",
+      "prohibitedItems": {
+        "illegal": "불법적, 음란한, 명예훼손적 또는 허위 정보 게시",
+        "unauthorized": "무단으로 사용된 초상권 또는 저작물 콘텐츠 업로드",
+        "attack": "웹사이트 운영이나 다른 사용자 계정을 해킹, 방해하려는 시도"
+      },
+
+      "thirdPartyTitle": "6. 제3자 서비스 안내",
+      "thirdPartyContent": "본 웹사이트는 Google Place API, Cloudinary, OpenAI 등의 제3자 서비스를 통합합니다. 상기 서비스의 콘텐츠와 안정성은 당사가 통제할 수 없으므로, 사용 시 각각의 서비스 약관과 개인정보처리방침을 주의 깊게 확인해주시기 바랍니다.",
+
+      "disclaimerTitle": "7. 면책 조항",
+      "disclaimerContent": "EatHub는 교육 시연 목적이므로 정보의 실시간성과 정확성을 보장하지 않습니다. 모든 추천 정보와 리뷰는 참고용이며, 실제 매장이나 협력업체의 입장을 대변하지 않습니다.",
+
+      "updateTitle": "8. 약관 업데이트",
+      "updateContent": "본 웹사이트는 서비스 약관을 수정할 권리를 보유합니다. 약관 업데이트 후 본 페이지에 공지되므로, 정기적으로 확인해주시기 바랍니다."
+    }
+  },
+  "privacyPolicy": {
+    "title": "개인정보 처리방침",
+    "intro": "「미식찾기」（EatHub, 이하 「본 웹사이트」 또는 「당사」）가 제공하는 각종 서비스를 이용해주셔서 감사합니다. 귀하의 개인정보와 프라이버시 보호를 위해, 당사는 관련 법규에 따라 본 《개인정보 처리방침》을 제정하였으니, 다음 내용을 자세히 읽어주시기 바랍니다.",
+
+    "section1Title": "1. 당사의 데이터 수집 방법",
+    "section1List": {
+      "registration": "가입 정보: 성명, 이메일, 사용자명, 비밀번호 등.",
+      "usage": "사용 기록: 귀하가 방문한 페이지, 검색 키워드, 클릭한 음식점 및 즐겨찾기 행위.",
+      "interaction": "상호작용 콘텐츠: 리뷰, 댓글, 업로드한 이미지 등 귀하가 능동적으로 입력한 콘텐츠.",
+      "device": "기기 정보: 당사는 로그인 상태 기록을 위해 Cookie만 사용합니다. 당사는 귀하의 IP 위치, 브라우저 유형 또는 기기 정보를 능동적으로 기록하거나 저장하지 않습니다."
+    },
+
+    "section2Title": "2. 데이터 사용 목적",
+    "section2List": {
+      "authentication": "귀하의 신원을 확인하고 계정 관련 서비스 제공",
+      "recommendation": "추천 알고리즘 최적화, 귀하의 취향에 맞는 음식점 정보 제공",
+      "support": "귀하가 제기한 문제, 제안 또는 서비스 요청 처리",
+      "notification": "서비스 업데이트, 마케팅 활동 또는 중요 알림 발송 (구독 취소 가능)",
+      "compliance": "법적 의무 또는 주관 기관의 요구 사항 준수"
+    },
+
+    "section3Title": "3. Cookie 및 로그인 인증 기술",
+    "section3Description": "본 웹사이트는 로그인 상태 기록 및 사용 경험 향상을 위해 Cookie 기술을 사용합니다. 로그인 후 인증 토큰(token)은 Cookie에 저장되어 신원 식별 용도로 사용됩니다. 브라우저 설정을 통해 Cookie를 제한하거나 비활성화할 수 있으나, 일부 기능이 정상적으로 작동하지 않을 수 있습니다.",
+
+    "section4Title": "4. 제3자 서비스",
+    "section4Description1": "본 웹사이트는 Google 제3자 로그인 기능을 제공합니다. 해당 로그인 방식을 사용할 때, Google은 귀하가 승인한 개인정보(성명 및 이메일 등)를 제공하며, 당사는 이러한 정보를 계정 생성 및 신원 인증에만 사용합니다.",
+    "section4Description2": "당사는 Google이나 기타 제3자와 귀하의 웹사이트 내 사용 행위를 공유하지 않으며, 마케팅이나 기타 목적으로 사용하지도 않습니다. 또한, 본 웹사이트는 Google Analytics, Hotjar 등의 웹사이트 추적 분석 도구를 사용하지 않습니다.",
+
+    "section5Title": "5. 귀하의 권리",
+    "section5List": {
+      "access": "귀하의 개인정보 조회 또는 열람",
+      "correction": "잘못된 데이터의 수정 또는 삭제 요청",
+      "withdrawal": "동의 철회, 데이터 사용 중단 (일부 기능 사용 불가능할 수 있음)"
+    },
+    "section5Note": "상기 권리를 행사하고자 하시는 경우, 고객센터 이메일을 통해 연락해주시면 합리적인 시간 내에 처리해드리겠습니다.",
+
+    "section6Title": "6. 데이터 보존 및 보안 조치",
+    "section6Description1": "당사는 귀하의 개인정보 보안 보호에 최선을 다하며, 다음과 같은 조치를 취하고 있습니다:",
+    "section6List": {
+      "encryption": "비밀번호는 암호화되어 저장되며, 평문으로 보관되지 않음",
+      "access": "승인된 인원만 데이터에 접근 가능",
+      "deletion": "더 이상 사용되지 않거나 만료된 데이터의 정기적 삭제"
+    },
+    "section6Description2": "데이터 보존 기간은 사용 목적에 따라 결정되며, 법령이 허용하는 최대 기간을 초과하지 않습니다.",
+
+    "section7Title": "7. 약관 개정",
+    "section7Description": "당사는 언제든지 본 약관을 수정할 권리를 보유하며, 모든 변경사항은 본 웹사이트에 공지되고 업데이트 날짜가 표시됩니다. 약관 변경 후에도 본 웹사이트를 계속 사용하시면 새로운 내용에 동의한 것으로 간주됩니다.",
+
+    "lastUpdated": "최근 업데이트: 2025년 5월 20일"
   }
 }

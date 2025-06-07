@@ -4,7 +4,7 @@
     class="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-full py-3 text-gray-700 hover:bg-gray-100 transition"
   >
     <font-awesome-icon :icon="['fab', 'google']" />
-    <span class="font-medium">使用 Google 帳號</span>
+    <span class="font-medium">{{ t('google.googleLogin') }}</span>
   </button>
 </template>
 
@@ -12,7 +12,9 @@
 import axios from '@/axios';
 import { useAuthStore } from '@/stores/auth';
 import { useAlertStore } from '@/stores/alert';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const alert = useAlertStore();
 const authStore = useAuthStore();
 
@@ -38,7 +40,7 @@ const handleGoogleLogin = async () => {
       callback: async (res) => {
         const access_token = res.access_token;
         if (!access_token)
-          return alert.trigger('無法取得 Google access_token', 'error');
+          return alert.trigger(t('alert.googleTokenFailed'), 'error');
 
         try {
           const loginRes = await axios.post('auth/google-login/', {
@@ -50,10 +52,10 @@ const handleGoogleLogin = async () => {
             userName: loginRes.data.user.userName,
             email: loginRes.data.user.email,
           });
-          alert.trigger('Google 登入成功', 'success');
+          alert.trigger(t('alert.googleLoginSuccess'), 'success');
           window.location.href = '/';
         } catch {
-          alert.trigger('登入失敗，請稍後再試', 'error');
+          alert.trigger(t('alert.googleLoginFailed'), 'error');
         }
       },
     })

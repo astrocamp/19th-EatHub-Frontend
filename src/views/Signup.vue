@@ -9,13 +9,15 @@
           @submit.prevent="handleSignup"
           class="bg-base-100 shadow-xl rounded-xl p-8 space-y-4"
         >
-          <h1 class="text-2xl font-bold text-center mb-6">會員註冊</h1>
+          <h1 class="text-2xl font-bold text-center mb-6">
+            {{ t('signup.title') }}
+          </h1>
 
           <section>
             <input
               v-model="firstName"
               class="input input-bordered w-full"
-              placeholder="Firstname"
+              :placeholder="t('signup.firstNamePlaceholder')"
               required
             />
           </section>
@@ -23,7 +25,7 @@
             <input
               v-model="lastName"
               class="input input-bordered w-full"
-              placeholder="Lastname"
+              :placeholder="t('signup.lastNamePlaceholder')"
               required
             />
           </section>
@@ -31,7 +33,7 @@
             <input
               v-model="userName"
               class="input input-bordered w-full"
-              placeholder="Username"
+              :placeholder="t('signup.userNamePlaceholder')"
               required
             />
           </section>
@@ -48,26 +50,26 @@
               v-model="password"
               class="input input-bordered w-full"
               type="password"
-              placeholder="Password"
+              :placeholder="t('signup.passwordPlaceholder')"
               required
             />
           </section>
 
-          <button class="btn btn-primary w-full">註冊</button>
+          <button class="btn btn-primary w-full">{{ t('signup.submitButton') }}</button>
           <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
             {{ errorMessage }}
           </p>
 
-          <div class="divider">或</div>
+          <div class="divider">{{ t('signup.orDivider') }}</div>
           <GoogleLoginButton />
           <div class="text-center space-x-2">
-            <router-link to="/login" class="link link-hover text-primary"
-              >登入</router-link
-            >
+            <router-link to="/login" class="link link-hover text-primary">{{
+              t('signup.loginLink')
+            }}</router-link>
             <span>/</span>
-            <router-link to="/" class="link link-hover text-primary"
-              >回首頁</router-link
-            >
+            <router-link to="/" class="link link-hover text-primary">{{
+              t('signup.homeLink')
+            }}</router-link>
           </div>
         </form>
       </div>
@@ -81,11 +83,13 @@
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import GoogleLoginButton from '@/components/GoogleLoginButton.vue';
 import { useAlertStore } from '@/stores/alert';
 
+const { t } = useI18n();
 const alert = useAlertStore();
 const router = useRouter();
 const authStore = useAuthStore();
@@ -115,8 +119,7 @@ const handleSignup = async () => {
       email.value,
       password.value
     );
-
-    alert.trigger('註冊成功！請前往登入', 'success');
+    alert.trigger(t('signup.success'), 'success');
     router.push('/login');
 
   } catch (err) {
@@ -129,7 +132,7 @@ const handleSignup = async () => {
 
       errorMessage.value = allMessages.join('\n'); // 換行顯示所有錯誤
     } else {
-      errorMessage.value = '註冊失敗，請稍後再試';
+      errorMessage.value = t('alert.signupFailed');
     }
   }
 };

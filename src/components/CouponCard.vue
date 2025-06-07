@@ -9,9 +9,9 @@
       }"
       :title="
         isUsed
-          ? '此優惠券已使用，無法再次使用'
+          ? t('couponCard.tooltipUsed')
           : isExpired
-            ? '此優惠券已過期，無法使用'
+            ? t('couponCard.tooltipExpired')
             : ''
       "
       @click="handleClick"
@@ -39,18 +39,24 @@
           {{ couponData.restaurant?.name || '（無餐廳名稱）' }}
         </div>
         <div class="text-sm mt-2">
-          優惠方案：{{ couponData.discount || '（無折扣資料）' }}
+          {{ t('couponCard.discountLabel')
+          }}{{ couponData.discount || '（無折扣資料）' }}
         </div>
         <div class="text-sm">
-          有效期限：{{ formatDate(couponData.endedAt) || '（未提供）' }}
+          {{ t('couponCard.validUntil')
+          }}{{ formatDate(couponData.endedAt) || '（未提供）' }}
         </div>
         <p>
-          狀態：
-          <span v-if="isExpired" class="badge bg-gray-400 text-white"
-            >已過期</span
-          >
-          <span v-else-if="isUsed" class="badge badge-success">已使用</span>
-          <span v-else class="badge badge-warning">未使用</span>
+          {{ t('couponCard.statusLabel') }}
+          <span v-if="isExpired" class="badge bg-gray-400 text-white">{{
+            t('couponCard.statusExpired')
+          }}</span>
+          <span v-else-if="isUsed" class="badge badge-success">{{
+            t('couponCard.statusUsed')
+          }}</span>
+          <span v-else class="badge badge-warning">{{
+            t('couponCard.statusUnused')
+          }}</span>
         </p>
       </div>
     </div>
@@ -64,7 +70,7 @@
       <div
         class="bg-white text-black p-6 rounded-xl w-[280px] flex flex-col items-center text-center"
       >
-        <div class="text-lg font-bold mb-4">優惠券 QR Code</div>
+        <div class="text-lg font-bold mb-4">{{ t('couponCard.qrTitle') }}</div>
         <img
           v-if="qrCodeDataUrl"
           :src="qrCodeDataUrl"
@@ -72,7 +78,8 @@
           class="w-48 h-48 border rounded-lg object-contain"
         />
         <p class="text-sm mt-3">
-          使用期限：{{ formatDate(couponData.endedAt) || '（未提供）' }}
+          {{ t('couponCard.qrValidUntil')
+          }}{{ formatDate(couponData.endedAt) || '（未提供）' }}
         </p>
       </div>
     </div>
@@ -83,7 +90,9 @@
 import { ref, onMounted } from 'vue';
 import QRCode from 'qrcode';
 import { useAlertStore } from '@/stores/alert';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const alert = useAlertStore();
 const qrCodeDataUrl = ref('');
 
@@ -115,7 +124,7 @@ onMounted(async () => {
       `${window.location.origin}/user/coupons/${uuid}/confirm`,
     );
   } catch {
-    alert.trigger('產生 QR Code 失敗', 'error');
+    alert.trigger(t('couponCard.qrError'), 'error');
   }
 });
 </script>

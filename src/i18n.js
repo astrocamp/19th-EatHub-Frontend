@@ -3,10 +3,10 @@ import en from './locales/en.json';
 import zhTW from './locales/zh-TW.json';
 import ja from './locales/ja.json';
 import ko from './locales/ko.json';
-
+const savedLocale = localStorage.getItem('locale') || 'zh-TW';
 const i18n = createI18n({
   legacy: false,
-  locale: 'zh-TW',
+  locale: savedLocale,
   globalInjection: true,
   fallbackLocale: 'zh-TW',
   messages: {

@@ -1,44 +1,504 @@
 {
-  "index": {
-    "title": "次の食事は何にする？",
-    "ctaButton": "おすすめの料理を教えて！",
-    "flavorLabel": "味の種類",
-    "stapleLabel": "主食",
-    "categoryLabel": "カテゴリー",
-    "recommendResultTitle": "おすすめ結果",
-    "seeMoreButton": "もっと見る",
-    "ratingLabel": "評価",
-    "confirmButton": "確認"
+  "alert": {
+    "missingEmail": "メールアドレスを入力してください",
+    "emailSent": "パスワードリセットのメールを送信しました。メールボックスをご確認ください📬",
+    "emailNotFound": "このメールアドレスのユーザーは見つかりません",
+    "sendFailed": "メールの送信に失敗しました。後でもう一度お試しください",
+    "signupEmailUsed": "登録に失敗しました。このメールアドレスはすでに使用されています。",
+    "signupFailed": "登録に失敗しました。しばらくしてから再度お試しください。",
+    "googleTokenFailed": "Googleのaccess_tokenを取得できませんでした",
+    "googleLoginSuccess": "Googleログイン成功",
+    "googleLoginFailed": "ログインに失敗しました。しばらくしてから再度お試しください"
   },
   "navbar": {
-    "signUp": "新規登録",
-    "signIn": "ログイン",
-    "currentUser": "現在のユーザー：",
-    "myRecentView": "最近見たもの",
-    "myFavorite": "お気に入り",
-    "myCoupon": "マイクーポン",
-    "logout": "ログアウト"
+    "loggedInAs": "現在ログイン中のユーザー：{userName}",
+    "recentViews": "最近見たレストラン",
+    "favorites": "お気に入り",
+    "myCoupons": "マイクーポン",
+    "logout": "ログアウト",
+    "signup": "新規登録",
+    "login": "ログイン",
+    "merchantSignup": "店舗登録",
+    "merchantLogin": "店舗ログイン",
+    "logoutSuccess": "ログアウトが成功しました"
   },
-  "signup": {
-    "title": "会員登録",
-    "submitButton": "登録する"
+  "myCoupons": {
+    "title": "マイクーポン",
+    "empty": "まだクーポンを受け取っていません",
+    "unused": "未使用",
+    "used": "使用済み",
+    "expired": "有効期限切れ"
   },
-  "login": {
-    "title": "ログイン",
-    "submitButton": "ログインする"
+  "myFavorites": {
+    "title": "お気に入り",
+    "empty": "まだお気に入りはありません"
   },
-  "alert": {
-    "loginFailed": "ログインに失敗しました。後でもう一度お試しください。",
-    "googleLoginSuccess": "Googleログイン成功",
-    "googleLoginError": "Google access_tokenを取得できませんでした"
+  "recentViews": {
+    "title": "最近見たレストラン",
+    "empty": "閲覧履歴はまだありません"
   },
   "footer": {
     "about": "私たちについて",
     "socialMedia": "ソーシャルメディア",
-    "services": "サービス",
+    "services": "サービス内容",
     "contact": "お問い合わせ",
-    "terms": "利用規約・ポリシー",
+    "terms": "利用規約とポリシー",
     "privacy": "プライバシーポリシー",
-    "language": "言語選択"
+    "language": "言語選択",
+    "phone": "電話：02-123456789",
+    "hours": "営業時間：10:00〜20:00",
+    "address": "住所：台北市中山区東海路1号"
+  },
+  "login": {
+    "title": "会員ログイン",
+    "emailPlaceholder": "メールアドレス",
+    "passwordPlaceholder": "パスワード",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "submit": "ログイン",
+    "orDivider": "または",
+    "noAccount": "アカウントをお持ちでない方",
+    "signupLink": "新規登録",
+    "backHome": "ホームに戻る"
+  },
+  "forgotPassword": {
+    "title": "パスワードをお忘れですか？",
+    "description": "登録されたメールアドレス📩を入力してください。\nパスワード再設定用のリンクをお送りします。",
+    "submit": "送信確認➡️"
+  },
+  "signup": {
+    "title": "会員登録",
+    "firstNamePlaceholder": "名（Firstname）",
+    "lastNamePlaceholder": "姓（Lastname）",
+    "userNamePlaceholder": "ユーザー名",
+    "passwordPlaceholder": "パスワード",
+    "submitButton": "登録",
+    "orDivider": "または",
+    "loginLink": "ログイン",
+    "homeLink": "ホームに戻る",
+    "success": "登録成功！ログインしてください"
+  },
+  "google": {
+    "googleLogin": "Googleアカウントでログイン"
+  },
+  "index": {
+    "title": "次の食事は何にする？",
+    "ctaButton": "おすすめグルメを見る",
+    "flavorTab": "味",
+    "mainTab": "主菜",
+    "stapleTab": "種類",
+    "selectAll": "すべて選択",
+    "clearAll": "すべて解除",
+    "confirm": "確認",
+    "chooseDishOptions": "料理のオプションを選択してください",
+    "recommendResultTitle": "おすすめ結果",
+    "noRecommendation": "まだおすすめがありません",
+    "seeMoreButton": "もっと見る",
+    "getRecommendationsFailed": "おすすめの取得に失敗しました",
+    "completeSelection": "すべてのオプションを設定してください",
+    "ensureSelection": "以下のオプションを最低1つは選択してください：",
+    "atLeastOneFlavor": "味：最低1つは選んでください",
+    "atLeastOneMain": "主菜：最低1つは選んでください",
+    "atLeastOneStaple": "種類：最低1つは選んでください",
+    "continueSetting": "了解しました。続けて設定する",
+    "ratingLabel": "評価",
+    "close": "閉じる"
+  },
+  "options": {
+    "中式": "中華料理",
+    "台式": "台湾料理",
+    "日式": "日本料理",
+    "泰式": "タイ料理",
+    "韓式": "韓国料理",
+    "越式": "ベトナム料理",
+    "港式": "香港料理",
+    "椒麻": "山椒風味",
+    "咖哩": "カレー",
+    "麻辣": "マーラー",
+    "酸辣": "酸っぱ辛い",
+    "碳烤": "炭火焼き",
+    "番茄": "トマト",
+    "水煮": "茹で料理",
+    "滷/燉": "煮込み",
+    "清蒸": "蒸し料理",
+    "泡菜": "キムチ",
+    "什錦": "ミックス",
+    "酥炸": "揚げ物",
+    "味增": "味噌風味",
+    "香煎": "香ばしく焼く",
+
+    "牛肉": "牛肉",
+    "豬肉": "豚肉",
+    "雞肉": "鶏肉",
+    "羊肉": "羊肉",
+    "鮮魚": "鮮魚",
+    "海鮮": "海鮮",
+    "蔬菜": "野菜",
+
+    "火鍋": "鍋料理",
+    "燉飯": "リゾット",
+    "便當": "弁当",
+    "炒飯": "チャーハン",
+    "丼飯": "丼もの",
+    "酸菜魚": "酸菜魚",
+    "湯麵": "スープ麺",
+    "乾麵": "汁なし麺",
+    "義大利麵": "パスタ",
+    "刀削麵": "刀削麺",
+    "水餃": "水餃子",
+    "健康餐": "健康食",
+    "冬粉": "春雨",
+    "漢堡": "ハンバーガー",
+    "壽司": "寿司",
+    "鐵板燒": "鉄板焼き",
+    "比薩": "ピザ",
+    "通心麵": "マカロニ",
+    "排餐": "ステーキ",
+    "板條": "平麺",
+    "包子": "中華まん"
+  },
+  "restaurantDetail": {
+    "ratingCountSuffix": "件",
+    "noReviews": "レビューはまだありません",
+    "hasReviewed": "レビュー済み",
+    "addReview": "＋ レビューを書く",
+    "viewMore": "もっと見る",
+    "viewAll": "すべてのレビューを表示",
+    "businessHours": "営業時間",
+    "review": "レビュー",
+    "reviewCountPrefix": "全",
+    "location": "地図",
+    "imageAlt": "レストランのメイン画像",
+    "addReviewSuccess": "レビューが送信されました",
+    "addReviewFailed": "レビューの送信に失敗しました",
+    "pleaseLoginToReview": "レビューするにはログインしてください",
+    "pleaseLoginToFavorite": "お気に入り登録にはログインが必要です",
+    "loadRestaurantFailed": "レストラン情報の読み込みに失敗しました",
+    "restaurantNotFound": "レストラン情報が見つかりません",
+    "monday": "月曜日",
+    "tuesday": "火曜日",
+    "wednesday": "水曜日",
+    "thursday": "木曜日",
+    "friday": "金曜日",
+    "saturday": "土曜日",
+    "sunday": "日曜日",
+    "noData": "みていきょう"
+  },
+  "restaurantList": {
+    "title": "おすすめレストラン"
+  },
+  "addReview": {
+    "ratingLabel": "評価",
+    "commentLabel": "レビュー内容",
+    "commentPlaceholder": "レビューを入力してください...",
+    "uploadPhoto": "写真をアップロード",
+    "submitButton": "レビューを送信",
+    "fileTooLarge": "ファイルサイズは1MBを超えることはできません。再度お試しください。"
+  },
+  "merchantDashboard": {
+    "regularBadge": "一般店舗",
+    "regularHint": "現在、<strong>一般店舗</strong>として登録されています。VIPにアップグレードすると、より多くのクーポンと投稿が可能になります。",
+    "upgradeNow": "今すぐアップグレード！",
+    "tab": {
+      "coupon": "クーポン",
+      "promotion": "店舗のお知らせ"
+    },
+    "create": {
+      "coupon": "クーポンを追加",
+      "promotion": "お知らせを追加"
+    },
+    "limitReached": {
+      "vip": {
+        "coupon": "VIPのクーポン発行上限に達しました。EatHub チームにご連絡ください。",
+        "promotion": "VIPのお知らせ投稿上限に達しました。EatHub チームにご連絡ください。"
+      },
+      "regular": {
+        "coupon": "一般店舗のクーポン上限に達しました。アップグレードしてください。",
+        "promotion": "一般店舗のお知らせ投稿上限に達しました。アップグレードしてください。"
+      }
+    }
+  },
+  "merchantLogin": {
+    "title": "店舗ログイン",
+    "emailPlaceholder": "メールアドレス",
+    "passwordPlaceholder": "パスワード",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "login": "ログイン",
+    "noAccount": "アカウントをお持ちでない方",
+    "signup": "新規登録",
+    "backHome": "ホームに戻る",
+    "loginFailed": "ログインに失敗しました。メールアドレスまたはパスワードをご確認ください。"
+  },
+  "merchantSignup": {
+    "title": "店舗登録",
+    "restaurantNamePlaceholder": "店舗名",
+    "emailPlaceholder": "メールアドレス",
+    "passwordPlaceholder": "パスワードの設定",
+    "signup": "登録",
+    "login": "ログイン",
+    "backHome": "ホームに戻る",
+    "signupSuccess": "登録が完了しました！ログインしてください。",
+    "signupFailedEmailUsed": "登録に失敗しました。このメールアドレスはすでに使用されています。",
+    "signupFailedGeneral": "登録に失敗しました。後でもう一度お試しください。"
+  },
+  "merchantCouponCard": {
+    "discount": "割引内容",
+    "validUntil": "有効期限",
+    "total": "発行枚数",
+    "claimed": "受取済み",
+    "used": "使用済み",
+    "confirmDelete": "削除してもよろしいですか？",
+    "cancel": "キャンセル",
+    "confirm": "削除を確認",
+    "deleteFailed": "削除に失敗しました。後でもう一度お試しください",
+    "notSet": "未設定",
+    "coupons": "枚"
+  },
+  "merchantPromotionCard": {
+    "activePeriod": "開催期間：",
+    "confirmDelete": "削除してもよろしいですか？",
+    "cancel": "キャンセル",
+    "confirm": "削除を確認",
+    "deleteFailed": "削除に失敗しました。後でもう一度お試しください"
+  },
+  "paymentResult": {
+    "loading": "支払い情報を読み込み中...",
+    "successTitle": "支払い成功 🎉",
+    "successMessage": "VIP店舗へのアップグレードありがとうございます！",
+    "orderId": "注文番号：",
+    "backHome": "ホームに戻る",
+    "errorTitle": "支払い情報エラー",
+    "noOrderId": "注文情報が見つかりません。支払いが完了しているかご確認ください。",
+    "fetchFailed": "注文情報の取得に失敗しました。カスタマーサービスへご連絡ください。"
+  },
+  "merchantUpgradeModal": {
+    "vipBenefitsLine1": "VIP店舗にアップグレードすると、より多くのクーポンとお知らせを投稿でき、専用特典を利用できます。",
+    "vipBenefitsLine2": "VIP店舗は、クーポンとお知らせをそれぞれ最大3件まで投稿可能です。",
+    "monthlyPlan": "月額プラン",
+    "yearlyPlan": "年額プラン",
+    "price": "価格：",
+    "noPlans": "現在、購入プランはご利用いただけません。後でもう一度お試しください。",
+    "paymentMethod": "支払い方法を選択",
+    "linePay": "LINEPAY",
+    "ecpay": "綠界支払い（未対応）",
+    "goToPayment": "支払いへ進む",
+    "close": "閉じる",
+    "onlyLinePay": "現在はLINEPAYのみ対応しています。綠界は未対応です。",
+    "createOrderError": "注文の作成中にエラーが発生しました。後でもう一度お試しください。"
+  },
+  "couponConfirm": {
+    "title": "クーポン番号：",
+    "status": "ステータス：",
+    "used": "使用済み",
+    "unused": "未使用",
+    "confirmUse": "使用を確認",
+    "loadFailed": "データの読み込みに失敗しました",
+    "backToList": "一覧へ戻る"
+  },
+  "couponCreate": {
+    "title": "クーポンを追加",
+    "serialNumberPlaceholder": "クーポン番号",
+    "titlePlaceholder": "クーポンのタイトル",
+    "discountTypeAmount": "金額割引",
+    "discountTypePercent": "パーセント割引",
+    "discountValuePlaceholder": "割引金額／割合",
+    "startDateLabel": "開始日",
+    "endDateLabel": "終了日",
+    "totalPlaceholder": "発行枚数",
+    "descriptionPlaceholder": "クーポンの詳細",
+    "submitButton": "送信確認"
+  },
+  "couponDetail": {
+    "validPeriod": "有効期間：",
+    "storeName": "店舗名：",
+    "description": "説明：",
+    "discount": "割引内容：",
+    "total": "発行総数：",
+    "claimed": "受取済み：",
+    "used": "使用済み：",
+    "viewUsage": "使用状況を見る",
+    "backToList": "一覧に戻る"
+  },
+  "couponUsage": {
+    "back": "戻る",
+    "searchEmailPlaceholder": "ユーザーのメールアドレスで検索",
+    "table": {
+      "uuid": "シリアル番号",
+      "userEmail": "ユーザーメールアドレス",
+      "status": "使用状況"
+    },
+    "used": "使用済み",
+    "unused": "未使用"
+  },
+  "couponCard": {
+    "discountLabel": "割引プラン：",
+    "validUntil": "有効期限：",
+    "statusLabel": "ステータス：",
+    "statusUsed": "使用済み",
+    "statusUnused": "未使用",
+    "statusExpired": "期限切れ",
+    "tooltipUsed": "このクーポンはすでに使用されています",
+    "tooltipExpired": "このクーポンの有効期限が切れています",
+    "qrTitle": "クーポン QRコード",
+    "qrValidUntil": "利用期限：",
+    "qrError": "QRコードの生成に失敗しました"
+  },
+  "couponCarousel": {
+    "claimButton": "クーポンを受け取る",
+    "claimedButton": "受取済み",
+    "detailTitle": "クーポン詳細",
+    "labelTitle": "タイトル：",
+    "labelDiscount": "割引：",
+    "labelPeriod": "期間：",
+    "labelDescription": "利用説明：",
+    "statusClaimed": "受取済み",
+    "statusUnclaimed": "未受取",
+    "claimSuccess": "クーポンを受け取りました",
+    "claimFailedPrefix": "クーポンの受け取りに失敗しました。",
+    "claimFailedDefault": "後でもう一度お試しください"
+  },
+  "promotionDetail": {
+    "title": "お知らせタイトル",
+    "imageAlt": "イベント画像",
+    "imageLoading": "画像読み込み中...",
+    "sectionTitle": "お知らせ詳細：",
+    "backButton": "お知らせ一覧へ戻る",
+    "loadError": "イベント情報の読み込みに失敗しました"
+  },
+  "promotionCreate": {
+    "pageTitle": "お知らせを追加",
+    "titlePlaceholder": "お知らせのタイトル",
+    "descriptionPlaceholder": "お知らせの内容を入力してください…",
+    "startDateLabel": "開始日",
+    "endDateLabel": "終了日",
+    "imageUploadHint": "JPG、PNG、HEIC 形式の画像をアップロードしてください（最大 1MB）",
+    "submitButton": "送信確認",
+    "notMerchantWarning": "この機能は店舗アカウントのみご利用可能です。",
+    "createSuccess": "お知らせが作成されました！",
+    "createFailedPrefix": "送信失敗：",
+    "genericError": "送信に失敗しました。ネットワークまたはサーバーをご確認ください。",
+    "authWarning": "クーポンの追加は店舗ユーザーのみ可能です"
+  },
+  "promotionCarousel": {
+    "latestPromotions": "最新のお知らせ",
+    "eventPeriod": "開催期間："
+  },
+  "slogan": {
+    "titleLine1": "次の食事？",
+    "titleLine2": "私たちの方があなたより急いでいます。",
+    "description": "EatHub は優柔不断なあなたのためのグルメ推薦プラットフォーム。味の好みと現在地に基づいて、あなたにぴったりの料理を素早く提案します！"
+  },
+  "home": {
+    "title": "機能紹介",
+    "description": "EatHub の便利な機能を探索しよう",
+    "feature1": {
+      "title": "ローカルグルメのスマート推薦",
+      "description": "Google Map API と OpenAI API を活用し、ユーザーに最適な地元グルメをスマートに推薦！"
+    },
+    "feature2": {
+      "title": "お気に入り・閲覧履歴の保存",
+      "description": "お気に入りや閲覧履歴を保存できるので、次の食事に迷う必要なし！選択のストレスを解消します。"
+    },
+    "feature3": {
+      "title": "ナビ機能とレビュー共有",
+      "description": "ワンクリックでレストランへナビゲートし、美味しい体験をレビューして共有できます！"
+    },
+    "feature4": {
+      "title": "店舗の投稿＆クーポン配信",
+      "description": "店舗はクーポンやお知らせを投稿でき、統合マーケティングで集客効果を高めます。"
+    }
+  },
+  "termsOfService": {
+    "title": "利用規約",
+    "sections": {
+      "introductionTitle": "1. サービスの紹介",
+      "introductionContent": "EatHub は学習目的の非営利プロジェクトであり、実装と機能展示を通じて飲食推薦の体験を提供します。正式な商業プラットフォームではありません。",
+
+      "eligibilityTitle": "2. 利用資格",
+      "eligibilityContent": "本サイトは未成年の登録を制限していませんが、13歳未満の方は保護者の同意のもとでの利用を推奨します。",
+
+      "privacyTitle": "3. 個人情報保護",
+      "privacyCollected": "以下の個人情報を収集します：",
+      "privacyItems": {
+        "email": "メールアドレス",
+        "name": "ユーザー名／氏名",
+        "content": "コメントおよびアップロード内容"
+      },
+      "privacyUsage": "収集した情報は次の目的で使用されます：",
+      "privacyPurposes": {
+        "verify": "ユーザーの認証",
+        "service": "パーソナライズサービスの提供（例：コメント、保存、クーポン等）",
+        "optimize": "サイト体験と機能の最適化"
+      },
+      "privacyNote": "データは営利目的で使用されず、必要な場合を除き第三者へ提供しません（例：API連携による情報交換）。",
+
+      "contentLicenseTitle": "4. ユーザーコンテンツの利用許諾",
+      "contentLicenseContent": "投稿されたレビューや画像は、展示・研究・非営利利用の目的で EatHub チームに許諾されます。",
+
+      "prohibitedTitle": "5. 禁止事項",
+      "prohibitedItems": {
+        "illegal": "違法・猥褻・誹謗・虚偽の情報投稿",
+        "unauthorized": "著作権や肖像権を侵害するアップロード",
+        "attack": "サイトや他ユーザーへの攻撃・妨害行為"
+      },
+
+      "thirdPartyTitle": "6. サードパーティサービス",
+      "thirdPartyContent": "Google Place API、Cloudinary、OpenAI 等を使用しています。各サービスの安定性や規約は当方の管理外です。",
+
+      "disclaimerTitle": "7. 免責事項",
+      "disclaimerContent": "本サイトは教育目的の展示であり、情報の正確性や即時性は保証されません。掲載情報は実在の店舗や企業を保証するものではありません。",
+
+      "updateTitle": "8. 規約の更新",
+      "updateContent": "当サイトは利用規約の内容を随時変更することがあります。更新後は本ページでお知らせしますので、定期的にご確認ください。"
+    }
+  },
+  "privacyPolicy": {
+    "title": "プライバシーポリシー",
+    "intro": "EatHub（以下「当サイト」）の各種サービスをご利用いただきありがとうございます。以下は、個人情報保護に関する方針を示したものです。",
+
+    "section1Title": "1. 収集する情報",
+    "section1List": {
+      "registration": "登録情報：氏名、メールアドレス、ユーザー名、パスワードなど",
+      "usage": "利用履歴：閲覧ページ、検索ワード、クリック履歴など",
+      "interaction": "インタラクション：コメント、投稿、画像など",
+      "device": "端末情報：ログイン状態を Cookie により記録しますが、IP や端末種別は収集していません"
+    },
+
+    "section2Title": "2. 利用目的",
+    "section2List": {
+      "authentication": "本人確認とアカウントサービスの提供",
+      "recommendation": "推薦精度の向上",
+      "support": "お問い合わせ対応",
+      "notification": "通知・お知らせ（解除可能）",
+      "compliance": "法的義務の遵守"
+    },
+
+    "section3Title": "3. Cookieとトークンの利用",
+    "section3Description": "当サイトは、ログイン状態を維持するために Cookie を使用しています。トークンは Cookie に保存され、本人確認に利用されます。",
+
+    "section4Title": "4. サードパーティサービス",
+    "section4Description1": "Google のログインサービスを利用しており、ユーザーの許可がある場合に限り氏名やメールを取得します。",
+    "section4Description2": "Google やその他の第三者とユーザー行動を共有することはなく、マーケティング目的でも使用しません。Google Analytics や Hotjar も使用していません。",
+
+    "section5Title": "5. ユーザーの権利",
+    "section5List": {
+      "access": "個人データの閲覧請求",
+      "correction": "誤ったデータの修正・削除",
+      "withdrawal": "同意の撤回（機能の制限が生じる場合があります）"
+    },
+    "section5Note": "これらの権利を行使する場合は、カスタマーサポートまでご連絡ください。",
+
+    "section6Title": "6. 情報保護と保存",
+    "section6Description1": "以下の手段で情報保護を行っています：",
+    "section6List": {
+      "encryption": "パスワードは暗号化され、平文で保存されません",
+      "access": "情報へのアクセスは権限を持つ者のみ",
+      "deletion": "不要なデータは定期的に削除"
+    },
+    "section6Description2": "データの保存期間は法令や利用目的に基づき、必要最小限に留めます。",
+
+    "section7Title": "7. 規約改訂",
+    "section7Description": "本ポリシーは随時更新され、変更はサイト上で告知します。継続利用により同意されたと見なされます。",
+
+    "lastUpdated": "最終更新日：2025年5月20日"
   }
 }
