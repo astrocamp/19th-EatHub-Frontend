@@ -252,11 +252,6 @@ const openHours = reactive({});
 const mapUrl = ref('');
 const placeId = ref('');
 const store = useRestaurantStore();
-
-onMounted(() => {
-  const restaurantUuid = route.params.id; 
-  store.addRecentViewedUuid(restaurantUuid);
-});
 const isFavorite = ref(false);
 const promotions = ref([]);
 const coupons = ref([]);
@@ -312,6 +307,8 @@ const fetchRestaurantData = async () => {
     isFavorite.value = data.userStatus?.hasFavorited || false;
     reviews.value = data.reviews || [];
     hasReviewed.value = data.userStatus?.hasReviewed || false;
+
+    store.addRecentViewedUuid(restaurantUuid);
   } catch (error) {
     alert.trigger('載入餐廳資料失敗', 'error');
   }
@@ -377,4 +374,8 @@ const navigateToAddress = () => {
 };
 
 onMounted(fetchRestaurantData);
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
 </script>
