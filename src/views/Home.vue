@@ -119,13 +119,13 @@
     </div>
 
     <div
-      class="md:pt-10 pt-20 pb-20 space-y-4 text-center bg-page-bg bg-auto md:bg-center bg-no-repeat bg-[left_1000px_top_100]"
+      class="md:pt-5 pt-20 pb-20 space-y-4 text-center bg-page-bg bg-no-repeat bg-auto bg-left-top lg:bg-[left_1000px_top_0]"
     >
       <Slogan />
       <div
-        class="w-full max-w-[360px] md:max-w-[800px] mx-auto px-4 bg-white rounded-xl text-white shadow-[0_0_12px_rgba(0,0,0,0.2)] md:mt-10"
+        class="w-full max-w-[340px] md:max-w-[700px] mx-auto px-4 bg-white rounded-xl text-white shadow-[0_0_12px_rgba(0,0,0,0.2)] md:mt-5"
       >
-        <div class="flex space-x-4">
+        <div class="flex gap-2 md:gap-4">
           <div class="w-1/3 card bg-secondary text-neutral-content mt-4">
             <div
               class="card-body flex items-center justify-center md:text-5xl text-3xl"
@@ -158,18 +158,18 @@
           </div>
         </div>
         <div class="max-w-[960px] mx-auto px-4 mt-6">
-          <div class="flex gap-3 mx-auto">
+          <div class="flex justify-center items-center gap-3 flex-wrap">
             <!-- 主按鈕 -->
             <button
               @click="runSlotMachine"
-              class="flex-1 btn bg-primary text-white rounded-xl font-bold text-lg md:text-2xl p-6 hover:bg-[rgb(87,57,33)] md:min-w-[540px] min-w-[200px] tracking-wider"
+              class="btn bg-primary text-white rounded-xl font-bold text-lg md:text-2xl p-6 hover:bg-neutral tracking-wider min-w-[120px] sm:min-w-[240px] md:min-w-[360px]"
             >
               {{ t('index.ctaButton') }}
             </button>
 
             <label
               for="my-modal"
-              class="btn btn-sm bg-gray-200 text-gray-800 border border-gray-200 rounded-lg text-lg md:text-xl p-6 hover:bg-gray-400"
+              class="btn bg-gray-200 text-gray-800 border border-gray-200 rounded-lg text-lg md:text-xl p-6 hover:bg-gray-400"
             >
               <font-awesome-icon :icon="['fas', 'sliders']" />
             </label>
