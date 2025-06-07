@@ -1,7 +1,7 @@
 <template>
   <!-- 頂部導航欄 -->
   <div
-    class="navbar bg-white px-4 py-10 shadow-md flex justify-between items-center fixed z-50 top-0 left-0 w-ful h-16"
+    class="navbar bg-white px-4 py-10 shadow-md flex justify-between items-center fixed z-50 top-0 left-0 w-full h-16"
   >
     <!-- 左邊 Logo 區 -->
     <div class="flex items-center">
@@ -92,7 +92,7 @@
         <ul
           v-if="user"
           tabindex="0"
-          class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+          class="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm"
         >
           <li>
             <a href="#" class="text-sm text-neutral font-medium">{{
@@ -126,7 +126,7 @@
           <li>
             <a
               href="/users/coupons"
-              class="flex items-center hover:primary mobile-nav-link text-neutral font-medium"
+              class="flex items-center hover:text-primary mobile-nav-link text-neutral font-medium"
             >
               <font-awesome-icon
                 :icon="['fas', 'ticket']"
