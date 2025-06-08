@@ -1,7 +1,7 @@
 <template>
   <MerchantNavBar />
-  <div class="p-6 max-w-xl mx-auto">
-    <h1 class="text-2xl font-bold mb-6">新增優惠券</h1>
+  <div class="p-6 max-w-xl mx-auto pt-28">
+    <h1 class="text-2xl font-bold mb-6 md:text-3xl text-center text-neutral">新增優惠券</h1>
 
     <form @submit.prevent="submit" class="space-y-4">
       <input
@@ -75,7 +75,7 @@
       <div class="text-center">
         <button
           type="submit"
-          class="btn w-full bg-black text-white rounded-full"
+          class="btn w-full bg-primary text-base md:text-lg hover:bg-neutral text-white rounded-xl"
         >
           確認送出
         </button>
@@ -92,9 +92,11 @@ import axios from '@/axios';
 import { useAuthStore } from '@/stores/auth';
 import Footer from '@/components/Footer.vue';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
+import { useAlertStore } from '@/stores/alert';
 
 const router = useRouter();
 const auth = useAuthStore();
+const alert = useAlertStore();
 
 const form = ref({
   title: '',
@@ -108,7 +110,7 @@ const form = ref({
 
 onMounted(() => {
   if (!auth.user || !['merchant', 'vip_merchant'].includes(auth.user.role)) {
-    alert('僅限商家使用者新增優惠券');
+    alert.trigger('僅限商家使用者新增優惠券', 'warning');
     router.push('/merchant/login');
   }
 });
@@ -116,16 +118,16 @@ onMounted(() => {
 const submit = async () => {
   try {
     await axios.post('/coupons/', form.value);
-    alert('新增成功');
+    alert.trigger('新增成功', 'success');
     router.push({ name: `MerchantDashboard` });
   } catch (error) {
     if (error.response?.status === 403) {
-      alert(error.response.data.error || '您無權新增更多優惠券');
+      alert.trigger(error.response.data.error || '您無權新增更多優惠券', 'warning');
     } else if (error.response?.data) {
       const messages = Object.values(error.response.data).flat().join('\n');
-      alert(messages);
+      alert.trigger(messages, 'warning');
     } else {
-      alert('新增失敗，請稍後再試');
+      alert.trigger('新增失敗，請稍後再試', 'error');
     }
   }
 };

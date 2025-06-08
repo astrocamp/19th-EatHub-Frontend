@@ -1,7 +1,7 @@
 <template>
-    <Navbar></Navbar>
-  <div class="p-6 max-w-md mx-auto">
-    <h2 class="text-xl font-bold border-brown-800 pl-2 mb-6">新增動態</h2>
+  <MerchantNavBar />
+  <div class="p-6 max-w-md mx-auto pt-28">
+    <h2 class="font-bold border-brown-800 pl-2 mb-6 text-2xl md:text-3xl text-center text-neutral">新增動態</h2>
 
     <form v-if="isMerchant" @submit.prevent="submitPromotion" enctype="multipart/form-data" class="space-y-5">
       <input
@@ -22,7 +22,7 @@
 
       <div class="flex gap-4">
         <div class="w-1/2">
-          <label class="block text-sm text-gray-600 mb-1">開始日期</label>
+          <label class="font-medium block text-neutral text-base md:text-xl mb-1">開始日期</label>
           <input
             v-model="form.started_at"
             type="date"
@@ -32,7 +32,7 @@
           />
         </div>
         <div class="w-1/2">
-          <label class="block text-sm text-gray-600 mb-1">結束日期</label>
+          <label class="font-medium block text-neutral text-base md:text-xl mb-1">結束日期</label>
           <input
             v-model="form.ended_at"
             type="date"
@@ -43,13 +43,13 @@
         </div>
       </div>
       <div class="border border-gray-400 rounded p-4 text-center">
-        <label class="block mb-2 text-gray-600 text-sm">請上傳 JPG、PNG、HEIC 格式的圖片，檔案大小不應超過 1MB，以確保圖片品質顯示。</label>
+        <label class="block mb-2 text-gray-600 text-sm cursor-pointer">請上傳 JPG、PNG、HEIC 格式的圖片，檔案大小不應超過 1 MB，以確保圖片品質顯示。</label>
         <input type="file" @change="handleImage" accept="image/*" class="mx-auto" />
         <div class="mt-4 w-full h-48 overflow-hidden rounded shadow">
           <img v-if="previewUrl" :src="previewUrl" class="mt-4 w-full object-cover"/>
         </div>
       </div>
-      <button type="submit" class="w-full bg-black text-white  py-2 rounded-full font-bold">確認送出</button>
+      <button type="submit" class="w-full bg-primary text-white  py-2 rounded-xl font-bold text-base md:text-lg hover:bg-neutral">確認送出</button>
     </form>
     <div v-else class="text-center text-red-500 mt-10 font-semibold">僅限商家帳戶可使用此功能。
     </div>
@@ -61,9 +61,10 @@
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
-import Navbar from '@/components/Navbar.vue';
+import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import Footer from '@/components/Footer.vue';
 import axios from '@/axios';
+import { useAlertStore } from '@/stores/alert';
 
 const auth = useAuthStore()
 const router = useRouter()
@@ -78,12 +79,13 @@ const form = ref({
 const previewUrl = ref(null)
 const isMerchant = ref(false)
 const today = new Date().toISOString().slice(0, 10)
+const alert = useAlertStore();
 
 
 onMounted(() => {
   form.value.started_at = today
   if (!auth.user || !['merchant', 'vip_merchant'].includes(auth.user.role)) {
-    alert('僅限商家使用者新增優惠券');
+    alert.trigger('僅限商家使用者新增優惠券','warning');
     router.push('/');
   }else {
     isMerchant.value = true
@@ -119,7 +121,7 @@ async function submitPromotion() {
       }
     )
 
-    alert('動態已成功建立！')
+    alert.trigger('動態已成功建立！','success')
     form.value.title = ''
     form.value.description = ''
     form.value.image = null
@@ -130,7 +132,7 @@ async function submitPromotion() {
     if (error.response?.data) {
         const errors = error.response.data
         if (typeof errors.error === 'string') {
-            alert('送出失敗：' + errors.error)
+            alert.trigger('送出失敗：' + errors.error, 'error')
             return
         }
         let message = ''
@@ -138,9 +140,9 @@ async function submitPromotion() {
             const value = Array.isArray(errors[key]) ? errors[key][0] : errors[key]
             message += `${key}：${value}\n`
         }
-      alert('送出失敗：\n' + message)
+      alert.trigger('送出失敗：\n' + message, 'error')
     } else {
-      alert('送出失敗，請確認網路或伺服器狀態')
+      alert.trigger('送出失敗，請確認網路或伺服器狀態', 'error')
     }
   }
 }

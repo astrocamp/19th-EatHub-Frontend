@@ -2,17 +2,17 @@
   <div
     class="fixed inset-0 bg-[rgba(0,0,0,0.9)] z-50 flex justify-center items-center"
   >
-    <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-full">
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-full mx-4">
       <!-- 升級訊息 -->
       <div
         v-if="message"
-        class="mb-4 text-sm text-orange-600 bg-orange-100 p-2 rounded"
+        class="mb-4 text-base md:text-lg text-orange-600 bg-orange-100 p-2 rounded"
       >
         ⚠️ {{ message }}
       </div>
 
       <!-- 升級固定說明 -->
-      <div class="mb-4 text-sm text-gray-700 flex items-center gap-2">
+      <div class="mb-4 text-base md:text-lg text-gray-700 flex items-center gap-2">
         <font-awesome-icon
           :icon="['fa-solid', 'fa-crown']"
           class="text-yellow-500"
@@ -37,7 +37,7 @@
       </div>
 
       <!-- 價格顯示 -->
-      <div class="mb-2 text-sm">
+      <div class="mb-2 text-sm md:text-base">
         價格：
         <template v-if="currentPlan"> NT${{ currentPlan.amount }} </template>
         <template v-else>
@@ -76,7 +76,7 @@
 
       <!-- 關閉按鈕 -->
       <div class="mt-6 text-right">
-        <button class="btn btn-sm" @click="$emit('close')">關閉</button>
+        <button class="btn btn-base" @click="$emit('close')">關閉</button>
       </div>
     </div>
   </div>

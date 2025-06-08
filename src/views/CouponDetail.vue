@@ -1,37 +1,38 @@
 <template>
   <MerchantNavBar />
-  <div class="max-w-3xl w-full mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">{{ coupon.title }}</h1>
+  <div class="max-w-3xl w-full mx-auto pt-28 pb-28 px-4">
+    <h1 class="text-2xl md:text-3xl text-neutral font-bold mb-4">{{ coupon.title }}</h1>
 
-    <p class="w-full mb-2">
+    <p class="w-full mb-2 text-base md:text-xl text-neutral font-medium">
       有效期間：{{ formatDate(coupon.startedAt) }} ~
       {{ formatDate(coupon.endedAt) }}
     </p>
 
-    <h2 class="text-lg font-semibold mb-2">
+    <h2 class="text-base md:text-xl font-medium text-neutral mb-2">
       店家名稱：{{ coupon.restaurant?.name }}
     </h2>
-    <p class="mb-2">說明：{{ coupon.description }}</p>
-    <p class="mb-2">優惠內容：{{ coupon.discount }}</p>
+    <p class="mb-2 text-base md:text-xl font-medium text-neutral">說明：{{ coupon.description }}</p>
+    <p class="mb-2 text-base md:text-xl font-medium text-neutral">優惠內容：{{ coupon.discount }}</p>
 
-    <div class="mb-4">
+    <div class="mb-4 text-base md:text-xl font-medium text-neutral">
       <p>總數：{{ coupon.total }}</p>
       <p>已領取：{{ coupon.totalClaimed }}</p>
       <p>已使用：{{ coupon.totalUsed }}</p>
     </div>
 
     <div class="flex justify-between gap-4">
+     
       <button
-        class="flex-1 bg-black text-white py-2 px-4 rounded hover:bg-gray-800"
-        @click="goToUsage"
-      >
-        查看使用狀態
-      </button>
-      <button
-        class="flex-1 border border-black text-black py-2 px-4 rounded hover:bg-gray-100"
+        class="flex-1 border-1 border-primary text-primary py-2 px-4 rounded-xl hover:bg-gray-100"
         @click="goMerchantDashboard"
       >
         返回列表
+      </button>
+      <button
+        class="flex-1 bg-primary text-white py-2 px-4 rounded-xl hover:bg-neutral text-base md:text-lg"
+        @click="goToUsage"
+      >
+        查看使用狀態
       </button>
     </div>
   </div>

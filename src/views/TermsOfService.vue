@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-base-100 text-base-content">
     <Navbar></Navbar>
 
-    <main class="max-w-3xl mx-auto px-4 py-10 text-left">
+    <main class="max-w-3xl mx-auto px-4 py-10 text-left pt-28">
       <h1 class="text-2xl md:text-3xl font-bold mb-6 text-center">
         {{ t('termsOfService.title') }}
       </h1>
