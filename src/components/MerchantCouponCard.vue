@@ -2,7 +2,7 @@
   <div class="relative">
     <!-- 刪除按鈕 -->
     <button
-      class="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1 shadow"
+      class="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1"
       @click.stop="showConfirm = true"
     >
       <font-awesome-icon

@@ -2,7 +2,7 @@
   <div class="relative">
     <!-- 刪除按鈕 -->
     <button
-      class="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1 shadow"
+      class="absolute top-3 right-3 z-10 bg-white/80 backdrop-blur-sm rounded-full p-1"
       @click.stop="showConfirm = true"
     >
       <font-awesome-icon
@@ -26,15 +26,15 @@
 
         <div class="flex flex-col justify-between w-full">
           <h4
-            class="text-lg font-semibold line-clamp-1"
+            class="text-lg font-semibold line-clamp-1 text-neutral"
             :title="promotion.title"
           >
             {{ promotion.title }}
           </h4>
-          <p class="text-sm text-gray-600 line-clamp-2">
+          <p class="text-sm text-neutral line-clamp-2">
             {{ promotion.description || '（無描述）' }}
           </p>
-          <p class="text-sm text-gray-600">
+          <p class="text-sm text-neutral">
             活動期間：
             {{ formatDate(promotion.startedAt) }} ~
             {{ formatDate(promotion.endedAt) }}

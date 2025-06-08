@@ -1,6 +1,6 @@
 <template>
   <MerchantNavBar />
-  <div class="max-w-3xl w-full mx-auto pt-28 pb-28 px-4">
+  <div class="max-w-5xl w-full mx-auto pt-28 pb-28 px-4">
     <h1 class="text-2xl md:text-3xl text-neutral font-bold mb-4">{{ coupon.title }}</h1>
 
     <p class="w-full mb-2 text-base md:text-xl text-neutral font-medium">
