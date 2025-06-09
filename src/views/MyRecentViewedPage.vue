@@ -1,9 +1,10 @@
 <template>
+  <div class="min-h-screen flex flex-col">
   <Navbar></Navbar>
-  <div class="p-6 max-w-screen-lg mx-auto pt-30 mb-20">
+  <div class="flex-1 p-6 max-w-screen-lg mx-auto pt-30 mb-20">
     <h1 class="text-2xl md:text-3xl text-neutral text-center font-bold mb-8">{{ t('recentViews.title') }}</h1>
 
-    <div v-if="restaurants.length === 0">{{ t('recentViews.empty') }}</div>
+    <div v-if="restaurants.length === 0" class="text-center text-gray-400 text-base md:text-xl">{{ t('recentViews.empty') }}</div>
     <div v-else class="grid gap-6 grid-cols-1 md:grid-cols-2">
       <RestaurantCard
         v-for="r in restaurants"
@@ -13,6 +14,7 @@
     </div>
   </div>
   <Footer></Footer>
+</div>
 </template>
 
 <script setup>

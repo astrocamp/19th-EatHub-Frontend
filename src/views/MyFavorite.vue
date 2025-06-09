@@ -4,7 +4,7 @@
   <div class="flex-1 p-6 max-w-screen-lg mx-auto pt-30 mb-20">
     <h1 class="text-2xl md:text-3xl text-neutral text-center font-bold mb-8">{{ t('myFavorites.title') }}</h1>
 
-    <div v-if="restaurants.length === 0" class="text-center text-base md:text-lg">{{ t('myFavorites.empty') }}</div>
+    <div v-if="restaurants.length === 0" class="text-center text-base md:text-xl text-gray-400">{{ t('myFavorites.empty') }}</div>
     <div v-else class="grid gap-6 grid-cols-1 md:grid-cols-2">
       <RestaurantCard
         v-for="r in restaurants"
