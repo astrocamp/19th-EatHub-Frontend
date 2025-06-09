@@ -9,7 +9,7 @@
           @submit.prevent="handleSignup"
           class="bg-base-100 shadow-xl rounded-xl p-8 space-y-4"
         >
-          <h1 class="text-2xl font-bold text-center mb-6">
+          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6">
             {{ t('merchantSignup.title') }}
           </h1>
 
@@ -39,13 +39,8 @@
             />
           </section>
 
-          <button class="btn btn-primary w-full">
-            {{ t('merchantSignup.signup') }}
-          </button>
-          <p
-            v-if="errorMessage"
-            class="text-red-500 text-sm text-lift whitespace-pre-line"
-          >
+          <button class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg"> {{ t('merchantSignup.signup') }}</button>
+          <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
             {{ errorMessage }}
           </p>
           <div class="text-center space-x-2">

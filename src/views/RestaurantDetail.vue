@@ -26,27 +26,27 @@
     >
       <div class="flex items-center">
         <h1
-          class="text-xl md:text-4xl font-bold md:mt-4 truncate max-w-[14em] md:truncate-none md:max-w-none mb-2"
+          class="text-2xl md:text-4xl font-bold md:mt-4 truncate max-w-[14em] md:truncate-none md:max-w-none mb-2"
         >
           {{ restaurant.name }}
         </h1>
       </div>
-      <div class="flex md:space-x-2 space-x-1.5">
+      <div class="flex md:space-x-2 space-x-1.5 gap-0.5">
         <ShareButton
           :restaurant-name="restaurant.name"
           :restaurant-rating="restaurant.googleRating || '4.5'"
         />
-        <button @click="toggleFavorite" class="btn rounded-xl bg-gray-200">
+        <button @click="toggleFavorite" class="btn px-6 rounded-xl bg-gray-200">
           <font-awesome-icon
             :icon="[isFavorite ? 'fas' : 'far', 'heart']"
             :class="isFavorite ? 'text-red-500' : 'text-gray-400'"
-            class="text-lg md:text-2xl"
+            class="text-xl md:text-2xl"
           />
         </button>
-        <button @click="navigateToAddress" class="btn rounded-xl bg-primary">
+        <button @click="navigateToAddress" class="btn px-6 rounded-xl bg-primary">
           <font-awesome-icon
             :icon="['fas', 'location-arrow']"
-            class="text-lg md:text-2xl text-white"
+            class="text-xl md:text-2xl text-white"
           />
         </button>
       </div>
@@ -55,10 +55,10 @@
     <!-- 評分與地址 -->
     <div class="flex items-center mb-1 max-w-screen-lg mx-auto px-4">
       <font-awesome-icon :icon="['fas', 'star']" class="text-yellow-400" />
-      <span class="ml-2 text-sm md:text-xl my-2 text-gray-600">{{
+      <span class="ml-2 text-base md:text-xl my-2 text-gray-600">{{
         restaurant.googleRating
       }}</span>
-      <span class="ml-2 text-xs text-gray-500 md:text-xl my-2"
+      <span class="ml-2 text-sm text-gray-500 md:text-xl my-2"
         >({{ restaurant.userRatingsTotal
         }}{{ $t('restaurantDetail.ratingCountSuffix') }})</span
       >
@@ -68,7 +68,7 @@
         :icon="['fas', 'map-marker-alt']"
         class="text-gray-500 md:text-xl my-2"
       />
-      <span class="ml-2 text-sm text-gray-700 md:text-xl my-2">{{
+      <span class="ml-2 text-base text-gray-700 md:text-xl my-2">{{
         restaurant.address
       }}</span>
     </div>
@@ -85,7 +85,7 @@
     <!-- 營業時間 -->
 
     <div class="mb-6 px-4 max-w-screen-lg mx-auto">
-      <h3 class="text-base md:text-2xl font-bold mb-3 md:mt-10">
+      <h3 class="text-lg md:text-2xl font-bold mb-3 md:mt-10">
         {{ $t('restaurantDetail.businessHours') }}
       </h3>
       <div class="space-y-1 text-sm">
@@ -142,7 +142,7 @@
       <div
         class="flex justify-between items-center mb-3 max-w-screen-lg mx-auto px-4"
       >
-        <h3 class="text-base font-bold md:text-2xl md:mt-6">
+        <h3 class="text-lg font-bold md:text-2xl md:mt-6">
           {{ $t('restaurantDetail.review') }}
           <span class="text-sm text-gray-500 font-normal md:text-lg"
             >（ {{ $t('restaurantDetail.reviewCountPrefix') }}

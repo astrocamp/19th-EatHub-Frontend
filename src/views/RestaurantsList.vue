@@ -1,16 +1,16 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen max-w-screen-lg mx-auto md:px-4 py-25">
     <Navbar />
     <div class="bg-white">
-      <div class="flex justify-center items-center mx-auto py-5">
-        <h1 class="text-2xl font-bold mb-4">
+      <div class="flex justify-center items-center mx-auto py-5 text-neutral">
+        <h1 class="text-2xl md:text-3xl font-bold mb-4">
           {{ t('restaurantList.title') }}
           <span v-if="dishResult">：{{ dishResult }}</span>
         </h1>
       </div>
-      <section class="px-4 sm:px-0 pb-8">
+      <section class=" sm:px-0 pb-8">
         <ul
-          class="mx-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center p-0 list-none"
+          class="mx-6 grid grid-cols-1 md:grid-cols-2  gap-5 place-items-center p-0 list-none"
         >
           <li
             v-for="r in topTenRestaurants"
@@ -25,8 +25,9 @@
         </ul>
       </section>
     </div>
-    <Footer />
+
   </div>
+  <Footer />
 </template>
 
 <script setup>

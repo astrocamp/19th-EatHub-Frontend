@@ -6,7 +6,7 @@
     >
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
-          <h1 class="text-2xl font-bold text-center">
+          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center">
             {{ t('merchantLogin.title') }}
           </h1>
 
@@ -25,13 +25,13 @@
               required
             />
             <div class="flex gap-3">
-              <router-link
-                to="/forgot-password"
-                class="btn btn-outline btn-primary flex-1"
+            <router-link 
+                to="/forgot-password" 
+                class="btn btn-outline btn-primary flex-1 rounded-xl text-sm md:text-lg"
               >
                 {{ t('merchantLogin.forgotPassword') }}
               </router-link>
-              <button class="btn btn-primary flex-2" type="submit">
+              <button class="btn btn-primary flex-1 rounded-xl text-white text-sm md:text-lg" type="submit">
                 {{ t('merchantLogin.login') }}
               </button>
             </div>

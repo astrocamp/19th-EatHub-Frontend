@@ -12,7 +12,7 @@
       >
         <div class="bg-gray-100 rounded-lg p-4">
           <!-- 詳細內容 -->
-          <h4 class="text-base md:text-xl font-bold mb-2">
+          <h4 class="text-lg md:text-2xl font-bold mb-2">
             {{ t('couponCarousel.detailTitle') }}
           </h4>
           <div class="space-y-2 text-sm">
