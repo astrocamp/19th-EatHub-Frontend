@@ -31,22 +31,22 @@
           {{ restaurant.name }}
         </h1>
       </div>
-      <div class="flex md:space-x-2 space-x-1.5">
+      <div class="flex md:space-x-2 space-x-1.5 gap-0.5">
         <ShareButton
           :restaurant-name="restaurant.name"
           :restaurant-rating="restaurant.googleRating || '4.5'"
         />
-        <button @click="toggleFavorite" class="btn rounded-xl bg-gray-200">
+        <button @click="toggleFavorite" class="btn px-6 rounded-xl bg-gray-200">
           <font-awesome-icon
             :icon="[isFavorite ? 'fas' : 'far', 'heart']"
             :class="isFavorite ? 'text-red-500' : 'text-gray-400'"
-            class="text-lg md:text-2xl"
+            class="text-xl md:text-2xl"
           />
         </button>
-        <button @click="navigateToAddress" class="btn rounded-xl bg-primary">
+        <button @click="navigateToAddress" class="btn px-6 rounded-xl bg-primary">
           <font-awesome-icon
             :icon="['fas', 'location-arrow']"
-            class="text-lg md:text-2xl text-white"
+            class="text-xl md:text-2xl text-white"
           />
         </button>
       </div>
