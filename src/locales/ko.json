@@ -215,7 +215,7 @@
     },
     "create": {
       "coupon": "쿠폰 추가",
-      "promotion": "매장 소식 추가"
+      "promotion": "프로모션 추가"
     },
     "limitReached": {
       "vip": {
@@ -293,7 +293,7 @@
     "noPlans": "현재 구매 가능한 플랜이 없습니다. 잠시 후 다시 시도해주세요.",
     "paymentMethod": "결제 방법 선택",
     "linePay": "LINEPAY",
-    "ecpay": "녹계 결제 (미개방)",
+    "ecpay": "녹계 결제 ",
     "goToPayment": "결제하기",
     "close": "닫기",
     "onlyLinePay": "현재 LINEPAY만 지원하며, 녹계는 아직 개방되지 않았습니다",

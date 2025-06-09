@@ -215,7 +215,7 @@
     },
     "create": {
       "coupon": "クーポンを追加",
-      "promotion": "お知らせを追加"
+      "promotion": "プロモーションを追加"
     },
     "limitReached": {
       "vip": {
@@ -293,7 +293,7 @@
     "noPlans": "現在、購入プランはご利用いただけません。後でもう一度お試しください。",
     "paymentMethod": "支払い方法を選択",
     "linePay": "LINEPAY",
-    "ecpay": "綠界支払い（未対応）",
+    "ecpay": "綠界支払い",
     "goToPayment": "支払いへ進む",
     "close": "閉じる",
     "onlyLinePay": "現在はLINEPAYのみ対応しています。綠界は未対応です。",

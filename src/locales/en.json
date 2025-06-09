@@ -215,7 +215,7 @@
     },
     "create": {
       "coupon": "Add Coupon",
-      "promotion": "Add Merchant Update"
+      "promotion": "Add Promotion"
     },
     "limitReached": {
       "vip": {
@@ -293,7 +293,7 @@
     "noPlans": "Purchase plans are not currently available, please try again later.",
     "paymentMethod": "Select Payment Method",
     "linePay": "LINEPAY",
-    "ecpay": "ECPay (Not Available)",
+    "ecpay": "ECPay",
     "goToPayment": "Proceed to Payment",
     "close": "Close",
     "onlyLinePay": "Currently only supports LINEPAY, ECPay is not yet available",
