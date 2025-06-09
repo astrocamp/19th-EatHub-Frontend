@@ -1,25 +1,18 @@
 <template>
-  <div
-    class="navbar bg-white shadow-sm px-4 py-3 border-b flex justify-between items-center"
-  >
-    <!-- Logo  -->
-    <div class="flex items-center">
-      <RouterLink :to="{ name: 'MerchantDashboard' }">
-        <img
-          src="@/assets/images/logo.png"
-          alt="EatHub Logo"
-          class="w-25 h-12 mr-2"
-        />
-      </RouterLink>
+  
+    <div class="navbar bg-white px-4 py-10 shadow-md flex justify-between items-center fixed z-50 top-0 left-0 w-ful h-16">
+        <!-- Logo  -->
+        <div class="flex items-center">
+        <RouterLink :to="{ name: 'MerchantDashboard' }">
+            <img src="@/assets/images/logo.png" alt="EatHub Logo" class="w-40 mr-2 md:ml-10" />
+        </RouterLink>
+        </div>
+
+        <button class=" bg-gray-300 text-gray-500 font-semibold px-4 py-1 rounded-xl hover:bg-gray-400 transition md:mr-10 text-base md:text-lg" @click="handleLogout">
+            {{ t('navbar.logout') }}
+        </button>
     </div>
 
-    <button
-      class="bg-gray-300 text-gray-800 text-sm font-semibold px-4 py-1 rounded hover:bg-gray-400 transition"
-      @click="handleLogout"
-    >
-      {{ t('navbar.logout') }}
-    </button>
-  </div>
 </template>
 
 <script setup>

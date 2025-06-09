@@ -1,14 +1,13 @@
 <template>
+ <div class="min-h-screen flex flex-col max-w-5xl mx-auto">
   <MerchantNavBar />
-
-  <div class="p-6">
+  
+  <div class="flex-1   px-4 pt-28">
     <!-- 返回按鈕 -->
-    <button class="btn btn-sm btn-outline mb-4" @click="goBack">
-      ← {{ t('couponUsage.back') }}
-    </button>
+    <button class="btn btn-sm btn-outline mb-4 rounded-xl text-base md:text-xl py-5 text-neutral" @click="goBack">←  {{ t('couponUsage.back') }}</button>
 
     <!-- Coupon券名稱 -->
-    <h1 class="text-2xl font-bold mb-4">{{ couponTitle }}</h1>
+    <h1 class="text-2xl font-bold mb-4 text-neutral md:text-3xl">{{ couponTitle }}</h1>
 
     <!-- 篩選 -->
     <div class="mb-4">
@@ -21,7 +20,7 @@
     </div>
 
     <!-- 表格 -->
-    <div class="overflow-x-auto border border-gray-300 rounded-lg">
+    <div class="overflow-x-auto border border-gray-300 rounded-lg mb-8">
       <table class="table table-bordered w-full border border-gray-300">
         <thead class="bg-gray-100 border-b border-gray-300">
           <tr>
@@ -59,7 +58,9 @@
       </table>
     </div>
   </div>
+</div>
   <component :is="Footer" />
+
 </template>
 
 <script setup>

@@ -1,7 +1,7 @@
 <template>
   <MerchantNavBar />
-  <div class="p-6 max-w-xl mx-auto">
-    <h1 class="text-2xl font-bold mb-6">{{ t('couponCreate.title') }}</h1>
+  <div class="p-6 max-w-xl mx-auto pt-28">
+    <h1 class="text-2xl font-bold mb-6 md:text-3xl text-center text-neutral">{{ t('couponCreate.title') }}</h1>
 
     <form @submit.prevent="submit" class="space-y-4">
       <input
@@ -83,7 +83,7 @@
       <div class="text-center">
         <button
           type="submit"
-          class="btn w-full bg-black text-white rounded-full"
+          class="btn w-full bg-primary text-base md:text-lg hover:bg-neutral text-white rounded-xl"
         >
           {{ t('couponCreate.submitButton') }}
         </button>
@@ -101,10 +101,12 @@ import axios from '@/axios';
 import { useAuthStore } from '@/stores/auth';
 import Footer from '@/components/Footer.vue';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
+import { useAlertStore } from '@/stores/alert';
 
 const { t } = useI18n();
 const router = useRouter();
 const auth = useAuthStore();
+const alert = useAlertStore();
 
 const form = ref({
   serial_number: '',
@@ -119,7 +121,7 @@ const form = ref({
 
 onMounted(() => {
   if (!auth.user || !['merchant', 'vip_merchant'].includes(auth.user.role)) {
-    alert(t('alert.merchantOnly'));
+    alert.trigger(t('alert.merchantOnly', 'warning'));
     router.push('/merchant/login');
   }
 });
@@ -127,16 +129,16 @@ onMounted(() => {
 const submit = async () => {
   try {
     await axios.post('/coupons/', form.value);
-    alert(t('alert.createSuccess'));
+    alert.trigger(t('alert.createSuccess', 'success'));
     router.push({ name: 'MerchantDashboard' });
   } catch (error) {
     if (error.response?.status === 403) {
-      alert(error.response.data.error || t('alert.createForbidden'));
+      alert.trigger(error.response.data.error || t('alert.createForbidden', 'warning'));
     } else if (error.response?.data) {
       const messages = Object.values(error.response.data).flat().join('\n');
-      alert(messages);
+      alert.trigger(messages, 'warning');
     } else {
-      alert(t('alert.createFailed'));
+      alert.trigger(t('alert.createFailed', 'error'));
     }
   }
 };

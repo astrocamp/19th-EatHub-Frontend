@@ -1,18 +1,18 @@
 <template>
+<div class="min-h-screen flex flex-col">
   <MerchantNavBar />
 
-  <div class="px-4 py-6 max-w-6xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">
-      {{ restaurantName }}
-      <span v-if="role === 'vip_merchant'" class="badge badge-primary">
-        <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> VIP
-      </span>
-      <span
-        v-else-if="role === 'merchant'"
-        class="px-2 py-0.5 text-xs font-semibold text-gray-600 bg-gray-200 rounded-full"
-      >
-        {{ t('merchantDashboard.regularBadge') }}
-      </span>
+  <!-- 主內容 -->
+  <div class="flex-1 px-4 ">
+
+  <div class="mx-auto px-4 py-8 max-w-5xl pt-28">
+    <h1 class="text-2xl md:text-3xl text-neutral font-bold mb-4">{{ restaurantName }}
+          <span v-if="role === 'vip_merchant'" class="badge badge-primary">
+            <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> VIP
+          </span>
+          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full">
+            {{ t('merchantDashboard.regularBadge') }}
+          </span>
     </h1>
 
     <!-- VIP 顯示區塊 -->
@@ -41,47 +41,46 @@
       </div>
     </div>
 
-    <p v-if="role === 'merchant'" class="text-sm text-gray-600 mb-4">
+
+    <p v-if="role === 'merchant'"  class="text-base md:text-lg text-gray-600 mb-4">
       <span v-html="t('merchantDashboard.regularHint')" />
-      <button
-        @click="openUpgradeModal()"
-        class="inline-flex items-center gap-1 text-xs font-semibold text-white bg-orange-500 px-3 py-1 rounded-full hover:bg-orange-600 transition ml-2"
-      >
-        <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />
-        {{ t('merchantDashboard.upgradeButton') }}
+      <button  @click="openUpgradeModal()" class=" inline-flex items-center gap-1 text-sm md:text-base font-semibold text-white bg-orange-500 px-3 py-1 rounded-xl hover:bg-neutral transition mt-2">
+        <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />  {{ t('merchantDashboard.upgradeButton') }} 
       </button>
     </p>
 
     <!-- Tab 與新增按鈕 -->
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex justify-between items-center mb-3">
       <!-- 左側：Tab 切換按鈕 -->
-      <div class="flex gap-4">
+      <div class="flex gap-2 md:gap-4">
         <button
-          class="btn w-[110px]"
-          :class="activeTab === 'coupon' ? 'btn-primary' : 'btn-outline'"
+          class="btn text-neutral border-neutral text-base md:text-lg rounded-xl"
+          :class="activeTab === 'coupon' ? 'btn-secondary' : 'btn-outline'"
           @click="setTab('coupon')"
         >
           {{ t('merchantDashboard.tab.coupon') }}
         </button>
         <button
-          class="btn w-[110px]"
-          :class="activeTab === 'promotion' ? 'btn-primary' : 'btn-outline'"
+          class="btn  text-neutral border-neutral text-base md:text-lg rounded-xl"
+          :class="activeTab === 'promotion' ? 'btn-secondary' : 'btn-outline'"
           @click="setTab('promotion')"
         >
           {{ t('merchantDashboard.tab.promotion') }}
         </button>
+      </div>   
       </div>
-
-      <!-- 右側：新增按鈕 -->
-      <button class="btn btn-accent" @click="handleCreateClick">
+      <div class="flex items-center flex-start gap-4">
+        <button
+          class="btn rounded-xl bg-gray-300 text-gray-500 text-sm md:text-lg hover:bg-white"
+          @click="handleCreateClick"
+        >
         {{
           activeTab === 'coupon'
             ? t('merchantDashboard.create.coupon')
             : t('merchantDashboard.create.promotion')
         }}
-      </button>
-    </div>
-
+        </button>
+      </div>
     <!-- 清單元件切換 -->
     <component
       :is="activeTab === 'coupon' ? MerchantCouponList : MerchantPromotionList"
@@ -96,7 +95,9 @@
     @close="showUpgradeModal = false"
   />
 
-  <component :is="Footer" />
+  </div>
+  <Footer />
+</div>
 </template>
 
 <script setup>
