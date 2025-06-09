@@ -8,7 +8,15 @@
     "signupFailed": "登録に失敗しました。しばらくしてから再度お試しください。",
     "googleTokenFailed": "Googleのaccess_tokenを取得できませんでした",
     "googleLoginSuccess": "Googleログイン成功",
-    "googleLoginFailed": "ログインに失敗しました。しばらくしてから再度お試しください"
+    "googleLoginFailed": "ログインに失敗しました。しばらくしてから再度お試しください",
+    "loginSuccess": "ログイン成功 🎉",
+    "createSuccess": "追加に成功しました",
+    "createForbidden": "これ以上クーポンを追加する権限がありません",
+    "createFailed": "追加に失敗しました。しばらくしてからもう一度お試しください",
+    "merchantOnly": "クーポンの追加は店舗アカウントのみ可能です"
+  },
+  "common": {
+    "notProvided": "未提供"
   },
   "navbar": {
     "loggedInAs": "現在ログイン中のユーザー：{userName}",
@@ -196,8 +204,11 @@
   },
   "merchantDashboard": {
     "regularBadge": "一般店舗",
-    "regularHint": "現在、<strong>一般店舗</strong>として登録されています。VIPにアップグレードすると、より多くのクーポンと投稿が可能になります。",
-    "upgradeNow": "今すぐアップグレード！",
+    "vipHint": "VIP 有効期限：<span class='font-mono'>{vipExpiry}</span>",
+    "vipExpireSoon": "⏳ VIP の有効期限が間もなく切れます（あと {days} 日）",
+    "upgradeNow": "今すぐ更新",
+    "regularHint": "現在は<strong>一般店舗</strong>です。VIP にアップグレードすると、より多くのクーポンやイベントを発行できます。",
+    "upgradeButton": "今すぐアップグレード！",
     "tab": {
       "coupon": "クーポン",
       "promotion": "店舗のお知らせ"
@@ -219,7 +230,6 @@
   },
   "merchantLogin": {
     "title": "店舗ログイン",
-    "emailPlaceholder": "メールアドレス",
     "passwordPlaceholder": "パスワード",
     "forgotPassword": "パスワードをお忘れですか？",
     "login": "ログイン",
@@ -231,14 +241,17 @@
   "merchantSignup": {
     "title": "店舗登録",
     "restaurantNamePlaceholder": "店舗名",
-    "emailPlaceholder": "メールアドレス",
     "passwordPlaceholder": "パスワードの設定",
     "signup": "登録",
     "login": "ログイン",
     "backHome": "ホームに戻る",
     "signupSuccess": "登録が完了しました！ログインしてください。",
     "signupFailedEmailUsed": "登録に失敗しました。このメールアドレスはすでに使用されています。",
-    "signupFailedGeneral": "登録に失敗しました。後でもう一度お試しください。"
+    "signupFailedGeneral": "登録に失敗しました。後でもう一度お試しください。",
+    "invalidEmail": "メールアドレスの形式が正しくありません。",
+    "passwordTooShort": "パスワードが短すぎます。8文字以上にしてください。",
+    "passwordTooCommon": "パスワードが一般的すぎます。より安全なものを選んでください。",
+    "passwordNumericOnly": "パスワードは数字だけではいけません。"
   },
   "merchantCouponCard": {
     "discount": "割引内容",
@@ -265,6 +278,7 @@
     "successTitle": "支払い成功 🎉",
     "successMessage": "VIP店舗へのアップグレードありがとうございます！",
     "orderId": "注文番号：",
+    "vipExpiry": "VIP 有効期限：",
     "backHome": "ホームに戻る",
     "errorTitle": "支払い情報エラー",
     "noOrderId": "注文情報が見つかりません。支払いが完了しているかご確認ください。",
