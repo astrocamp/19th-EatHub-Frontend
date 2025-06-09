@@ -2,8 +2,8 @@
   <!-- 分享按鈕 -->
   <button @click="toggleShareModal" class="btn rounded-xl bg-gray-200 ">
     <font-awesome-icon
-      :icon="['fas', 'arrow-up-right-from-square']"
-      class="text-[rgb(87,57,33)]' text-sm md:text-xl text-gray-400"
+      :icon="['fas', 'share-alt']"
+      class="text-lg md:text-xl text-gray-400"
     />
   </button>
 

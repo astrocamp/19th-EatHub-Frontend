@@ -153,7 +153,7 @@
         <button
           :disabled="hasReviewed"
           @click="handleAddReviewClick"
-          class="btn btn-sm md:btn-md border bg-gray-100 border-gray-200 text-gray-500 rounded-xl px-2 md:px-6 cursor-pointer hover:bg-gray-300 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base py-2 md:mt-6"
+          class="btn btn-sm  border bg-gray-100 border-gray-200 text-gray-500 rounded-xl px-4 md:px-6 cursor-pointer hover:bg-gray-300 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base py-2 md:py-5 md:mt-6"
         >
           {{
             hasReviewed
