@@ -8,7 +8,7 @@
         <div role="tablist" class="tabs tabs-bordered mb-4">
           <button
             role="tab"
-            class="tab"
+            class="tab text-base md:text-xl font-medium text-neutral"
             :class="{ 'tab-active': activeTab === 'flavors' }"
             @click="activeTab = 'flavors'"
           >
@@ -16,7 +16,7 @@
           </button>
           <button
             role="tab"
-            class="tab"
+            class="tab text-base md:text-xl font-medium text-neutral"
             :class="{ 'tab-active': activeTab === 'mains' }"
             @click="activeTab = 'mains'"
           >
@@ -24,7 +24,7 @@
           </button>
           <button
             role="tab"
-            class="tab"
+            class="tab text-base md:text-xl font-medium text-neutral"
             :class="{ 'tab-active': activeTab === 'staples' }"
             @click="activeTab = 'staples'"
           >
@@ -34,10 +34,10 @@
 
         <!-- 全選 / 全取消 -->
         <div class="flex justify-end gap-2 mb-4">
-          <button class="btn btn-xs" @click="selectAll">
+          <button class="btn" @click="selectAll">
             {{ t('index.selectAll') }}
           </button>
-          <button class="btn btn-xs" @click="clearAll">
+          <button class="btn" @click="clearAll">
             {{ t('index.clearAll') }}
           </button>
         </div>
@@ -49,7 +49,7 @@
           <button
             v-for="item in currentOptions"
             :key="item"
-            class="btn btn-sm rounded-full"
+            class="btn btn-sm md:btn-lg rounded-full font-normal"
             @click="toggleCurrent(item)"
             :class="{
               'bg-[var(--color-neutral)] text-white':
@@ -62,7 +62,7 @@
         </div>
 
         <div class="modal-action mt-6">
-          <button class="btn btn-primary w-full" @click="confirmSelections">
+          <button class="btn btn-primary w-full text-white rounded-xl text-base md:text-xl py-6 hover:btn-secondary" @click="confirmSelections">
             {{ t('index.confirm') }}
           </button>
         </div>
@@ -85,8 +85,8 @@
           {{ t('index.completeSelection') }}
         </h3>
         <div class="space-y-2">
-          <p class="text-gray-700">{{ t('index.ensureSelection') }}</p>
-          <ul class="list-disc list-inside space-y-1 ml-4">
+          <p class="text-gray-700 text-base md:tex-xl">{{ t('index.ensureSelection') }}</p>
+          <ul class="list-disc list-inside space-y-1 ml-4 text-base md:text-xl">
             <li v-if="flavors.length === 0" class="text-error">
               {{ t('index.atLeastOneFlavor') }}
             </li>
@@ -99,10 +99,8 @@
           </ul>
         </div>
         <div class="modal-action">
-          <button class="btn btn-primary" @click="closeValidationModal">
-            {{ t('index.continueSetting') }}
-          </button>
-          <button class="btn btn-outline" @click="closeValidationModal">
+     
+          <button class="btn btn-outline text-base md:text-xl rounded-xl" @click="closeValidationModal">
             {{ t('index.close') }}
           </button>
         </div>
@@ -119,13 +117,13 @@
     </div>
 
     <div
-      class="md:pt-10 pt-20 pb-20 space-y-4 text-center bg-page-bg bg-auto md:bg-center bg-no-repeat bg-[left_1000px_top_100]"
+      class="md:pt-5 pt-20 pb-20 space-y-4 text-center bg-page-bg bg-no-repeat bg-auto bg-left-top lg:bg-[left_1000px_top_0]"
     >
       <Slogan />
       <div
-        class="w-full max-w-[360px] md:max-w-[800px] mx-auto px-4 bg-white rounded-xl text-white shadow-[0_0_12px_rgba(0,0,0,0.2)] md:mt-10"
+        class="w-full max-w-[340px] md:max-w-[700px] mx-auto px-4 bg-white rounded-xl text-white shadow-[0_0_12px_rgba(0,0,0,0.2)] md:mt-5"
       >
-        <div class="flex space-x-4">
+        <div class="flex gap-2 md:gap-4">
           <div class="w-1/3 card bg-secondary text-neutral-content mt-4">
             <div
               class="card-body flex items-center justify-center md:text-5xl text-3xl"
@@ -158,18 +156,18 @@
           </div>
         </div>
         <div class="max-w-[960px] mx-auto px-4 mt-6">
-          <div class="flex gap-3 mx-auto">
+          <div class="flex justify-center items-center gap-3 flex-wrap">
             <!-- 主按鈕 -->
             <button
               @click="runSlotMachine"
-              class="flex-1 btn bg-primary text-white rounded-xl font-bold text-lg md:text-2xl p-6 hover:bg-[rgb(87,57,33)] md:min-w-[540px] min-w-[200px] tracking-wider"
+              class="btn bg-primary text-white rounded-xl font-bold text-lg md:text-2xl p-6 hover:bg-neutral tracking-wider min-w-[120px] sm:min-w-[240px] md:min-w-[360px]"
             >
               {{ t('index.ctaButton') }}
             </button>
 
             <label
               for="my-modal"
-              class="btn btn-sm bg-gray-200 text-gray-800 border border-gray-200 rounded-lg text-lg md:text-xl p-6 hover:bg-gray-400"
+              class="btn bg-gray-200 text-gray-800 border border-gray-200 rounded-lg text-lg md:text-xl p-6 hover:bg-gray-400"
             >
               <font-awesome-icon :icon="['fas', 'sliders']" />
             </label>

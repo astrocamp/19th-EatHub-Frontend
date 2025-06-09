@@ -18,18 +18,24 @@
       >
         <div class="text-lg font-bold">{{ coupon.title }}</div>
         <div class="text-sm mt-1 text-gray-600">
-          優惠內容：{{ coupon.discount }}
+          {{ t('merchantCouponCard.discount') }}：{{ coupon.discount }}
         </div>
         <div class="text-sm text-gray-600">
-          有效期限：{{ formatDate(coupon.endedAt) }}
+          {{ t('merchantCouponCard.validUntil') }}：{{
+            formatDate(coupon.endedAt)
+          }}
         </div>
 
         <div class="text-sm text-gray-600 mt-2">
-          發行數量：{{ coupon.total ?? '未設定' }} 張
+          {{ t('merchantCouponCard.total') }}：
+          {{ coupon.total ?? t('merchantCouponCard.notSet') }}
+          {{ t('merchantCouponCard.coupons') }}
         </div>
         <div class="text-sm text-gray-600">
-          已領取：{{ coupon.redeemedCount }} 張 ・已使用：{{ coupon.usedCount }}
-          張
+          {{ t('merchantCouponCard.claimed') }}：{{ coupon.redeemedCount }}
+          {{ t('merchantCouponCard.coupons') }} ・
+          {{ t('merchantCouponCard.used') }}：{{ coupon.usedCount }}
+          {{ t('merchantCouponCard.coupons') }}
         </div>
       </div>
     </router-link>
@@ -41,7 +47,9 @@
       @click.self="showConfirm = false"
     >
       <div class="bg-white text-black p-6 rounded-xl text-center w-[260px]">
-        <div class="text-xl font-bold mb-4">確認刪除？</div>
+        <div class="text-xl font-bold mb-4">
+          {{ t('merchantCouponCard.confirmDelete') }}
+        </div>
         <font-awesome-icon
           :icon="['fas', 'trash']"
           class="text-6xl text-gray-500 mb-4"
@@ -51,13 +59,13 @@
             class="border border-black text-black px-4 py-1 rounded"
             @click="showConfirm = false"
           >
-            取消
+            {{ t('merchantCouponCard.cancel') }}
           </button>
           <button
             class="bg-black text-white px-4 py-1 rounded"
             @click="confirmDelete"
           >
-            確認刪除
+            {{ t('merchantCouponCard.confirm') }}
           </button>
         </div>
       </div>
@@ -67,8 +75,10 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import axios from '@/axios';
 
+const { t } = useI18n();
 const props = defineProps({
   coupon: Object,
 });
@@ -92,7 +102,7 @@ const confirmDelete = async () => {
     });
     emit('deleted');
   } catch {
-    alert('刪除失敗，請稍後再試');
+    alert(t('merchantCouponCard.deleteFailed'));
   } finally {
     showConfirm.value = false;
   }

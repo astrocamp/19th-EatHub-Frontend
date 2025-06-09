@@ -19,14 +19,14 @@
     <!-- 內容 -->
     <div class="relative z-10">
       <h2
-        class="text-2xl md:text-4xl font-bold text-center text-neutral mb-4 mt-10"
+        class="text-2xl md:text-4xl font-bold text-center text-neutral mb-4 mt-10 border-b-8 border-solid border-neutral  w-fit mx-auto pb-1 md:pb-2"
       >
         {{ t('home.title') }}
       </h2>
-      <p class="text-center text-neutral mb-10 text-lg md:text-2xl mt-6">
+      <p class="text-center text-neutral mb-10 text-base sm:text-lg md:text-2xl mt-6">
         {{ t('home.description') }}
       </p>
-      <div class="flex flex-wrap md:gap-6 max-w-4xl mx-auto">
+      <div class="flex flex-wrap md:gap-4 max-w-4xl mx-auto">
         <div
           v-for="(feature, index) in features"
           :key="index"

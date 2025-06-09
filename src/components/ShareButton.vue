@@ -1,9 +1,9 @@
 <template>
   <!-- 分享按鈕 -->
-  <button @click="toggleShareModal" class="btn rounded-xl bg-gray-200 ">
+  <button @click="toggleShareModal" class="btn px-6 rounded-xl bg-gray-200 ">
     <font-awesome-icon
       :icon="['fas', 'share-alt']"
-      class="text-lg md:text-xl text-gray-400"
+      class="text-xl md:text-2xl text-gray-400"
     />
   </button>
 
