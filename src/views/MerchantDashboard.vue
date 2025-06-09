@@ -11,33 +11,41 @@
             <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> VIP
           </span>
           <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full">
-            一般店家
+            {{ t('merchantDashboard.regularBadge') }}
           </span>
     </h1>
 
     <!-- VIP 顯示區塊 -->
     <div v-if="role === 'vip_merchant'" class="mb-4 text-sm text-green-700">
-      VIP 有效期限：<span class="font-mono">{{ formatDate(vipExpiry) }}</span>
-      
+      <span
+        v-html="
+          t('merchantDashboard.vipHint', { vipExpiry: formatDate(vipExpiry) })
+        "
+      />
+
       <!-- 倒數提示區塊 -->
-      <div v-if="isExpiringSoon" class="mt-2 bg-yellow-100 text-yellow-800 px-3 py-2 rounded-md text-sm flex items-center justify-between">
+      <div
+        v-if="isExpiringSoon"
+        class="mt-2 bg-yellow-100 text-yellow-800 px-3 py-2 rounded-md text-sm flex items-center justify-between"
+      >
         <div>
-          ⏳ VIP 即將到期（剩下 {{ daysLeft }} 天）
+          {{ t('merchantDashboard.vipExpireSoon', { days: daysLeft }) }}
         </div>
         <button
-          @click="openUpgradeModal('VIP 即將到期，請盡快續約！')"
+          @click="openUpgradeModal(t('merchantDashboard.upgradeNow'))"
           class="ml-4 text-sm font-semibold text-white bg-primary hover:bg-orange-300 px-3 py-1 rounded"
         >
-          <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> 立即續約
+          <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />
+          {{ t('merchantDashboard.upgradeNow') }}
         </button>
       </div>
     </div>
 
 
     <p v-if="role === 'merchant'"  class="text-base md:text-lg text-gray-600 mb-4">
-      您目前為 <span class="font-semibold text-primary">一般商家</span>，升級為 VIP 可發佈更多優惠券與活動 
+      <span v-html="t('merchantDashboard.regularHint')" />
       <button  @click="openUpgradeModal()" class=" inline-flex items-center gap-1 text-sm md:text-base font-semibold text-white bg-orange-500 px-3 py-1 rounded-xl hover:bg-neutral transition mt-2">
-        <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />  立即升級！ 
+        <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />  {{ t('merchantDashboard.upgradeButton') }} 
       </button>
     </p>
 
@@ -50,14 +58,14 @@
           :class="activeTab === 'coupon' ? 'btn-secondary' : 'btn-outline'"
           @click="setTab('coupon')"
         >
-          優惠券
+          {{ t('merchantDashboard.tab.coupon') }}
         </button>
         <button
           class="btn  text-neutral border-neutral text-base md:text-lg rounded-xl"
           :class="activeTab === 'promotion' ? 'btn-secondary' : 'btn-outline'"
           @click="setTab('promotion')"
         >
-          商家動態
+          {{ t('merchantDashboard.tab.promotion') }}
         </button>
       </div>   
       </div>
@@ -66,7 +74,11 @@
           class="btn rounded-xl bg-gray-300 text-gray-500 text-sm md:text-lg hover:bg-white"
           @click="handleCreateClick"
         >
-          ＋{{ activeTab === 'coupon' ? '優惠券' : '商家動態' }}
+        {{
+          activeTab === 'coupon'
+            ? t('merchantDashboard.create.coupon')
+            : t('merchantDashboard.create.promotion')
+        }}
         </button>
       </div>
     <!-- 清單元件切換 -->
@@ -77,11 +89,11 @@
     />
   </div>
 
-    <UpgradeModal
+  <UpgradeModal
     v-if="showUpgradeModal"
     :message="upgradeMessage"
     @close="showUpgradeModal = false"
-    />
+  />
 
   </div>
   <Footer />
@@ -96,8 +108,10 @@ import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import Footer from '@/components/Footer.vue';
 import MerchantCouponList from '@/components/MerchantCouponList.vue';
 import MerchantPromotionList from '@/components/MerchantPromotionList.vue';
-import UpgradeModal from '@/components/MerchantUpgradeModal.vue'
+import UpgradeModal from '@/components/MerchantUpgradeModal.vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 
@@ -110,9 +124,9 @@ const setTab = (tab) => {
 const restaurantName = ref('');
 const coupons = ref([]);
 const promotions = ref([]);
-const role = ref(''); 
-const merchantStatus = ref({}) 
-const vipExpiry = ref(null)
+const role = ref('');
+const merchantStatus = ref({});
+const vipExpiry = ref(null);
 
 const fetchDashboard = async () => {
   try {
@@ -123,57 +137,64 @@ const fetchDashboard = async () => {
     promotions.value = result.promotions;
     role.value = result.merchantStatus.role;
     merchantStatus.value = result.merchantStatus;
-    vipExpiry.value = result.merchantStatus.vipExpiry
+    vipExpiry.value = result.merchantStatus.vipExpiry;
   } catch (err) {
     console.error('取得商家資料失敗:', err);
   }
 };
 
 const handleCreateClick = () => {
-  const isCouponTab = activeTab.value === 'coupon'
+  const isCouponTab = activeTab.value === 'coupon';
   const isLimitReached = isCouponTab
     ? merchantStatus.value.isCouponLimitReached
-    : merchantStatus.value.isPromotionLimitReached
+    : merchantStatus.value.isPromotionLimitReached;
 
   if (isLimitReached) {
     const message =
       merchantStatus.value.role === 'vip_merchant'
-        ? `VIP 已達 ${isCouponTab ? '優惠券' : '商家動態'} 上限，請聯繫EatHub團隊洽詢高級方案`
-        : `一般商家已達 ${isCouponTab ? '優惠券' : '商家動態'} 上限，請升級`
-    openUpgradeModal(message)
-    return
+        ? isCouponTab
+          ? t('merchantDashboard.limitReached.vip.coupon')
+          : t('merchantDashboard.limitReached.vip.promotion')
+        : isCouponTab
+          ? t('merchantDashboard.limitReached.regular.coupon')
+          : t('merchantDashboard.limitReached.regular.promotion');
+    openUpgradeModal(message);
+    return;
   }
 
   // 否則正常跳轉
   const routePath = isCouponTab
     ? '/merchant/coupons/create'
-    : '/merchant/promotions/create'
-  router.push(routePath)
-}
+    : '/merchant/promotions/create';
+  router.push(routePath);
+};
 
-const showUpgradeModal = ref(false)
-const upgradeMessage = ref(null)
+const showUpgradeModal = ref(false);
+const upgradeMessage = ref(null);
 const openUpgradeModal = (message = null) => {
-  upgradeMessage.value = message
-  showUpgradeModal.value = true
-}
+  upgradeMessage.value = message;
+  showUpgradeModal.value = true;
+};
 
-const today = new Date()
-
+const today = new Date();
 
 const daysLeft = computed(() => {
-  if (!vipExpiry.value) return null
-  const diffTime = new Date(vipExpiry.value) - today
-  return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-})
+  if (!vipExpiry.value) return null;
+  const diffTime = new Date(vipExpiry.value) - today;
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+});
 
 const isExpiringSoon = computed(() => {
-  return daysLeft.value !== null && daysLeft.value <= 7 && daysLeft.value >= 0
-})
+  return daysLeft.value !== null && daysLeft.value <= 7 && daysLeft.value >= 0;
+});
 
 function formatDate(dateStr) {
-  const date = new Date(dateStr)
-  return date.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
 }
 
 onMounted(fetchDashboard);

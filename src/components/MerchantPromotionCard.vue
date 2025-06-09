@@ -16,7 +16,10 @@
       <div
         class="card rounded-xl relative shadow-[0_0_10px_rgba(0,0,0,0.25)] p-4 flex flex-col sm:flex-row gap-4"
       >
-        <div v-if="promotion.imageUrl" class="w-full sm:w-32 h-32 flex-shrink-0">
+        <div
+          v-if="promotion.imageUrl"
+          class="w-full sm:w-32 h-32 flex-shrink-0"
+        >
           <img
             :src="promotion.imageUrl"
             alt="活動圖片"
@@ -35,7 +38,7 @@
             {{ promotion.description || '（無描述）' }}
           </p>
           <p class="text-sm text-neutral">
-            活動期間：
+            {{ t('merchantPromotionCard.activePeriod') }}
             {{ formatDate(promotion.startedAt) }} ~
             {{ formatDate(promotion.endedAt) }}
           </p>
@@ -50,7 +53,7 @@
       @click.self="showConfirm = false"
     >
       <div class="bg-white text-neutral p-6 rounded-xl text-center w-[260px] md:w-[320px] ">
-        <div class="text-xl font-bold mb-4">確認刪除？</div>
+        <div class="text-xl font-bold mb-4">{{ t('merchantPromotionCard.confirmDelete') }}</div>
         <font-awesome-icon
           :icon="['fas', 'trash']"
           class="text-6xl text-neutral mb-4"
@@ -60,13 +63,13 @@
             class="border border-neutral text-neutral px-4 py-2 rounded-xl text-sm md:text-lg"
             @click="showConfirm = false"
           >
-            取消
+            {{ t('merchantPromotionCard.cancel') }}
           </button>
           <button
             class="bg-neutral text-white px-4 py-2 rounded-xl text-sm md:text-lg"
             @click="confirmDelete"
           >
-            確認刪除
+            {{ t('merchantPromotionCard.confirm') }}
           </button>
         </div>
       </div>
@@ -76,8 +79,10 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import axios from '@/axios';
 
+const { t } = useI18n();
 const props = defineProps({
   promotion: Object,
 });
@@ -101,7 +106,7 @@ const confirmDelete = async () => {
     });
     emit('deleted');
   } catch {
-    alert('刪除失敗，請稍後再試');
+    alert(t('merchantPromotionCard.deleteFailed'));
   } finally {
     showConfirm.value = false;
   }

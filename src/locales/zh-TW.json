@@ -8,7 +8,15 @@
     "signupFailed": "註冊失敗，請稍後再試。",
     "googleTokenFailed": "無法取得 Google access_token",
     "googleLoginSuccess": "Google 登入成功",
-    "googleLoginFailed": "登入失敗，請稍後再試"
+    "googleLoginFailed": "登入失敗，請稍後再試",
+    "loginSuccess": "登入成功 🎉",
+    "createSuccess": "新增成功",
+    "createForbidden": "您無權新增更多優惠券",
+    "createFailed": "新增失敗，請稍後再試",
+    "merchantOnly": "僅限商家使用者新增優惠券"
+  },
+  "common": {
+    "notProvided": "未提供"
   },
   "navbar": {
     "loggedInAs": "目前登入者：{userName}",
@@ -196,8 +204,11 @@
   },
   "merchantDashboard": {
     "regularBadge": "一般店家",
+    "vipHint": "VIP 有效期限：<span class='font-mono'>{vipExpiry}</span>",
+    "vipExpireSoon": "⏳ VIP 即將到期（剩下 {days} 天）",
+    "upgradeNow": "立即續約",
     "regularHint": "您目前為 <strong>一般商家</strong>，升級為 VIP 可發佈更多優惠券與活動",
-    "upgradeNow": "立即升級！",
+    "upgradeButton": "立即升級！",
     "tab": {
       "coupon": "優惠券",
       "promotion": "商家動態"
@@ -219,7 +230,6 @@
   },
   "merchantLogin": {
     "title": "店家登入",
-    "emailPlaceholder": "Email",
     "passwordPlaceholder": "密碼",
     "forgotPassword": "忘記密碼",
     "login": "登入",
@@ -231,14 +241,17 @@
   "merchantSignup": {
     "title": "店家註冊",
     "restaurantNamePlaceholder": "餐廳名稱",
-    "emailPlaceholder": "Email",
     "passwordPlaceholder": "設定密碼",
     "signup": "註冊",
     "login": "登入",
     "backHome": "回首頁",
     "signupSuccess": "註冊成功！請前往登入",
     "signupFailedEmailUsed": "註冊失敗，該信箱已被註冊過。",
-    "signupFailedGeneral": "註冊失敗，請稍後再試。"
+    "signupFailedGeneral": "註冊失敗，請稍後再試。",
+    "invalidEmail": "信箱格式錯誤。",
+    "passwordTooShort": "密碼太短，至少 8 字元。",
+    "passwordTooCommon": "密碼太常見，請換一個更安全的密碼。",
+    "passwordNumericOnly": "密碼不能全為數字。"
   },
   "merchantCouponCard": {
     "discount": "優惠內容",
@@ -265,6 +278,7 @@
     "successTitle": "付款成功 🎉",
     "successMessage": "感謝您升級為 VIP 商家！",
     "orderId": "訂單編號：",
+    "vipExpiry": "VIP 有效期限：",
     "backHome": "返回首頁",
     "errorTitle": "付款資訊異常",
     "noOrderId": "找不到訂單資訊，請確認付款是否成功。",

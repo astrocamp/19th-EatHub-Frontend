@@ -4,7 +4,7 @@
   
   <div class="flex-1   px-4 pt-28">
     <!-- 返回按鈕 -->
-    <button class="btn btn-sm btn-outline mb-4 rounded-xl text-base md:text-xl py-5 text-neutral" @click="goBack">← 返回</button>
+    <button class="btn btn-sm btn-outline mb-4 rounded-xl text-base md:text-xl py-5 text-neutral" @click="goBack">←  {{ t('couponUsage.back') }}</button>
 
     <!-- Coupon券名稱 -->
     <h1 class="text-2xl font-bold mb-4 text-neutral md:text-3xl">{{ couponTitle }}</h1>
@@ -14,7 +14,7 @@
       <input
         v-model="searchKeyword"
         type="text"
-        placeholder="搜尋使用者 Email"
+        :placeholder="t('couponUsage.searchEmailPlaceholder')"
         class="input input-bordered w-full"
       />
     </div>
@@ -24,9 +24,13 @@
       <table class="table table-bordered w-full border border-gray-300">
         <thead class="bg-gray-100 border-b border-gray-300">
           <tr>
-            <th class="text-left border-r border-gray-300">流水號</th>
-            <th class="text-left border-r border-gray-300">使用者 Email</th>
-            <th class="text-center">使用狀態</th>
+            <th class="text-left border-r border-gray-300">
+              {{ t('couponUsage.table.uuid') }}
+            </th>
+            <th class="text-left border-r border-gray-300">
+              {{ t('couponUsage.table.userEmail') }}
+            </th>
+            <th class="text-center">{{ t('couponUsage.table.status') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +48,9 @@
                 class="badge"
                 :class="usage.isUsed ? 'badge-success' : 'badge-outline'"
               >
-                {{ usage.isUsed ? '已使用' : '未使用' }}
+                {{
+                  usage.isUsed ? t('couponUsage.used') : t('couponUsage.unused')
+                }}
               </span>
             </td>
           </tr>
@@ -60,9 +66,12 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import Footer from '@/components/Footer.vue';
 import axios from '@/axios';
+
+const { t } = useI18n();
 
 const route = useRoute();
 const router = useRouter();
@@ -85,7 +94,7 @@ onMounted(async () => {
     const status = err.response?.status;
 
     if (status === 403) {
-      alert('無觀看權限');
+      alert(t('alert.noPermission'));
       router.push({ name: 'MerchantDashboard' });
     } else {
       router.replace({ name: 'NotFound' });
@@ -96,7 +105,7 @@ onMounted(async () => {
 const filteredUsages = computed(() => {
   if (!searchKeyword.value) return usages.value;
   return usages.value.filter((usage) =>
-    usage.user.toLowerCase().includes(searchKeyword.value.toLowerCase())
+    usage.user.toLowerCase().includes(searchKeyword.value.toLowerCase()),
   );
 });
 </script>
