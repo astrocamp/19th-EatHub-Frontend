@@ -381,7 +381,7 @@ const toggleFavorite = async () => {
 const navigateToAddress = () => {
   if (placeId.value) {
     window.open(
-      `https://www.google.com/maps/place/?q=place_id:${placeId.value}`,
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name)}&query_place_id=${placeId.value}`,
       '_blank',
     );
   } else if (restaurant.latitude && restaurant.longitude) {
