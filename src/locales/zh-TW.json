@@ -293,7 +293,7 @@
     "noPlans": "目前尚未開放購買方案，請稍後再試。",
     "paymentMethod": "選擇付款方式",
     "linePay": "LINEPAY",
-    "ecpay": "綠界支付（未開放）",
+    "ecpay": "綠界支付",
     "goToPayment": "前往付款",
     "close": "關閉",
     "onlyLinePay": "目前僅支援 LINEPAY，綠界尚未開放",
