@@ -2,7 +2,7 @@
   <div>
     <Navbar></Navbar>
     <section
-      class="min-h-screen flex items-center justify-center bg-base-200 p-6"
+      class="min-h-screen flex items-center justify-center bg-base-200 p-6 pt-28"
     >
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">

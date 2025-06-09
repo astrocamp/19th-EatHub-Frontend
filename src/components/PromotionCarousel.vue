@@ -3,7 +3,7 @@
     v-if="promotions.length > 0"
     class="relative overflow-hidden max-w-screen-lg mx-auto"
   >
-    <h3 class="text-base md:text-2xl font-bold px-4">
+    <h3 class="text-lg md:text-2xl font-bold px-4">
       {{ t('promotionCarousel.latestPromotions') }}
     </h3>
     <div
