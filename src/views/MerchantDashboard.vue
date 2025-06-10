@@ -14,7 +14,18 @@
             {{ t('merchantDashboard.regularBadge') }}
           </span>
     </h1>
+    <!-- 未綁定餐廳提示 -->
+    <div
+      v-if="!restaurantName || restaurantName.trim().length === 0"
+      class="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-lg mb-6 flex items-center justify-between"
+    >
+      <div class="text-sm md:text-base">
+        <font-awesome-icon :icon="['fa-solid', 'fa-circle-exclamation']" class="mr-2" />
+        {{ t('merchantDashboard.noRestaurant') }}
+      </div>
 
+    </div>
+    
     <!-- VIP 顯示區塊 -->
     <div v-if="role === 'vip_merchant'" class="mb-4 text-sm text-green-700">
       <span
