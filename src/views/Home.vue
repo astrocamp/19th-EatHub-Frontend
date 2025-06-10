@@ -34,10 +34,10 @@
 
         <!-- 全選 / 全取消 -->
         <div class="flex justify-end gap-2 mb-4">
-          <button class="btn" @click="selectAll">
+          <button class="btn rounded-xl" @click="selectAll">
             {{ t('index.selectAll') }}
           </button>
-          <button class="btn" @click="clearAll">
+          <button class="btn rounded-xl" @click="clearAll">
             {{ t('index.clearAll') }}
           </button>
         </div>
@@ -49,7 +49,7 @@
           <button
             v-for="item in currentOptions"
             :key="item"
-            class="btn btn-sm md:btn-lg rounded-full font-normal"
+            class="btn md:btn-lg rounded-full font-normal text-base md:text-lg"
             @click="toggleCurrent(item)"
             :class="{
               'bg-[var(--color-neutral)] text-white':
