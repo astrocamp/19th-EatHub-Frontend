@@ -121,7 +121,7 @@ const form = ref({
 
 onMounted(() => {
   if (!auth.user || !['merchant', 'vip_merchant'].includes(auth.user.role)) {
-    alert.trigger(t('alert.merchantOnly', 'warning'));
+    alert.trigger(t('alert.merchantOnly'), 'warning');
     router.push('/merchant/login');
   }
 });
@@ -129,16 +129,16 @@ onMounted(() => {
 const submit = async () => {
   try {
     await axios.post('/coupons/', form.value);
-    alert.trigger(t('alert.createSuccess', 'success'));
+    alert.trigger(t('alert.createSuccess'), 'success');
     router.push({ name: 'MerchantDashboard' });
   } catch (error) {
     if (error.response?.status === 403) {
-      alert.trigger(error.response.data.error || t('alert.createForbidden', 'warning'));
-    } else if (error.response?.data) {
+      alert.trigger(error.response.data.error || t('alert.createForbidden'), 'warning');
+    } else if (error.response?.data ) {
       const messages = Object.values(error.response.data).flat().join('\n');
       alert.trigger(messages, 'warning');
     } else {
-      alert.trigger(t('alert.createFailed', 'error'));
+      alert.trigger(t('alert.createFailed'), 'error');
     }
   }
 };
