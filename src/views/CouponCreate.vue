@@ -134,7 +134,7 @@ const submit = async () => {
   } catch (error) {
     if (error.response?.status === 403) {
       alert.trigger(error.response.data.error || t('alert.createForbidden'), 'warning');
-    } else if (error.response?.data ) {
+    } else if (error.response?.data && typeof error.response.data === 'object') {
       const messages = Object.values(error.response.data).flat().join('\n');
       alert.trigger(messages, 'warning');
     } else {
