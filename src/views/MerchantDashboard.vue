@@ -63,7 +63,7 @@
     <!-- Tab 與新增按鈕 -->
     <div class="flex justify-between items-center mb-3">
       <!-- 左側：Tab 切換按鈕 -->
-      <div class="flex gap-2 md:gap-4">
+      <div class="flex gap-2 md:gap-4" v-if="restaurantName && restaurantName.trim().length > 0">
         <button
           class="btn text-neutral border-neutral text-base md:text-lg rounded-xl"
           :class="activeTab === 'coupon' ? 'btn-secondary' : 'btn-outline'"
