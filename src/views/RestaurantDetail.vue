@@ -27,7 +27,6 @@
       <div class="flex items-center">
         <h1
           class="text-2xl md:text-4xl font-bold md:mt-4 mb-2
-         md:truncate md:max-w-none
          break-words"
         >
           {{ restaurant.name }}
