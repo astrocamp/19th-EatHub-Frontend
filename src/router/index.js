@@ -5,7 +5,11 @@ import axios from '@/axios';
 import NotFound from '@/views/NotFound.vue';
 
 const routes = [
-  { path: '/', component: () => import('../views/Home.vue') },
+  { 
+    path: '/', 
+    component: () => import('../views/Home.vue'), 
+    meta: { requiresNotMerchant: true } 
+  },
   { path: '/login', component: () => import('../views/Login.vue') },
   { path: '/signup', component: () => import('../views/Signup.vue') },
   { path: '/forgot-password', component: () => import('../views/ForgotPassword.vue')},
@@ -22,25 +26,27 @@ const routes = [
   {
     path: '/users/recent',
     component: () => import('../views/MyRecentViewedPage.vue'),
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, requiresNotMerchant: true },
   },
   {
     path: '/users/favorites',
     component: () => import('../views/MyFavorite.vue'),
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, requiresNotMerchant: true },
   },
   {
     path: '/users/coupons',
     component: () => import('../views/MyCoupon.vue'),
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true, requiresNotMerchant: true },
   },
   {
     path: '/restaurants/:id',
     component: () => import('../views/RestaurantDetail.vue'),
+    meta: { requiresNotMerchant: true },
   },
   {
     path: '/restaurants',
     component: () => import('../views/RestaurantsList.vue'),
+    meta: { requiresNotMerchant: true },
   },
   {
     path: '/merchant/dashboard',
@@ -118,6 +124,21 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
+
+  if (to.meta.requiresNotMerchant) {
+    try {
+      await axios.get('/auth/me');
+    } catch {
+      return next();
+    }
+    if (
+      authStore.user &&
+      (authStore.user.role === 'merchant' || authStore.user.role === 'vip_merchant')
+    ) {
+      return next('/merchant/dashboard');
+    }
+    return next();
+  }
 
   if (!to.meta.requiresAuth) {
     return next();
