@@ -68,19 +68,19 @@
           {{ t('merchantDashboard.tab.promotion') }}
         </button>
       </div>   
-      </div>
-      <div class="flex items-center flex-start gap-4">
-        <button
-          class="btn rounded-xl bg-gray-300 text-gray-500 text-sm md:text-lg hover:bg-white"
-          @click="handleCreateClick"
-        >
-        {{
-          activeTab === 'coupon'
-            ? t('merchantDashboard.create.coupon')
-            : t('merchantDashboard.create.promotion')
-        }}
-        </button>
-      </div>
+    </div>
+    <div class="flex items-center flex-start gap-4" v-if="restaurantName && restaurantName.trim().length > 0">
+      <button
+        class="btn rounded-xl bg-gray-300 text-gray-500 text-sm md:text-lg hover:bg-white"
+        @click="handleCreateClick"
+      >
+      {{
+        activeTab === 'coupon'
+          ? t('merchantDashboard.create.coupon')
+          : t('merchantDashboard.create.promotion')
+      }}
+      </button>
+    </div>
     <!-- 清單元件切換 -->
     <component
       :is="activeTab === 'coupon' ? MerchantCouponList : MerchantPromotionList"
