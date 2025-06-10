@@ -3,6 +3,8 @@
   <div>
     <input type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
+      <!-- 添加遮罩層，點擊時關閉彈窗 -->
+      <label for="my-modal" class="modal-backdrop"></label>
       <div class="modal-box">
         <!-- Tabs -->
         <div role="tablist" class="tabs tabs-bordered mb-4">
@@ -76,6 +78,8 @@
       v-model="showValidationModal"
     />
     <div class="modal">
+      <!-- 為驗證彈窗也添加遮罩層 -->
+      <div class="modal-backdrop" @click="closeValidationModal"></div>
       <div class="modal-box">
         <h3 class="font-bold text-lg text-error mb-4">
           <font-awesome-icon
@@ -99,7 +103,6 @@
           </ul>
         </div>
         <div class="modal-action">
-     
           <button class="btn btn-outline text-base md:text-xl rounded-xl" @click="closeValidationModal">
             {{ t('index.close') }}
           </button>
@@ -109,6 +112,8 @@
 
     <input type="checkbox" id="food-modal" class="modal-toggle" />
     <div class="modal">
+      <!-- 為食物彈窗也添加遮罩層 -->
+      <label for="food-modal" class="modal-backdrop"></label>
       <div class="modal-box w-11/12 max-w-2xl">
         <h3 class="font-bold text-lg mb-4">
           {{ t('index.chooseDishOptions') }}
@@ -393,6 +398,14 @@ const icons = [
 let flavorInterval, mainInterval, typeInterval;
 
 const runSlotMachine = async () => {
+  // 先驗證選項是否完整
+  const validation = validateSelections();
+  
+  if (!validation.isValid) {
+    showValidationModal.value = true;
+    return;
+  }
+
   flavorInterval = setInterval(() => {
     flavorIcon.value = icons[Math.floor(Math.random() * icons.length)];
   }, 100);
