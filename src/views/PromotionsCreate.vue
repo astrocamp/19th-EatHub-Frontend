@@ -105,7 +105,7 @@ const alert = useAlertStore();
 onMounted(() => {
   form.value.started_at = today;
   if (!auth.user || !['merchant', 'vip_merchant'].includes(auth.user.role)) {
-    alert.trigger(t('promotionCreate.authWarning', 'warning'));
+    alert.trigger(t('promotionCreate.authWarning'), 'warning');
     router.push('/');
   } else {
     isMerchant.value = true;
@@ -137,7 +137,7 @@ async function submitPromotion() {
       },
     });
 
-    alert.trigger(t('promotionCreate.createSuccess', 'success'));
+    alert.trigger(t('promotionCreate.createSuccess'), 'success');
     form.value.title = '';
     form.value.description = '';
     form.value.image = null;
@@ -157,7 +157,7 @@ async function submitPromotion() {
       }
       alert.trigger(t('promotionCreate.createFailedPrefix') + '\n' + message, 'error');
     } else {
-      alert.trigger(t('promotionCreate.genericError', 'error'));
+      alert.trigger(t('promotionCreate.genericError'), 'error');
     }
   }
 }
