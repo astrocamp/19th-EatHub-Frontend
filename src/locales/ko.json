@@ -301,6 +301,19 @@
     "onlyLinePay": "현재 LINEPAY만 지원하며, 녹계는 아직 개방되지 않았습니다",
     "createOrderError": "주문 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요"
   },
+  "restaurantBindModal": {
+    "title": "레스토랑 연결 절차 안내",
+    "intro": "EatHub 상점 기능을 활성화하려면 다음 정보를 제공해 주세요:",
+    "item": {
+      "business": "사업자 등록증 (또는 회사 등록 사본)",
+      "name": "매장 이름",
+      "address": "매장 주소",
+      "phone": "연락처 전화번호",
+      "email": "연락처 이메일"
+    },
+    "contact": "다음 이메일로 정보를 보내 주세요: <a href='mailto:eathubtw@gmail.com' class='underline text-blue-600'>eathubtw@gmail.com</a>. 1~3 영업일 이내에 연결 절차를 지원해 드립니다.",
+    "close": "닫기"
+  },
   "couponConfirm": {
     "title": "쿠폰 번호:",
     "status": "상태:",

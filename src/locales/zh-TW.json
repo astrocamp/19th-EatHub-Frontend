@@ -302,17 +302,17 @@
     "createOrderError": "建立訂單時發生錯誤，請稍後再試"
   },
   "restaurantBindModal": {
-  "title": "餐廳綁定步驟說明",
-  "intro": "若需開通 EatHub 店家功能，請提供以下資訊：",
-  "item": {
-    "business": "營業登記資料（或公司登記影本）",
-    "name": "店家名稱",
-    "address": "店家地址",
-    "phone": "聯絡電話",
-    "email": "聯絡信箱"
-  },
-  "contact": "請將資料寄至：<a href='mailto:eathubtw@gmail.com' class='underline text-blue-600'>eathubtw@gmail.com</a>，我們將於 1～3 個工作天內協助您完成綁定。",
-  "close": "關閉"
+    "title": "餐廳綁定步驟說明",
+    "intro": "若需開通 EatHub 店家功能，請提供以下資訊：",
+    "item": {
+      "business": "營業登記資料（或公司登記影本）",
+      "name": "店家名稱",
+      "address": "店家地址",
+      "phone": "聯絡電話",
+      "email": "聯絡信箱"
+    },
+    "contact": "請將資料寄至：<a href='mailto:eathubtw@gmail.com' class='underline text-blue-600'>eathubtw@gmail.com</a>，我們將於 1～3 個工作天內協助您完成綁定。",
+    "close": "關閉"
   },
   "couponConfirm": {
     "title": "優惠券序號：",
