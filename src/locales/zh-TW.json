@@ -209,6 +209,7 @@
     "upgradeNow": "立即續約",
     "regularHint": "您目前為 <strong>一般商家</strong>，升級為 VIP 可發佈更多優惠券與活動",
     "upgradeButton": "立即升級！",
+    "noRestaurant": "您目前尚未綁定餐廳，請聯繫EatHub 團隊綁定餐廳",
     "tab": {
       "coupon": "優惠券",
       "promotion": "商家動態"
