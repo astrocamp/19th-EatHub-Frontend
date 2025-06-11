@@ -1,5 +1,5 @@
 <template>
-  <Navbar class="w-full" />
+  <component :is="isMerchant ? MerchantNavBar : Navbar" class="w-full" />
   <div class="w-full pt-20">
     <!-- 餐廳主圖片 -->
     <div class="relative w-full overflow-hidden mb-4">
@@ -37,7 +37,7 @@
           :restaurant-name="restaurant.name"
           :restaurant-rating="restaurant.googleRating || '4.5'"
         />
-        <button @click="toggleFavorite" class="btn px-6 rounded-xl bg-gray-200">
+        <button v-if="!isMerchant" @click="toggleFavorite" class="btn px-6 rounded-xl bg-gray-200">
           <font-awesome-icon
             :icon="[isFavorite ? 'fas' : 'far', 'heart']"
             :class="isFavorite ? 'text-red-500' : 'text-gray-400'"
@@ -127,6 +127,7 @@
         v-if="coupons.length"
         :coupons="coupons"
         :claimedStatus="claimedStatus"
+        :isMerchant="isMerchant"
         class="mb-6"
       />
     </div>
@@ -152,6 +153,7 @@
           >
         </h3>
         <button
+          v-if="!isMerchant"
           :disabled="hasReviewed"
           @click="handleAddReviewClick"
           class="btn btn-sm  border bg-gray-100 border-gray-200 text-gray-500 rounded-xl px-4 md:px-6 cursor-pointer hover:bg-gray-300 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base py-2 md:py-5 md:mt-6"
@@ -255,6 +257,7 @@ import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
 import axios from '@/axios';
 import Navbar from '@/components/Navbar.vue';
+import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import Footer from '@/components/Footer.vue';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed.vue';
 import PromotionCarousel from '@/components/PromotionCarousel.vue';
@@ -286,6 +289,10 @@ const showModal = ref(false);
 const hasReviewed = ref(false);
 const router = useRouter();
 
+const isMerchant = computed(() => {
+  return user.value?.role === 'merchant' || user.value?.role === 'vip_merchant';
+});
+
 const displayedCount = ref(5);
 const displayedReviews = computed(() =>
   reviews.value.slice(0, displayedCount.value),
@@ -299,10 +306,20 @@ const todayKey = computed(() => {
 });
 
 const formattedOpenHours = computed(() => {
+  const weekOrder = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+  ];
+
   const result = {};
-  for (const [key, value] of Object.entries(openHours)) {
-    result[key] = value || t('common.notProvided');
-  }
+  weekOrder.forEach((key) => {
+    result[key] = openHours[key] || t('common.notProvided');
+  });
   return result;
 });
 
