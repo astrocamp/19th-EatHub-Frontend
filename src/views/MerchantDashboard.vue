@@ -19,7 +19,7 @@
       v-if="!restaurantName || restaurantName.trim().length === 0"
       class="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-lg mb-6 flex items-center justify-between"
     >
-      <div class="text-sm md:text-base">
+      <div class="text-base md:text-lg">
         <font-awesome-icon :icon="['fa-solid', 'fa-circle-exclamation']" class="mr-2" />
         {{ t('merchantDashboard.noRestaurant') }}
       </div>

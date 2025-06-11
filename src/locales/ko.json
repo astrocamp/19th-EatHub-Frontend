@@ -26,6 +26,7 @@
     "logout": "로그아웃",
     "signup": "회원가입",
     "login": "로그인",
+    "myStore": "내 가게",
     "merchantSignup": "매장 등록",
     "merchantLogin": "매장 로그인",
     "logoutSuccess": "로그아웃 완료"

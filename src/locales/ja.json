@@ -26,6 +26,7 @@
     "logout": "ログアウト",
     "signup": "新規登録",
     "login": "ログイン",
+    "myStore": "私の店",
     "merchantSignup": "店舗登録",
     "merchantLogin": "店舗ログイン",
     "logoutSuccess": "ログアウトが成功しました"
@@ -209,7 +210,7 @@
     "upgradeNow": "今すぐ更新",
     "regularHint": "現在は<strong>一般店舗</strong>です。VIP にアップグレードすると、より多くのクーポンやイベントを発行できます。",
     "upgradeButton": "今すぐアップグレード！",
-    "noRestaurant": "レストランがまだ紐付けられていません。EatHubチームに連絡して、レストランの紐付けを依頼してください。",
+    "noRestaurant": "レストランがまだ紐付けられていません。EatHub チームに連絡して、レストランの紐付けを依頼してください。",
     "tab": {
       "coupon": "クーポン",
       "promotion": "店舗のお知らせ"

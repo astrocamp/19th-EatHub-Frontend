@@ -9,7 +9,7 @@
             <img
               src="@/assets/images/logo_w.png"
               alt="Logo"
-              class="w-40 mr-2 mt-4"
+              class="w-40 mr-2"
             />
           </div>
 

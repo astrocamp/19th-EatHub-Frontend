@@ -12,16 +12,25 @@
         />
       </RouterLink>
     </div>
-    <div class="flex items-center space-x-3">
-      <RouterLink
-        :to="{ path: `/restaurants/${storeId}` }"
-        class="bg-blue-500 text-white text-sm font-semibold px-4 py-1 rounded hover:bg-blue-600 transition inline-block text-center"
-      >
-        {{ t('navbar.myStore') || '我的店家' }}
-      </RouterLink>
+    <div class="flex items-center space-x-3 md:pr-10">
+        <RouterLink
+  :to="{ path: `/restaurants/${storeId}` }"
+  class="bg-primary text-white text-sm font-semibold px-4 py-2 hover:bg-neutral transition text-center cursor-pointer rounded-xl justify-center inline-flex items-center gap-1"
+>
+  <!-- 手機版：只顯示圖示 -->
+  <font-awesome-icon 
+    :icon="['fas', 'shop']" 
+    class="md:hidden"
+  />
+  
+  <!-- 平板和電腦版：只顯示文字 -->
+  <span class="hidden md:inline">
+    {{ t('navbar.myStore') }}
+  </span>
+</RouterLink>
       
       <button
-        class="bg-gray-300 text-gray-800 text-sm font-semibold px-4 py-1 rounded hover:bg-gray-400 transition"
+        class=" bg-gray-300 text-gray-800 text-xs md:text-sm font-semibold px-4 py-2  hover:bg-gray-400 transition cursor-pointer rounded-xl whitespace-nowrap"
         @click="handleLogout"
       >
         {{ t('navbar.logout') }}
