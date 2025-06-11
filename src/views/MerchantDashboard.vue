@@ -24,6 +24,18 @@
         {{ t('merchantDashboard.noRestaurant') }}
       </div>
 
+      <!-- 新增查看說明的 icon -->
+      <button
+        @click="showBindModal = true"
+        class="ml-3 px-3 py-1 rounded-md bg-primary text-white hover:bg-blue-600 text-sm md:text-base"
+        title="{{ t('merchantDashboard.checkRestaurantBindStep') }}"
+      >
+        {{ t('merchantDashboard.checkRestaurantBindStep') }}
+      </button>
+
+      <!-- 綁定說明 Modal -->
+      <RestaurantBindModal v-if="showBindModal" @close="showBindModal = false" />
+
     </div>
     
     <!-- VIP 顯示區塊 -->
@@ -121,6 +133,7 @@ import MerchantCouponList from '@/components/MerchantCouponList.vue';
 import MerchantPromotionList from '@/components/MerchantPromotionList.vue';
 import UpgradeModal from '@/components/MerchantUpgradeModal.vue';
 import { useI18n } from 'vue-i18n';
+import RestaurantBindModal from '@/components/RestaurantBindModal.vue';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -179,7 +192,7 @@ const handleCreateClick = () => {
     : '/merchant/promotions/create';
   router.push(routePath);
 };
-
+const showBindModal = ref(false);
 const showUpgradeModal = ref(false);
 const upgradeMessage = ref(null);
 const openUpgradeModal = (message = null) => {
