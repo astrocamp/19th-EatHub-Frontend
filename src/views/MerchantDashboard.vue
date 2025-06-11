@@ -27,7 +27,7 @@
       <!-- 新增查看說明的 icon -->
       <button
         @click="showBindModal = true"
-        class="ml-3 px-3 py-1 rounded-md bg-primary text-white hover:bg-blue-600 text-sm md:text-base"
+        class="ml-3 px-3 py-1 rounded-md bg-primary text-white hover:brightness-110 text-sm md:text-base"
         title="{{ t('merchantDashboard.checkRestaurantBindStep') }}"
       >
         {{ t('merchantDashboard.checkRestaurantBindStep') }}
