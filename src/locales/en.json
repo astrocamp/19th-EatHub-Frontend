@@ -210,6 +210,7 @@
     "regularHint": "You are currently a <strong>regular store</strong>. Upgrade to VIP to publish more coupons and promotions.",
     "upgradeButton": "Upgrade Now!",
     "noRestaurant": "You have not linked a restaurant yet.Please contact EatHub team to link your restaurant.",
+    "checkRestaurantBindStep":"View Binding Steps",
     "tab": {
       "coupon": "Coupons",
       "promotion": "Merchant Updates"

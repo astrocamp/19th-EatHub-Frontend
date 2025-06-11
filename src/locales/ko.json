@@ -210,6 +210,7 @@
     "regularHint": "현재는 <strong>일반 매장</strong>입니다. VIP로 업그레이드하면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다.",
     "upgradeButton": "지금 업그레이드!",
     "noRestaurant": "현재 연결된 레스토랑이 없습니다. EatHub 팀에 문의하여 레스토랑을 연결하세요.",
+    "checkRestaurantBindStep": "연결 절차 보기",
     "tab": {
       "coupon": "쿠폰",
       "promotion": "매장 소식"

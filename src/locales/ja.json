@@ -210,6 +210,7 @@
     "regularHint": "現在は<strong>一般店舗</strong>です。VIP にアップグレードすると、より多くのクーポンやイベントを発行できます。",
     "upgradeButton": "今すぐアップグレード！",
     "noRestaurant": "レストランがまだ紐付けられていません。EatHubチームに連絡して、レストランの紐付けを依頼してください。",
+    "checkRestaurantBindStep": "連携手順を確認",
     "tab": {
       "coupon": "クーポン",
       "promotion": "店舗のお知らせ"
