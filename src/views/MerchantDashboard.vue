@@ -24,7 +24,19 @@
         {{ t('merchantDashboard.noRestaurant') }}
       </div>
 
+      <!-- 新增查看說明的 icon -->
+      <button
+        @click="showBindModal = true"
+        class="ml-3 px-3 py-1 rounded-md bg-primary text-white hover:bg-blue-600 text-sm md:text-base"
+        title="{{ t('merchantDashboard.checkRestaurantBindStep') }}"
+      >
+        {{ t('merchantDashboard.checkRestaurantBindStep') }}
+      </button>
 
+      <!-- 綁定說明 Modal -->
+      <RestaurantBindModal v-if="showBindModal" @close="showBindModal = false" />
+
+    </div>
     
     <!-- VIP 顯示區塊 -->
     <div v-if="role === 'vip_merchant'" class="mb-4 text-sm text-green-700">
