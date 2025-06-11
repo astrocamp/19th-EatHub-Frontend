@@ -1,5 +1,5 @@
 <template>
-  <Navbar></Navbar>
+  <component :is="isMerchant ? MerchantNavBar : Navbar" class="w-full" />
   <div>
     <input type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
@@ -222,6 +222,7 @@
 
 <script setup>
 import Navbar from '@/components/Navbar.vue';
+import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import Footer from '@/components/Footer.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
 import Slogan from '@/components/Slogan.vue';
@@ -231,6 +232,8 @@ import axios from '@/axios';
 import { useRestaurantStore } from '@/stores/restaurant';
 import { useAlertStore } from '@/stores/alert';
 import { useI18n } from 'vue-i18n';
+import { useAuthStore } from '../stores/auth';
+import { storeToRefs } from 'pinia';
 
 const { t } = useI18n();
 const alert = useAlertStore();
@@ -242,6 +245,8 @@ const restaurants = computed(() => store.restaurants.slice(0, 3));
 const dishResult = computed(() => store.dishResult);
 const isLoading = ref(false);
 const showValidationModal = ref(false);
+const auth = useAuthStore();
+const { user } = storeToRefs(auth);
 
 onMounted(() => {
   if (navigator.geolocation) {
@@ -257,6 +262,10 @@ onMounted(() => {
   } else {
     error.value = '此瀏覽器不支援 Geolocation';
   }
+});
+
+const isMerchant = computed(() => {
+  return user.value?.role === 'merchant' || user.value?.role === 'vip_merchant';
 });
 
 const flavorsOptions = [

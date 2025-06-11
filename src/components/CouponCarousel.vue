@@ -52,6 +52,7 @@
           </div>
 
           <button
+            v-if="!props.isMerchant"
             @click="claimCoupon(coupon.uuid)"
             :class="[
               'btn w-full rounded-lg mb-2 border transition-colors duration-300 text-base md:text-lg cursor-pointer ',
@@ -96,6 +97,7 @@ const alert = useAlertStore();
 const props = defineProps({
   coupons: { type: Array, required: true },
   claimedStatus: { type: Object, default: () => ({}) },
+  isMerchant: { type: Boolean, default: false },
 });
 
 const currentIndex = ref(0);
