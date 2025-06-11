@@ -2,9 +2,9 @@
   <footer class="bg-[#573921] text-white py-12 px-8">
     <div class="max-w-screen-lg mx-auto">
       <!-- 主要內容區域 -->
-      <div class="grid grid-rows-1 md:grid-cols-4 gap-8 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <!-- Logo 和聯絡資訊 -->
-        <div class="row-span-1">
+        <div class="col-span-1 md:col-span-1">
           <div class="flex items-center mb-6">
             <img
               src="@/assets/images/logo_w.png"
@@ -23,68 +23,66 @@
           </div>
         </div>
 
-        <!-- 關於我們 -->
-        <div class="row-span-1 md:mt-6">
-          <h4 class="font-bold mb-4 text-base">
-            {{ t('footer.about') || '關於我們' }}
-          </h4>
-          <ul class="text-sm space-y-2">
-            <li>
-              <a href="#" class="hover:text-orange-300 transition-colors">{{
-                t('footer.services')
-              }}</a>
-            </li>
-            <li>
-              <a
-                href="mailto:eathubtw@gmail.com"
-                class="hover:text-orange-300 transition-colors"
-              >
-                {{ t('footer.contact') }}
-              </a>
-            </li>
-            <li>
-              <RouterLink
-                to="/terms-of-service"
-                class="hover:text-orange-300 transition-colors"
-              >
-                {{ t('footer.terms') }}
-              </RouterLink>
-            </li>
-            <li>
-              <RouterLink
-                to="/privacy-policy"
-                class="hover:text-orange-300 transition-colors"
-              >
-                {{ t('footer.privacy') }}
-              </RouterLink>
-            </li>
-          </ul>
+        <!-- 手機版：關於我們和社群媒體在同一排 -->
+        <div class="col-span-1 grid grid-cols-2 gap-4 md:contents">
+          <!-- 關於我們 -->
+          <div class="md:mt-6">
+            <h4 class="font-bold mb-4 text-base">
+              {{ t('footer.about') || '關於我們' }}
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="mailto:eathubtw@gmail.com"
+                  class="hover:text-orange-300 transition-colors"
+                >
+                  {{ t('footer.contact') }}
+                </a>
+              </li>
+              <li>
+                <RouterLink
+                  to="/terms-of-service"
+                  class="hover:text-orange-300 transition-colors"
+                >
+                  {{ t('footer.terms') }}
+                </RouterLink>
+              </li>
+              <li>
+                <RouterLink
+                  to="/privacy-policy"
+                  class="hover:text-orange-300 transition-colors"
+                >
+                  {{ t('footer.privacy') }}
+                </RouterLink>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 社群媒體 -->
+          <div class="md:mt-6">
+            <h4 class="font-bold mb-4 text-base">
+              {{ t('footer.socialMedia') || '社群媒體' }}
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a href="#" class="hover:text-orange-300 transition-colors"
+                  >Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-orange-300 transition-colors"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-orange-300 transition-colors">X</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <!-- 社群媒體 -->
-        <div class="row-span-1 md:mt-6">
-          <h4 class="font-bold mb-4 text-base">
-            {{ t('footer.socialMedia') || '社群媒體' }}
-          </h4>
-          <ul class="text-sm space-y-2">
-            <li>
-              <a href="#" class="hover:text-orange-300 transition-colors"
-                >Facebook</a
-              >
-            </li>
-            <li>
-              <a href="#" class="hover:text-orange-300 transition-colors"
-                >Instagram</a
-              >
-            </li>
-            <li>
-              <a href="#" class="hover:text-orange-300 transition-colors">X</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 語言選擇 -->
-        <div class="row-span-1 md:mt-6">
+        <!-- 語言選擇 - 手機版會在最下面 -->
+        <div class="col-span-1 md:col-span-1 md:mt-6">
           <h4 class="font-bold mb-4 text-base">
             {{ t('footer.language') || '語言選擇' }}
           </h4>
