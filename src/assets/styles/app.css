@@ -6,3 +6,6 @@
   --color-secondary: rgb(249, 240, 209);
   --color-neutral: rgb(87, 57, 33);
 }
+button {
+  @apply cursor-pointer;
+}

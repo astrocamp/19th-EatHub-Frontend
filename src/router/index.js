@@ -5,11 +5,7 @@ import axios from '@/axios';
 import NotFound from '@/views/NotFound.vue';
 
 const routes = [
-  { 
-    path: '/', 
-    component: () => import('../views/Home.vue'), 
-    meta: { requiresNotMerchant: true } 
-  },
+  { path: '/', component: () => import('../views/Home.vue'),},
   { path: '/login', component: () => import('../views/Login.vue') },
   { path: '/signup', component: () => import('../views/Signup.vue') },
   { path: '/forgot-password', component: () => import('../views/ForgotPassword.vue')},
@@ -41,7 +37,6 @@ const routes = [
   {
     path: '/restaurants/:id',
     component: () => import('../views/RestaurantDetail.vue'),
-    meta: { requiresNotMerchant: true },
   },
   {
     path: '/restaurants',
