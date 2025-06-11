@@ -5,11 +5,17 @@ import axios from '@/axios';
 import NotFound from '@/views/NotFound.vue';
 
 const routes = [
-  { path: '/', component: () => import('../views/Home.vue'),},
+  { path: '/', component: () => import('../views/Home.vue') },
   { path: '/login', component: () => import('../views/Login.vue') },
   { path: '/signup', component: () => import('../views/Signup.vue') },
-  { path: '/forgot-password', component: () => import('../views/ForgotPassword.vue')},
-  { path: '/reset-password', component: () => import('../views/ResetPassword.vue')},
+  {
+    path: '/forgot-password',
+    component: () => import('../views/ForgotPassword.vue'),
+  },
+  {
+    path: '/reset-password',
+    component: () => import('../views/ResetPassword.vue'),
+  },
   {
     path: '/merchant/signup',
     component: () => import('../views/MerchantSignup.vue'),
@@ -120,16 +126,17 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
 
+  let user = authStore.user;
+
+  try {
+    await axios.get('/auth/me');
+  } catch {
+    authStore.clearUser();
+    user = null;
+  }
+
   if (to.meta.requiresNotMerchant) {
-    try {
-      await axios.get('/auth/me');
-    } catch {
-      return next();
-    }
-    if (
-      authStore.user &&
-      (authStore.user.role === 'merchant' || authStore.user.role === 'vip_merchant')
-    ) {
+    if (user && (user.role === 'merchant' || user.role === 'vip_merchant')) {
       return next('/merchant/dashboard');
     }
     return next();
@@ -139,26 +146,19 @@ router.beforeEach(async (to, from, next) => {
     return next();
   }
 
-  try {
-    await axios.get('/auth/me');
-
-    if (to.meta.requiresMerchant) {
-      if (
-        authStore.user &&
-        (authStore.user.role === 'vip_merchant' ||
-          authStore.user.role === 'merchant')
-      ) {
-        return next();
-      } else {
-        return next('/');
-      }
-    } else {
-      return next();
-    }
-  } catch {
-    authStore.clearUser();
+  if (!user) {
     return next('/login');
   }
+
+  if (to.meta.requiresMerchant) {
+    if (user.role === 'merchant' || user.role === 'vip_merchant') {
+      return next();
+    } else {
+      return next('/');
+    }
+  }
+
+  return next();
 });
 
 export default router;
