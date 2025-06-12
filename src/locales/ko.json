@@ -211,6 +211,7 @@
     "regularHint": "현재는 <strong>일반 매장</strong>입니다. VIP로 업그레이드하면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다.",
     "upgradeButton": "지금 업그레이드!",
     "noRestaurant": "현재 연결된 레스토랑이 없습니다. EatHub 팀에 문의하여 레스토랑을 연결하세요.",
+    "checkRestaurantBindStep": "연결 절차 보기",
     "tab": {
       "coupon": "쿠폰",
       "promotion": "매장 소식"
@@ -300,6 +301,20 @@
     "close": "닫기",
     "onlyLinePay": "현재 LINEPAY만 지원하며, 녹계는 아직 개방되지 않았습니다",
     "createOrderError": "주문 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요"
+  },
+  "restaurantBindModal": {
+    "title": "레스토랑 연결 절차 안내",
+    "intro": "회원가입 완료 후 EatHub 매장 기능을 활성화하려면 다음 정보를 제공해 주세요:",
+    "item": {
+      "business": "사업자 등록증 (또는 회사 등록 사본)",
+      "name": "매장 이름",
+      "address": "매장 주소",
+      "phone": "연락처 전화번호",
+      "email": "연락처 이메일"
+    },
+    "contact": "다음 이메일로 정보를 보내 주세요: {email} . ",
+    "bindProcessingTime":" 1 ~ 3 영업일 이내에 연결 절차를 지원해 드립니다.",    
+    "close": "닫기"
   },
   "couponConfirm": {
     "title": "쿠폰 번호:",

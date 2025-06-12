@@ -1,8 +1,10 @@
 <template>
-  <Navbar></Navbar>
+  <component :is="isMerchant ? MerchantNavBar : Navbar" class="w-full" />
   <div>
     <input type="checkbox" id="my-modal" class="modal-toggle" />
     <div class="modal">
+      <!-- 添加遮罩層，點擊時關閉彈窗 -->
+      <label for="my-modal" class="modal-backdrop"></label>
       <div class="modal-box">
         <!-- Tabs -->
         <div role="tablist" class="tabs tabs-bordered mb-4">
@@ -76,6 +78,8 @@
       v-model="showValidationModal"
     />
     <div class="modal">
+      <!-- 為驗證彈窗也添加遮罩層 -->
+      <div class="modal-backdrop" @click="closeValidationModal"></div>
       <div class="modal-box">
         <h3 class="font-bold text-lg text-error mb-4">
           <font-awesome-icon
@@ -99,7 +103,6 @@
           </ul>
         </div>
         <div class="modal-action">
-     
           <button class="btn btn-outline text-base md:text-xl rounded-xl" @click="closeValidationModal">
             {{ t('index.close') }}
           </button>
@@ -109,6 +112,8 @@
 
     <input type="checkbox" id="food-modal" class="modal-toggle" />
     <div class="modal">
+      <!-- 為食物彈窗也添加遮罩層 -->
+      <label for="food-modal" class="modal-backdrop"></label>
       <div class="modal-box w-11/12 max-w-2xl">
         <h3 class="font-bold text-lg mb-4">
           {{ t('index.chooseDishOptions') }}
@@ -217,6 +222,7 @@
 
 <script setup>
 import Navbar from '@/components/Navbar.vue';
+import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import Footer from '@/components/Footer.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
 import Slogan from '@/components/Slogan.vue';
@@ -226,6 +232,8 @@ import axios from '@/axios';
 import { useRestaurantStore } from '@/stores/restaurant';
 import { useAlertStore } from '@/stores/alert';
 import { useI18n } from 'vue-i18n';
+import { useAuthStore } from '../stores/auth';
+import { storeToRefs } from 'pinia';
 
 const { t } = useI18n();
 const alert = useAlertStore();
@@ -237,6 +245,8 @@ const restaurants = computed(() => store.restaurants.slice(0, 3));
 const dishResult = computed(() => store.dishResult);
 const isLoading = ref(false);
 const showValidationModal = ref(false);
+const auth = useAuthStore();
+const { user } = storeToRefs(auth);
 
 onMounted(() => {
   if (navigator.geolocation) {
@@ -252,6 +262,10 @@ onMounted(() => {
   } else {
     error.value = '此瀏覽器不支援 Geolocation';
   }
+});
+
+const isMerchant = computed(() => {
+  return user.value?.role === 'merchant' || user.value?.role === 'vip_merchant';
 });
 
 const flavorsOptions = [
@@ -393,6 +407,14 @@ const icons = [
 let flavorInterval, mainInterval, typeInterval;
 
 const runSlotMachine = async () => {
+  // 先驗證選項是否完整
+  const validation = validateSelections();
+  
+  if (!validation.isValid) {
+    showValidationModal.value = true;
+    return;
+  }
+
   flavorInterval = setInterval(() => {
     flavorIcon.value = icons[Math.floor(Math.random() * icons.length)];
   }, 100);
