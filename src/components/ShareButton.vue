@@ -52,7 +52,7 @@
           <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-2">
             <font-awesome-icon :icon="['fab', 'x-twitter']" class="text-white text-xl" />
           </div>
-          <span class="text-xs text-gray-700">X</span>
+          <span class="text-xs text-gray-700 cursor-pointer">X</span>
         </button>
         
         <!-- 複製連結 -->

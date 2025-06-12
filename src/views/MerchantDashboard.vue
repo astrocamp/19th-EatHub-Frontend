@@ -10,7 +10,7 @@
           <span v-if="role === 'vip_merchant'" class="badge border-primary text-primary">
             <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> VIP
           </span>
-          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-white border border-gray-400 rounded-full whitespace-nowrap">
+          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full whitespace-nowrap">
             {{ t('merchantDashboard.regularBadge') }}
           </span>
     </h1>
