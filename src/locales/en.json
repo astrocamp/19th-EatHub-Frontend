@@ -303,7 +303,7 @@
   },
   "restaurantBindModal": {
     "title": "Restaurant Binding Instructions",
-    "intro": "To activate your EatHub merchant account, please provide the following information:",
+    "intro": "After completing signup , please provide the following information to activate EatHub merchant features:",
     "item": {
       "business": "Business registration document (or company registration copy)",
       "name": "Restaurant name",
@@ -311,7 +311,8 @@
       "phone": "Contact phone number",
       "email": "Contact email"
     },
-    "contact": "Please send the above information to: <a href='mailto:eathubtw@gmail.com' class='underline text-blue-600'>eathubtw@gmail.com</a>. We will assist you with the binding process within 1-3 business days.",
+    "contact": "Please send the above information to: {email}   ",
+    "bindProcessingTime":"We will assist you with the binding process within 1-3 business days.",
     "close": "Close"
   },
   "couponConfirm": {

@@ -303,7 +303,7 @@
   },
   "restaurantBindModal": {
     "title": "レストラン連携手順のご案内",
-    "intro": "EatHub店舗機能を有効にするには、以下の情報をご提供ください：",
+    "intro": "登録完了後、EatHub店舗機能を有効にするために、以下の情報をご提供ください。",
     "item": {
       "business": "営業登録書類（または会社登録のコピー）",
       "name": "店舗名",
@@ -311,7 +311,8 @@
       "phone": "連絡先電話番号",
       "email": "連絡先メールアドレス"
     },
-    "contact": "以下のメールアドレスまで情報をお送りください：<a href='mailto:eathubtw@gmail.com' class='underline text-blue-600'>eathubtw@gmail.com</a>。1～3営業日以内に連携手続きをサポートいたします。",
+    "contact": "以下のメールアドレスまで情報をお送りください：{email} ",
+    "bindProcessingTime":" 1 ~ 3営業日以内に連携手続きをサポートいたします。",
     "close": "閉じる"
   },
   "couponConfirm": {
