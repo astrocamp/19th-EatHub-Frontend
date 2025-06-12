@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <!-- 手機版：關於我們和社群媒體在同一排 -->
+ 
         <div class="col-span-1 grid grid-cols-2 gap-4 md:contents">
           <!-- 關於我們 -->
           <div class="md:mt-6">
@@ -81,7 +81,6 @@
           </div>
         </div>
 
-        <!-- 語言選擇 - 手機版會在最下面 -->
         <div class="col-span-1 md:col-span-1 md:mt-6">
           <h4 class="font-bold mb-4 text-base">
             {{ t('footer.language') || '語言選擇' }}
@@ -104,7 +103,7 @@
         </div>
       </div>
 
-      <!-- 分隔線 -->
+
       <div class="border-t border-white/20 pt-6">
         <div class="text-center text-sm text-white/80">
           © 2025 EatHub. All rights reserved.
