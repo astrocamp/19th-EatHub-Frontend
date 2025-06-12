@@ -113,8 +113,9 @@
   </div>
 
   <UpgradeModal
-    v-if="showUpgradeModal"
+    v-if="showUpgradeModal && role"
     :message="upgradeMessage"
+    :role="role"
     @close="showUpgradeModal = false"
   />
 
