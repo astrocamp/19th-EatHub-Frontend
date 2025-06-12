@@ -303,7 +303,7 @@
   },
   "restaurantBindModal": {
     "title": "餐廳綁定步驟說明",
-    "intro": "若需開通 EatHub 店家功能，請提供以下資訊：",
+    "intro": "註冊完成後，若需開通 EatHub 店家功能，請提供以下資訊：",
     "item": {
       "business": "營業登記資料（或公司登記影本）",
       "name": "店家名稱",
