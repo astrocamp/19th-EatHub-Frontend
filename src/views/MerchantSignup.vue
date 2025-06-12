@@ -96,12 +96,12 @@ const errorMap = {
   'user with this email already exists.': t(
     'merchantSignup.signupFailedEmailUsed',
   ),
-  'Enter a valid email address.': t('merchantSignup.signupFailedGeneral'),
+  'Enter a valid email address.': t('merchantSignup.invalidEmail'),
   'This password is too short. It must contain at least 8 characters.': t(
-    'merchantSignup.signupFailedGeneral',
+    'merchantSignup.passwordTooShort',
   ),
-  'This password is too common.': t('merchantSignup.signupFailedGeneral'),
-  'This password is entirely numeric.': t('merchantSignup.signupFailedGeneral'),
+  'This password is too common.': t('merchantSignup.passwordTooCommon'),
+  'This password is entirely numeric.': t('merchantSignup.passwordNumericOnly'),
 };
 
 const handleSignup = async () => {
