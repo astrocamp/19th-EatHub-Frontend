@@ -5,7 +5,7 @@
         v-if="restaurant.hasAvailableCoupon"
         class="absolute bottom-3 right-3 bg-[rgb(226,102,55)] text-white text-xs px-2 py-1 rounded-full shadow"
       >
-      <font-awesome-icon :icon="['fas', 'ticket']" /> 優惠券
+      <font-awesome-icon :icon="['fas', 'ticket']" /> {{ t('restaurantDetail.coupon') }}
       </div>
       <div class="w-full sm:w-32 h-32 flex-shrink-0">
         <img

@@ -82,7 +82,7 @@
       </div>
       <!-- 關閉 -->
       <div class="mt-6 text-right">
-        <button class="btn btn-base" @click="$emit('close')">
+        <button class="btn btn-base rounded-xl" @click="$emit('close')">
           {{ t('merchantUpgradeModal.close') }}
         </button>
       </div>

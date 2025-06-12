@@ -190,7 +190,8 @@
     "friday": "Friday",
     "saturday": "Saturday",
     "sunday": "Sunday",
-    "noData": "Not provided"
+    "noData": "Not provided",
+    "coupon": "Coupon"
   },
   "restaurantList": {
     "title": "Recommended for You"
@@ -205,10 +206,10 @@
   },
   "merchantDashboard": {
     "regularBadge": "Regular Store",
-    "vipHint": "VIP Expiry Date: <span class='font-mono'>{vipExpiry}</span>",
+    "vipHint": "VIP Expiry Date: {vipExpiry}",
     "vipExpireSoon": "⏳ VIP expiring soon (in {days} days)",
     "upgradeNow": "Renew Now",
-    "regularHint": "You are currently a <strong>regular store</strong>. Upgrade to VIP to publish more coupons and promotions.",
+    "regularHint": "You are currently a regular store. Upgrade to VIP to publish more coupons and promotions.",
     "upgradeButton": "Upgrade Now!",
     "noRestaurant": "You have not linked a restaurant yet. Please contact EatHub team to link your restaurant.",
     "checkRestaurantBindStep":"View Binding Steps",
@@ -531,5 +532,9 @@
     "section7Description": "We reserve the right to modify these terms at any time. Any changes will be announced on this website and marked with the update date. If you continue to use this website after the terms change, it is deemed that you have agreed to the new content.",
 
     "lastUpdated": "Last Updated: May 20, 2025"
+  },
+  "share":{
+    "shareRestaurant": "Share Restaurant",
+    "copyLink": "Copy Link"
   }
 }
