@@ -311,7 +311,8 @@
       "phone": "聯絡電話",
       "email": "聯絡信箱"
     },
-    "contact": "請將資料寄至：<a href='mailto:eathubtw@gmail.com' class='underline text-blue-600'>eathubtw@gmail.com</a>，我們將於 1～3 個工作天內協助您完成綁定。",
+    "contact": "請將資料寄至 : {email}   ",
+    "bindProcessingTime":"我們將於 1 ~ 3 個工作天內協助您完成綁定。",
     "close": "關閉"
   },
   "couponConfirm": {
