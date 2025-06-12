@@ -17,6 +17,8 @@
   :to="{ path: `/restaurants/${storeId}` }"
   class="bg-primary text-white text-sm font-semibold px-4 py-2 hover:bg-neutral transition text-center cursor-pointer rounded-xl justify-center inline-flex items-center gap-1"
 >
+
+
   <!-- 手機版：只顯示圖示 -->
   <font-awesome-icon 
     :icon="['fas', 'shop']" 
@@ -55,4 +57,11 @@ const handleLogout = async () => {
   alert.trigger('登出成功', 'success');
   router.push('/');
 };
+
+
+defineProps({
+  storeId: String
+})
+
+
 </script>

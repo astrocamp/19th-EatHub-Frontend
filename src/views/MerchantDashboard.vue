@@ -1,6 +1,6 @@
 <template>
 <div class="min-h-screen flex flex-col">
-  <MerchantNavBar />
+  <MerchantNavBar :store-id="storeId"/>
 
   <!-- 主內容 -->
   <div class="flex-1 px-4 ">
@@ -10,7 +10,7 @@
           <span v-if="role === 'vip_merchant'" class="badge badge-primary">
             <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> VIP
           </span>
-          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full">
+          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full whitespace-nowrap">
             {{ t('merchantDashboard.regularBadge') }}
           </span>
     </h1>
@@ -55,7 +55,7 @@
 
     <p v-if="role === 'merchant'"  class="text-base md:text-lg text-gray-600 mb-4">
       <span v-html="t('merchantDashboard.regularHint')" />
-      <button  @click="openUpgradeModal()" class=" inline-flex items-center gap-1 text-sm md:text-base font-semibold text-white bg-orange-500 px-3 py-1 rounded-xl hover:bg-neutral transition mt-2">
+      <button  @click="openUpgradeModal()" class=" inline-flex items-center gap-1 text-sm md:text-base font-semibold text-white bg-orange-400 px-3 py-1 rounded-xl hover:bg-neutral transition mt-2 ml-2">
         <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />  {{ t('merchantDashboard.upgradeButton') }} 
       </button>
     </p>
@@ -82,10 +82,10 @@
     </div>
     <div class="flex items-center flex-start gap-4" v-if="restaurantName && restaurantName.trim().length > 0">
       <button
-        class="btn rounded-xl bg-gray-300 text-gray-500 text-sm md:text-lg hover:bg-white"
+        class="btn rounded-xl bg-primary text-white text-sm md:text-lg hover:bg-white  hover:text-neutral font-medium"
         @click="handleCreateClick"
       >
-      {{
+      ＋ {{
         activeTab === 'coupon'
           ? t('merchantDashboard.create.coupon')
           : t('merchantDashboard.create.promotion')
@@ -138,6 +138,7 @@ const promotions = ref([]);
 const role = ref('');
 const merchantStatus = ref({});
 const vipExpiry = ref(null);
+const storeId = ref('');
 
 const fetchDashboard = async () => {
   try {
@@ -149,6 +150,7 @@ const fetchDashboard = async () => {
     role.value = result.merchantStatus.role;
     merchantStatus.value = result.merchantStatus;
     vipExpiry.value = result.merchantStatus.vipExpiry;
+    storeId.value = result.restaurant.uuid; 
   } catch (err) {
     console.error('取得商家資料失敗:', err);
   }
@@ -207,6 +209,8 @@ function formatDate(dateStr) {
     day: '2-digit',
   });
 }
+
+
 
 onMounted(fetchDashboard);
 </script>
