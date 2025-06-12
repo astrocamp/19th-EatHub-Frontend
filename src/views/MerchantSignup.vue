@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <Navbar></Navbar>
+    <RestaurantBindModal v-if="showBindModal" @close="showBindModal = false" />
     <section
       class="min-h-screen flex items-center justify-center bg-base-200 p-4"
     >
@@ -69,10 +70,11 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import { ref , onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Navbar from '@/components/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import RestaurantBindModal from '@/components/RestaurantBindModal.vue';
 
 const { t } = useI18n();
 const router = useRouter();
@@ -83,7 +85,12 @@ const password = ref('');
 const error = ref('');
 const success = ref('');
 const role = ref('merchant');
+const showBindModal = ref(false);
 const errorMessage = ref('');
+
+onMounted(() => {
+  showBindModal.value = true;
+});
 
 const errorMap = {
   'user with this email already exists.': t(
