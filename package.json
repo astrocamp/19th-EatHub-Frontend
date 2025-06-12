@@ -26,12 +26,16 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@cypress/vue": "^3.1.0",
     "@eslint/js": "^9.27.0",
+    "@pinia/testing": "^1.0.2",
     "@tailwindcss/vite": "^4.1.6",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-standard": "^9.0.1",
+    "@vue/test-utils": "^2.4.0-alpha.2",
     "autoprefixer": "^10.4.21",
+    "cypress": "^14.4.1",
     "daisyui": "^5.0.35",
     "eslint": "^9.27.0",
     "eslint-plugin-vue": "^10.1.0",

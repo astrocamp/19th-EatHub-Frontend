@@ -6,18 +6,22 @@
     >
       <div class="w-full max-w-md">
         <section class="bg-base-100 shadow-xl rounded-xl p-8 space-y-6">
-          <h1 class="text-2xl md:text-3xl font-bold text-center text-neutral">{{ t('login.title') }}</h1>
+          <h1 class="text-2xl md:text-3xl font-bold text-center text-neutral">
+            {{ t('login.title') }}
+          </h1>
 
           <form @submit.prevent="handleLogin" class="space-y-4">
             <input
               v-model="email"
               class="input input-bordered w-full"
+              name="email"
               placeholder="Email"
               required
             />
             <input
               class="input input-bordered w-full"
               v-model="password"
+              name="password"
               type="password"
               placeholder="Password"
               required
@@ -31,7 +35,10 @@
               >
                 {{ t('login.forgotPassword') }}
               </router-link>
-              <button class="btn btn-primary flex-1 text-white text-sm md:text-lg rounded-xl hover:bg-neutral" type="submit">
+              <button
+                class="btn btn-primary flex-1 text-white text-sm md:text-lg rounded-xl hover:bg-neutral"
+                type="submit"
+              >
                 {{ t('login.submit') }}
               </button>
             </div>

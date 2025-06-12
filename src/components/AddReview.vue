@@ -31,6 +31,7 @@
             @click="setRating(star)"
             @mouseover="hoverRating = star"
             @mouseleave="hoverRating = 0"
+            :data-testid="`star-${star}`"
             :class="[
               'text-3xl cursor-pointer select-none transition-all duration-200 hover:scale-110',
               star <= rating
