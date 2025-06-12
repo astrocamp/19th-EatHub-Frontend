@@ -61,7 +61,7 @@
           </p>
 
           <div class="divider">{{ t('signup.orDivider') }}</div>
-          <GoogleLoginButton />
+          <GoogleLoginButton class="cursor-pointer"/>
           <div class="text-center space-x-2">
             <router-link to="/login" class="link link-hover text-primary">{{
               t('signup.loginLink')

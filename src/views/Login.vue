@@ -41,7 +41,7 @@
           </p>
 
           <div class="divider">{{ t('login.orDivider') }}</div>
-          <GoogleLoginButton />
+          <GoogleLoginButton class="cursor-pointer"/>
 
           <div class="text-center space-y-2">
             <p>

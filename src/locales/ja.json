@@ -26,6 +26,7 @@
     "logout": "ログアウト",
     "signup": "新規登録",
     "login": "ログイン",
+    "myStore": "私の店",
     "merchantSignup": "店舗登録",
     "merchantLogin": "店舗ログイン",
     "logoutSuccess": "ログアウトが成功しました"
@@ -189,7 +190,8 @@
     "friday": "金曜日",
     "saturday": "土曜日",
     "sunday": "日曜日",
-    "noData": "みていきょう"
+    "noData": "みていきょう",
+    "coupon": "クーポン"
   },
   "restaurantList": {
     "title": "おすすめレストラン"
@@ -204,12 +206,12 @@
   },
   "merchantDashboard": {
     "regularBadge": "一般店舗",
-    "vipHint": "VIP 有効期限：<span class='font-mono'>{vipExpiry}</span>",
+    "vipHint": "VIP 有効期限：{vipExpiry}",
     "vipExpireSoon": "⏳ VIP の有効期限が間もなく切れます（あと {days} 日）",
     "upgradeNow": "今すぐ更新",
-    "regularHint": "現在は<strong>一般店舗</strong>です。VIP にアップグレードすると、より多くのクーポンやイベントを発行できます。",
+    "regularHint": "現在は一般店舗です。VIP にアップグレードすると、より多くのクーポンやイベントを発行できます。",
     "upgradeButton": "今すぐアップグレード！",
-    "noRestaurant": "レストランがまだ紐付けられていません。EatHubチームに連絡して、レストランの紐付けを依頼してください。",
+    "noRestaurant": "レストランがまだ紐付けられていません。EatHub チームに連絡して、レストランの紐付けを依頼してください。",
     "checkRestaurantBindStep": "連携手順を確認",
     "tab": {
       "coupon": "クーポン",
@@ -530,5 +532,9 @@
     "section7Description": "本ポリシーは随時更新され、変更はサイト上で告知します。継続利用により同意されたと見なされます。",
 
     "lastUpdated": "最終更新日：2025年5月20日"
+  },
+  "share":{
+    "shareRestaurant": "シェアレストラン",
+    "copyLink": "リンクをコピー"
   }
 }

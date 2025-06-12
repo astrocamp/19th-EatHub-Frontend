@@ -1,16 +1,16 @@
 <template>
 <div class="min-h-screen flex flex-col">
-  <MerchantNavBar />
+  <MerchantNavBar :store-id="storeId"/>
 
   <!-- 主內容 -->
   <div class="flex-1 px-4 ">
 
   <div class="mx-auto px-4 py-8 max-w-5xl pt-28">
     <h1 class="text-2xl md:text-3xl text-neutral font-bold mb-4">{{ restaurantName }}
-          <span v-if="role === 'vip_merchant'" class="badge badge-primary">
+          <span v-if="role === 'vip_merchant'" class="badge border-primary text-primary">
             <font-awesome-icon :icon="['fa-solid', 'fa-crown']" /> VIP
           </span>
-          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full">
+          <span v-else-if="role === 'merchant'" class="px-3 py-1 text-base md:text-lg font-medium text-gray-400 border border-gray-400 rounded-full whitespace-nowrap">
             {{ t('merchantDashboard.regularBadge') }}
           </span>
     </h1>
@@ -19,7 +19,7 @@
       v-if="!restaurantName || restaurantName.trim().length === 0"
       class="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-lg mb-6 flex items-center justify-between"
     >
-      <div class="text-sm md:text-base">
+      <div class="text-base md:text-lg">
         <font-awesome-icon :icon="['fa-solid', 'fa-circle-exclamation']" class="mr-2" />
         {{ t('merchantDashboard.noRestaurant') }}
       </div>
@@ -39,7 +39,7 @@
     </div>
     
     <!-- VIP 顯示區塊 -->
-    <div v-if="role === 'vip_merchant'" class="mb-4 text-sm text-green-700">
+    <div v-if="role === 'vip_merchant'" class="mb-4 text-base md:text-lg font-bold text-green-700">
       <span
         v-html="
           t('merchantDashboard.vipHint', { vipExpiry: formatDate(vipExpiry) })
@@ -49,14 +49,14 @@
       <!-- 倒數提示區塊 -->
       <div
         v-if="isExpiringSoon"
-        class="mt-2 bg-yellow-100 text-yellow-800 px-3 py-2 rounded-md text-sm flex items-center justify-between"
+        class="mt-2 bg-yellow-100 text-yellow-800 px-3 py-2 rounded-md text-base md:text-lg flex items-center justify-between"
       >
         <div>
           {{ t('merchantDashboard.vipExpireSoon', { days: daysLeft }) }}
         </div>
         <button
           @click="openUpgradeModal(t('merchantDashboard.upgradeNow'))"
-          class="ml-4 text-sm font-semibold text-white bg-primary hover:bg-orange-300 px-3 py-1 rounded"
+          class="ml-4 text-base md:text-lg font-light text-white bg-primary hover:bg-orange-300 px-3 py-1 rounded-xl whitespace-nowrap"
         >
           <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />
           {{ t('merchantDashboard.upgradeNow') }}
@@ -67,43 +67,84 @@
 
     <p v-if="role === 'merchant'"  class="text-base md:text-lg text-gray-600 mb-4">
       <span v-html="t('merchantDashboard.regularHint')" />
-      <button  @click="openUpgradeModal()" class=" inline-flex items-center gap-1 text-sm md:text-base font-semibold text-white bg-orange-500 px-3 py-1 rounded-xl hover:bg-neutral transition mt-2">
+      <button  @click="openUpgradeModal()" class=" inline-flex items-center gap-1 text-sm md:text-base font-semibold text-white bg-orange-400 px-3 py-1 rounded-xl hover:bg-neutral transition mt-2 ml-2">
         <font-awesome-icon :icon="['fa-solid', 'fa-crown']" />  {{ t('merchantDashboard.upgradeButton') }} 
       </button>
     </p>
 
     <!-- Tab 與新增按鈕 -->
-    <div class="flex justify-between items-center mb-3">
-      <!-- 左側：Tab 切換按鈕 -->
-      <div class="flex gap-2 md:gap-4" v-if="restaurantName && restaurantName.trim().length > 0">
-        <button
-          class="btn text-neutral border-neutral text-base md:text-lg rounded-xl"
-          :class="activeTab === 'coupon' ? 'btn-secondary' : 'btn-outline'"
-          @click="setTab('coupon')"
-        >
-          {{ t('merchantDashboard.tab.coupon') }}
-        </button>
-        <button
-          class="btn  text-neutral border-neutral text-base md:text-lg rounded-xl"
-          :class="activeTab === 'promotion' ? 'btn-secondary' : 'btn-outline'"
-          @click="setTab('promotion')"
-        >
-          {{ t('merchantDashboard.tab.promotion') }}
-        </button>
-      </div>   
-    </div>
-    <div class="flex items-center flex-start gap-4" v-if="restaurantName && restaurantName.trim().length > 0">
+<div v-if="restaurantName && restaurantName.trim().length > 0">
+  <!-- 桌面版：水平排列 -->
+  <div class="hidden md:flex justify-between items-center mb-3">
+    <!-- 左側：Tab 切換按鈕 -->
+    <div class="flex gap-4">
       <button
-        class="btn rounded-xl bg-gray-300 text-gray-500 text-sm md:text-lg hover:bg-white"
-        @click="handleCreateClick"
+        class="btn text-neutral border-neutral text-lg rounded-xl"
+        :class="activeTab === 'coupon' ? 'btn-secondary' : 'btn-outline'"
+        @click="setTab('coupon')"
       >
-      {{
+        {{ t('merchantDashboard.tab.coupon') }}
+      </button>
+      <button
+        class="btn text-neutral border-neutral text-lg rounded-xl"
+        :class="activeTab === 'promotion' ? 'btn-secondary' : 'btn-outline'"
+        @click="setTab('promotion')"
+      >
+        {{ t('merchantDashboard.tab.promotion') }}
+      </button>
+    </div>
+    
+    <!-- 右側：新增按鈕 -->
+    <button
+      class="btn rounded-xl bg-secondary text-neutral border-secondary text-lg hover:bg-white hover:text-neutral font-medium"
+      @click="handleCreateClick"
+    >
+      ＋ {{
         activeTab === 'coupon'
           ? t('merchantDashboard.create.coupon')
           : t('merchantDashboard.create.promotion')
       }}
+    </button>
+  </div>
+
+  <!-- 手機版：垂直排列 -->
+  <div class="md:hidden">
+    <!-- Tab 切換按鈕 -->
+    <div class="flex gap-2 mb-3">
+      <button
+        class="btn text-neutral border-neutral text-base rounded-xl"
+        :class="activeTab === 'coupon' ? 'btn-secondary' : 'btn-outline'"
+        @click="setTab('coupon')"
+      >
+        {{ t('merchantDashboard.tab.coupon') }}
+      </button>
+      <button
+        class="btn text-neutral border-neutral text-base rounded-xl"
+        :class="activeTab === 'promotion' ? 'btn-secondary' : 'btn-outline'"
+        @click="setTab('promotion')"
+      >
+        {{ t('merchantDashboard.tab.promotion') }}
       </button>
     </div>
+    
+    <!-- 新增按鈕 -->
+    <div class="flex items-center flex-start gap-4">
+      <button
+        class="btn rounded-xl bg-secondary text-neutral text-sm hover:bg-white hover:text-neutral font-medium"
+        @click="handleCreateClick"
+      >
+        ＋ {{
+          activeTab === 'coupon'
+            ? t('merchantDashboard.create.coupon')
+            : t('merchantDashboard.create.promotion')
+        }}
+      </button>
+    </div>
+  </div>
+
+  <!-- 分隔線 -->
+  <hr class="border-t border-gray-300 mt-4 mb-4">
+</div>
     <!-- 清單元件切換 -->
     <component
       :is="activeTab === 'coupon' ? MerchantCouponList : MerchantPromotionList"
@@ -152,6 +193,7 @@ const promotions = ref([]);
 const role = ref('');
 const merchantStatus = ref({});
 const vipExpiry = ref(null);
+const storeId = ref('');
 
 const fetchDashboard = async () => {
   try {
@@ -163,6 +205,7 @@ const fetchDashboard = async () => {
     role.value = result.merchantStatus.role;
     merchantStatus.value = result.merchantStatus;
     vipExpiry.value = result.merchantStatus.vipExpiry;
+    storeId.value = result.restaurant.uuid; 
   } catch (err) {
     console.error('取得商家資料失敗:', err);
   }
@@ -221,6 +264,8 @@ function formatDate(dateStr) {
     day: '2-digit',
   });
 }
+
+
 
 onMounted(fetchDashboard);
 </script>

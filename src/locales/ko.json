@@ -26,6 +26,7 @@
     "logout": "로그아웃",
     "signup": "회원가입",
     "login": "로그인",
+    "myStore": "내 가게",
     "merchantSignup": "매장 등록",
     "merchantLogin": "매장 로그인",
     "logoutSuccess": "로그아웃 완료"
@@ -189,7 +190,9 @@
     "friday": "금요일",
     "saturday": "토요일",
     "sunday": "일요일",
-    "noData": "미제공"
+    "noData": "미제공",
+    "coupon": "쿠폰"
+
   },
   "restaurantList": {
     "title": "추천 맛집"
@@ -204,10 +207,10 @@
   },
   "merchantDashboard": {
     "regularBadge": "일반 매장",
-    "vipHint": "VIP 유효 기간: <span class='font-mono'>{vipExpiry}</span>",
+    "vipHint": "VIP 유효 기간: {vipExpiry}",
     "vipExpireSoon": "⏳ VIP 만료 임박 (남은 기간 {days}일)",
     "upgradeNow": "지금 갱신하기",
-    "regularHint": "현재는 <strong>일반 매장</strong>입니다. VIP로 업그레이드하면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다.",
+    "regularHint": "현재는일반 매장입니다. VIP로 업그레이드하면 더 많은 쿠폰과 이벤트를 등록할 수 있습니다.",
     "upgradeButton": "지금 업그레이드!",
     "noRestaurant": "현재 연결된 레스토랑이 없습니다. EatHub 팀에 문의하여 레스토랑을 연결하세요.",
     "checkRestaurantBindStep": "연결 절차 보기",
@@ -483,7 +486,7 @@
   },
   "privacyPolicy": {
     "title": "개인정보 처리방침",
-    "intro": "「미식찾기」（EatHub, 이하 「본 웹사이트」 또는 「당사」）가 제공하는 각종 서비스를 이용해주셔서 감사합니다. 귀하의 개인정보와 프라이버시 보호를 위해, 당사는 관련 법규에 따라 본 《개인정보 처리방침》을 제정하였으니, 다음 내용을 자세히 읽어주시기 바랍니다.",
+    "intro": "EatHub（이하 「본 웹사이트」 또는 「당사」）가 제공하는 각종 서비스를 이용해주셔서 감사합니다. 귀하의 개인정보와 프라이버시 보호를 위해, 당사는 관련 법규에 따라 본 《개인정보 처리방침》을 제정하였으니, 다음 내용을 자세히 읽어주시기 바랍니다.",
 
     "section1Title": "1. 당사의 데이터 수집 방법",
     "section1List": {
@@ -530,5 +533,9 @@
     "section7Description": "당사는 언제든지 본 약관을 수정할 권리를 보유하며, 모든 변경사항은 본 웹사이트에 공지되고 업데이트 날짜가 표시됩니다. 약관 변경 후에도 본 웹사이트를 계속 사용하시면 새로운 내용에 동의한 것으로 간주됩니다.",
 
     "lastUpdated": "최근 업데이트: 2025년 5월 20일"
+  },
+  "share":{
+    "shareRestaurant": "레스토랑 공유",
+    "copyLink": "링크 복사"
   }
 }

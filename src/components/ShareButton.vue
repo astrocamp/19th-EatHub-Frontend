@@ -15,7 +15,7 @@
   >
     <div class="bg-white rounded-lg p-6 m-4 max-w-sm w-full" @click.stop>
       <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg md:text-2xl font-bold mx-auto">分享餐廳</h3>
+        <h3 class="text-lg md:text-2xl font-bold mx-auto">{{ t('share.shareRestaurant') }}</h3>
         <button @click="closeShareModal" class="text-[rgb(87,57,33)]' hover:text-gray-700 ">
           <font-awesome-icon :icon="['fas', 'times']" class="text-xl" />
         </button>
@@ -52,7 +52,7 @@
           <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-2">
             <font-awesome-icon :icon="['fab', 'x-twitter']" class="text-white text-xl" />
           </div>
-          <span class="text-xs text-gray-700">X</span>
+          <span class="text-xs text-gray-700 cursor-pointer">X</span>
         </button>
         
         <!-- 複製連結 -->
@@ -63,7 +63,7 @@
           <div class="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mb-2">
             <font-awesome-icon :icon="['fas', 'link']" class="text-white text-xl" />
           </div>
-          <span class="text-xs text-gray-700">複製連結</span>
+          <span class="text-xs text-gray-700">{{ t('share.copyLink') }}</span>
         </button>
       </div>
     </div>
@@ -73,6 +73,9 @@
 <script setup>
 import { ref } from 'vue';
 import { useAlertStore } from '@/stores/alert';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 // Props - 從父組件接收資料
 const props = defineProps({
