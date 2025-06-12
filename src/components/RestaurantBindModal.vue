@@ -18,7 +18,8 @@
           <li>{{ t('restaurantBindModal.item.phone') }}</li>
           <li>{{ t('restaurantBindModal.item.email') }}</li>
         </ul>
-        <p v-html="t('restaurantBindModal.contact')"></p>
+        <p v-html="t('restaurantBindModal.contact',{ email: 'eathubtw@gmail.com' })"></p>
+        <p>{{ t('restaurantBindModal.bindProcessingTime') }}</p>
       </div>
 
       <!-- 關閉 -->
