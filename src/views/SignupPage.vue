@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <Navbar></Navbar>
+    <NavBar />
     <section
       class="min-h-screen flex items-center justify-center bg-base-200 p-6 pt-30"
     >
@@ -9,7 +9,9 @@
           @submit.prevent="handleSignup"
           class="bg-base-100 shadow-xl rounded-xl p-8 space-y-4"
         >
-          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6">
+          <h1
+            class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6"
+          >
             {{ t('signup.title') }}
           </h1>
 
@@ -55,13 +57,20 @@
             />
           </section>
 
-          <button class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg">{{ t('signup.submitButton') }}</button>
-          <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
+          <button
+            class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg"
+          >
+            {{ t('signup.submitButton') }}
+          </button>
+          <p
+            v-if="errorMessage"
+            class="text-red-500 text-sm text-lift whitespace-pre-line"
+          >
             {{ errorMessage }}
           </p>
 
           <div class="divider">{{ t('signup.orDivider') }}</div>
-          <GoogleLoginButton class="cursor-pointer"/>
+          <GoogleLoginButton class="cursor-pointer" />
           <div class="text-center space-x-2">
             <router-link to="/login" class="link link-hover text-primary">{{
               t('signup.loginLink')
@@ -75,7 +84,7 @@
       </div>
     </section>
 
-    <Footer></Footer>
+    <base-footer />
   </div>
 </template>
 
@@ -84,8 +93,8 @@ import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import GoogleLoginButton from '@/components/GoogleLoginButton.vue';
 import { useAlertStore } from '@/stores/alert';
 
@@ -103,7 +112,8 @@ const errorMessage = ref('');
 const errorMap = {
   'user with this email already exists.': '此信箱已被註冊，請重新輸入。',
   'Enter a valid email address.': '信箱格式錯誤。',
-  'This password is too short. It must contain at least 8 characters.': '密碼太短，至少 8 字元。',
+  'This password is too short. It must contain at least 8 characters.':
+    '密碼太短，至少 8 字元。',
   'This password is too common.': '密碼太常見，請換一個更安全的密碼。',
   'This password is entirely numeric.': '密碼不能全為數字。',
 };
@@ -117,18 +127,17 @@ const handleSignup = async () => {
       lastName.value,
       userName.value,
       email.value,
-      password.value
+      password.value,
     );
     alert.trigger(t('signup.success'), 'success');
     router.push('/login');
-
   } catch (err) {
     const errors = err.response?.data;
 
     if (errors && typeof errors === 'object') {
       const allMessages = Object.values(errors)
         .flat() // 把多欄位陣列展平
-        .map(msg => errorMap[msg] || msg); // 對每條訊息做中文翻譯
+        .map((msg) => errorMap[msg] || msg); // 對每條訊息做中文翻譯
 
       errorMessage.value = allMessages.join('\n'); // 換行顯示所有錯誤
     } else {

@@ -1,66 +1,76 @@
 <template>
- <div class="min-h-screen flex flex-col max-w-5xl mx-auto">
-  <MerchantNavBar />
-  
-  <div class="flex-1   px-4 pt-28">
-    <!-- 返回按鈕 -->
-    <button class="btn btn-sm btn-outline mb-4 rounded-xl text-base md:text-xl py-5 text-neutral" @click="goBack">←  {{ t('couponUsage.back') }}</button>
+  <div class="min-h-screen flex flex-col max-w-5xl mx-auto">
+    <MerchantNavBar />
 
-    <!-- Coupon券名稱 -->
-    <h1 class="text-2xl font-bold mb-4 text-neutral md:text-3xl">{{ couponTitle }}</h1>
+    <div class="flex-1 px-4 pt-28">
+      <!-- 返回按鈕 -->
+      <button
+        class="btn btn-sm btn-outline mb-4 rounded-xl text-base md:text-xl py-5 text-neutral"
+        @click="goBack"
+      >
+        ← {{ t('couponUsage.back') }}
+      </button>
 
-    <!-- 篩選 -->
-    <div class="mb-4">
-      <input
-        v-model="searchKeyword"
-        type="text"
-        :placeholder="t('couponUsage.searchEmailPlaceholder')"
-        class="input input-bordered w-full"
-      />
-    </div>
+      <!-- Coupon券名稱 -->
+      <h1 class="text-2xl font-bold mb-4 text-neutral md:text-3xl">
+        {{ couponTitle }}
+      </h1>
 
-    <!-- 表格 -->
-    <div class="overflow-x-auto border border-gray-300 rounded-lg mb-8">
-      <table class="table table-bordered w-full border border-gray-300">
-        <thead class="bg-gray-100 border-b border-gray-300">
-          <tr>
-            <th class="text-left border-r border-gray-300">
-              {{ t('couponUsage.table.uuid') }}
-            </th>
-            <th class="text-left border-r border-gray-300">
-              {{ t('couponUsage.table.userEmail') }}
-            </th>
-            <th class="text-center">{{ t('couponUsage.table.status') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="usage in filteredUsages"
-            :key="usage.uuid"
-            class="border-b border-gray-300"
-          >
-            <td class="text-left border-r border-gray-300">
-              {{ usage.uuid.slice(0, 8) }}
-            </td>
-            <td class="text-left border-r border-gray-300">{{ usage.user }}</td>
-            <td class="text-center">
-              <span
-                class="badge text-xs md:text-base whitespace-nowrap"
-                :class="usage.isUsed ? 'badge-success' : 'badge-outline'"
-              >
-                {{
-                  usage.isUsed ? t('couponUsage.used') : t('couponUsage.unused')
-                }}
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- 篩選 -->
+      <div class="mb-4">
+        <input
+          v-model="searchKeyword"
+          type="text"
+          :placeholder="t('couponUsage.searchEmailPlaceholder')"
+          class="input input-bordered w-full"
+        />
+      </div>
+
+      <!-- 表格 -->
+      <div class="overflow-x-auto border border-gray-300 rounded-lg mb-8">
+        <table class="table table-bordered w-full border border-gray-300">
+          <thead class="bg-gray-100 border-b border-gray-300">
+            <tr>
+              <th class="text-left border-r border-gray-300">
+                {{ t('couponUsage.table.uuid') }}
+              </th>
+              <th class="text-left border-r border-gray-300">
+                {{ t('couponUsage.table.userEmail') }}
+              </th>
+              <th class="text-center">{{ t('couponUsage.table.status') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="usage in filteredUsages"
+              :key="usage.uuid"
+              class="border-b border-gray-300"
+            >
+              <td class="text-left border-r border-gray-300">
+                {{ usage.uuid.slice(0, 8) }}
+              </td>
+              <td class="text-left border-r border-gray-300">
+                {{ usage.user }}
+              </td>
+              <td class="text-center">
+                <span
+                  class="badge text-xs md:text-base whitespace-nowrap"
+                  :class="usage.isUsed ? 'badge-success' : 'badge-outline'"
+                >
+                  {{
+                    usage.isUsed
+                      ? t('couponUsage.used')
+                      : t('couponUsage.unused')
+                  }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-  <component :is="Footer" />
-
+  <component :is="BaseFooter" />
 </template>
 
 <script setup>
@@ -68,7 +78,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import axios from '@/axios';
 
 const { t } = useI18n();

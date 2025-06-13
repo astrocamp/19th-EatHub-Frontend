@@ -1,7 +1,11 @@
 <template>
   <MerchantNavBar />
   <div class="p-6 max-w-md mx-auto pt-28">
-    <h2 class="font-bold border-brown-800 pl-2 mb-6 text-2xl md:text-3xl text-center text-neutral">{{ t('promotionCreate.pageTitle') }}</h2>
+    <h2
+      class="font-bold border-brown-800 pl-2 mb-6 text-2xl md:text-3xl text-center text-neutral"
+    >
+      {{ t('promotionCreate.pageTitle') }}
+    </h2>
 
     <form
       v-if="isMerchant"
@@ -27,9 +31,10 @@
 
       <div class="flex gap-4">
         <div class="w-1/2">
-          <label class="font-medium block text-neutral text-base md:text-xl mb-1">{{
-            t('promotionCreate.startDateLabel')
-          }}</label>
+          <label
+            class="font-medium block text-neutral text-base md:text-xl mb-1"
+            >{{ t('promotionCreate.startDateLabel') }}</label
+          >
           <input
             v-model="form.started_at"
             type="date"
@@ -39,9 +44,10 @@
           />
         </div>
         <div class="w-1/2">
-          <label class="font-medium block text-neutral text-base md:text-xl mb-1">{{
-            t('promotionCreate.endDateLabel')
-          }}</label>
+          <label
+            class="font-medium block text-neutral text-base md:text-xl mb-1"
+            >{{ t('promotionCreate.endDateLabel') }}</label
+          >
           <input
             v-model="form.ended_at"
             type="date"
@@ -56,15 +62,17 @@
         <label class="block mb-2 text-gray-600 text-sm">{{
           t('promotionCreate.imageUploadHint')
         }}</label>
-        <label class="inline-block bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer hover:bg-gray-300 transition rounded-xl">
-  {{ t('promotionCreate.chooseImageButton') || '選擇圖片' }}
-  <input
-    type="file"
-    @change="handleImage"
-    accept="image/*"
-    class="hidden"
-  />
-</label>
+        <label
+          class="inline-block bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer hover:bg-gray-300 transition rounded-xl"
+        >
+          {{ t('promotionCreate.chooseImageButton') || '選擇圖片' }}
+          <input
+            type="file"
+            @change="handleImage"
+            accept="image/*"
+            class="hidden"
+          />
+        </label>
         <div class="mt-4 w-full h-48 overflow-hidden rounded shadow">
           <img
             v-if="previewUrl"
@@ -73,14 +81,19 @@
           />
         </div>
       </div>
-      <button type="submit" class="w-full bg-primary text-white  py-2 rounded-xl font-bold text-base md:text-lg hover:bg-neutral"> {{ t('promotionCreate.submitButton') }}</button>
+      <button
+        type="submit"
+        class="w-full bg-primary text-white py-2 rounded-xl font-bold text-base md:text-lg hover:bg-neutral"
+      >
+        {{ t('promotionCreate.submitButton') }}
+      </button>
     </form>
 
     <div v-else class="text-center text-red-500 mt-10 font-semibold">
       {{ t('promotionCreate.notMerchantWarning') }}
     </div>
   </div>
-  <Footer></Footer>
+  <base-footer />
 </template>
 
 <script setup>
@@ -88,7 +101,7 @@ import { ref, onMounted } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import axios from '@/axios';
 import { useI18n } from 'vue-i18n';
 import { useAlertStore } from '@/stores/alert';
@@ -155,7 +168,10 @@ async function submitPromotion() {
     if (error.response?.data) {
       const errors = error.response.data;
       if (typeof errors.error === 'string') {
-        alert.trigger(t('promotionCreate.createFailedPrefix') + errors.error, 'error');
+        alert.trigger(
+          t('promotionCreate.createFailedPrefix') + errors.error,
+          'error',
+        );
         return;
       }
       let message = '';
@@ -163,7 +179,10 @@ async function submitPromotion() {
         const value = Array.isArray(errors[key]) ? errors[key][0] : errors[key];
         message += `${key}：${value}\n`;
       }
-      alert.trigger(t('promotionCreate.createFailedPrefix') + '\n' + message, 'error');
+      alert.trigger(
+        t('promotionCreate.createFailedPrefix') + '\n' + message,
+        'error',
+      );
     } else {
       alert.trigger(t('promotionCreate.genericError'), 'error');
     }

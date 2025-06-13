@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar></Navbar>
+    <NavBar />
     <section
       class="min-h-screen flex items-center justify-center bg-base-200 p-6 pt-28"
     >
@@ -48,7 +48,7 @@
           </p>
 
           <div class="divider">{{ t('login.orDivider') }}</div>
-          <GoogleLoginButton class="cursor-pointer"/>
+          <GoogleLoginButton class="cursor-pointer" />
 
           <div class="text-center space-y-2">
             <p>
@@ -64,7 +64,7 @@
         </section>
       </div>
     </section>
-    <Footer></Footer>
+    <base-footer />
   </div>
 </template>
 
@@ -72,8 +72,8 @@
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import GoogleLoginButton from '@/components/GoogleLoginButton.vue';
 import { useAlertStore } from '@/stores/alert';
 import { useI18n } from 'vue-i18n';
