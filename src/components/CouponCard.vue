@@ -68,9 +68,10 @@
       @click.self="showQr = false"
     >
       <div
-        class="bg-white text-black p-6 rounded-xl w-[280px] flex flex-col items-center text-center"
+        class="bg-white text-neutral p-6 rounded-xl w-[300px] flex flex-col items-center text-center"
       >
-        <div class="text-lg font-bold mb-4">{{ t('couponCard.qrTitle') }}</div>
+        <div class="text-lg md:text-xl font-bold mb-4">{{ t('couponCard.qrTitle') }}</div>
+        <p class="text-base md:text-lg mb-4">{{ t('couponCard.couponDescription') }}</p>
         <img
           v-if="qrCodeDataUrl"
           :src="qrCodeDataUrl"

@@ -372,7 +372,8 @@
     "tooltipExpired": "このクーポンの有効期限が切れています",
     "qrTitle": "クーポン QRコード",
     "qrValidUntil": "利用期限：",
-    "qrError": "QRコードの生成に失敗しました"
+    "qrError": "QRコードの生成に失敗しました",
+     "couponDescription": "確認のため、店舗にご提示ください"
   },
   "couponCarousel": {
     "claimButton": "クーポンを受け取る",
