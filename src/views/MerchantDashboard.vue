@@ -17,7 +17,7 @@
     <!-- 未綁定餐廳提示 -->
     <div
       v-if="!restaurantName || restaurantName.trim().length === 0"
-      class="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-lg mb-6 flex items-center justify-between"
+      class="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-lg mb-6 flex flex-col md:flex-row items-center justify-between"
     >
       <div class="text-base md:text-lg">
         <font-awesome-icon :icon="['fa-solid', 'fa-circle-exclamation']" class="mr-2" />
@@ -27,7 +27,7 @@
       <!-- 新增查看說明的 icon -->
       <button
         @click="showBindModal = true"
-        class="ml-3 px-3 py-1 rounded-md bg-primary text-white hover:brightness-110 text-sm md:text-base min-w-40"
+        class="ml-3 px-3 py-2 rounded-xl bg-primary text-white hover:bg-neutral text-base md:text-lg min-w-40 mt-4 md:mt-0"
         title="{{ t('merchantDashboard.checkRestaurantBindStep') }}"
       >
         {{ t('merchantDashboard.checkRestaurantBindStep') }}
