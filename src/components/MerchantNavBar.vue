@@ -14,8 +14,9 @@
     </div>
     <div class="flex items-center space-x-3 md:pr-10">
         <RouterLink
-  :to="{ path: `/restaurants/${storeId}` }"
-  class="bg-primary text-white text-sm font-semibold px-4 py-2 hover:bg-neutral transition text-center cursor-pointer rounded-xl justify-center inline-flex items-center gap-1"
+      v-if="storeId"
+      :to="{ path: `/restaurants/${storeId}` }"
+      class="bg-primary text-white text-sm font-semibold px-4 py-2 hover:bg-neutral transition text-center cursor-pointer rounded-xl justify-center inline-flex items-center gap-1"
 >
 
 
