@@ -50,6 +50,16 @@ EatHub 是一個專為選擇困難症設計的美食推薦平台。根據你的�
 ```
 npm install
 npm run dev
+npm run build
+npm run preview
+```
+
+測試
+
+```
+npx cypress run
+// GUI Mode
+npx cypress open
 ```
 
 ## Contributor 專案開發團隊
