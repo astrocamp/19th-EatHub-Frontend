@@ -4,7 +4,7 @@
   >
     <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-full mx-4">
       <!-- 提示標題 -->
-      <div class="mb-4 text-lg md:text-xl font-semibold text-orange-600">
+      <div class="mb-4 text-lg md:text-xl font-semibold text-primary">
         {{ t('restaurantBindModal.title') }}
       </div>
 
@@ -24,7 +24,7 @@
 
       <!-- 關閉 -->
       <div class="mt-6 text-right">
-        <button class="btn btn-base" @click="$emit('close')">
+        <button class="btn btn-base rounded-xl" @click="$emit('close')">
           {{ t('restaurantBindModal.close') }}
         </button>
       </div>
