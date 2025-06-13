@@ -34,6 +34,7 @@
       </div>
       <div class="flex md:space-x-2 space-x-1.5 gap-0.5">
         <ShareButton
+          v-if="restaurant.name"
           :restaurant-name="restaurant.name"
           :restaurant-rating="restaurant.googleRating || '4.5'"
         />
@@ -128,7 +129,6 @@
         :coupons="coupons"
         :claimedStatus="claimedStatus"
         :isMerchant="isMerchant"
-        class="mb-6"
       />
     </div>
 
