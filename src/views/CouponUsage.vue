@@ -45,7 +45,7 @@
             <td class="text-left border-r border-gray-300">{{ usage.user }}</td>
             <td class="text-center">
               <span
-                class="badge"
+                class="badge text-xs md:text-base whitespace-nowrap"
                 :class="usage.isUsed ? 'badge-success' : 'badge-outline'"
               >
                 {{
