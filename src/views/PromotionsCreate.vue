@@ -53,10 +53,18 @@
       </div>
 
       <div class="border border-gray-400 rounded p-4 text-center">
-        <label class="block mb-2 text-gray-600 text-sm cursor-pointer">{{
+        <label class="block mb-2 text-gray-600 text-sm">{{
           t('promotionCreate.imageUploadHint')
         }}</label>
-        <input type="file" @change="handleImage" accept="image/*" class="mx-auto" />
+        <label class="inline-block bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer hover:bg-gray-300 transition rounded-xl">
+  {{ t('promotionCreate.chooseImageButton') || '選擇圖片' }}
+  <input
+    type="file"
+    @change="handleImage"
+    accept="image/*"
+    class="hidden"
+  />
+</label>
         <div class="mt-4 w-full h-48 overflow-hidden rounded shadow">
           <img
             v-if="previewUrl"

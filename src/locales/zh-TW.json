@@ -408,7 +408,8 @@
     "createSuccess": "動態已成功建立！",
     "createFailedPrefix": "送出失敗：",
     "genericError": "送出失敗，請確認網路或伺服器狀態",
-    "authWarning": "僅限商家使用者新增優惠券"
+    "authWarning": "僅限商家使用者新增優惠券",
+    "chooseImageButton": "選擇圖片"
   },
   "promotionCarousel": {
     "latestPromotions": "最新動態",
