@@ -409,7 +409,8 @@
     "createSuccess": "Update has been successfully created!",
     "createFailedPrefix": "Submission failed:",
     "genericError": "Submission failed, please check network or server status",
-    "authWarning": "Only merchant users can add coupons"
+    "authWarning": "Only merchant users can add coupons",
+    "chooseImageButton":"Select picture"
   },
   "promotionCarousel": {
     "latestPromotions": "Latest Updates",

@@ -410,7 +410,8 @@
     "createSuccess": "소식이 성공적으로 등록되었습니다!",
     "createFailedPrefix": "등록 실패:",
     "genericError": "등록에 실패했습니다. 네트워크나 서버 상태를 확인해주세요",
-    "authWarning": "매장 사용자만 쿠폰을 추가할 수 있습니다"
+    "authWarning": "매장 사용자만 쿠폰을 추가할 수 있습니다",
+    "chooseImageButton": "사진 선택"
   },
   "promotionCarousel": {
     "latestPromotions": "최신 소식",

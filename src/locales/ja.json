@@ -409,7 +409,8 @@
     "createSuccess": "お知らせが作成されました！",
     "createFailedPrefix": "送信失敗：",
     "genericError": "送信に失敗しました。ネットワークまたはサーバーをご確認ください。",
-    "authWarning": "クーポンの追加は店舗ユーザーのみ可能です"
+    "authWarning": "クーポンの追加は店舗ユーザーのみ可能です",
+    "chooseImageButton": "画像を選択"
   },
   "promotionCarousel": {
     "latestPromotions": "最新のお知らせ",
