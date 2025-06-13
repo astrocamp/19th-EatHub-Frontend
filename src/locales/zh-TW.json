@@ -372,7 +372,8 @@
     "tooltipExpired": "此優惠券已過期，無法使用",
     "qrTitle": "優惠券 QR Code",
     "qrValidUntil": "使用期限：",
-    "qrError": "產生 QR Code 失敗"
+    "qrError": "產生 QR Code 失敗",
+    "couponDescription": "請出示給店家核銷。"
   },
   "couponCarousel": {
     "claimButton": "領取優惠券",
@@ -387,6 +388,7 @@
     "claimSuccess": "優惠券領取成功",
     "claimFailedPrefix": "領取優惠券失敗請稍後再試",
     "claimFailedDefault": "請稍後再試"
+
   },
   "promotionDetail": {
     "title": "動態名稱",

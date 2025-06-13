@@ -372,7 +372,8 @@
     "tooltipExpired": "This coupon has expired and cannot be used",
     "qrTitle": "Coupon QR Code",
     "qrValidUntil": "Valid Until:",
-    "qrError": "Failed to generate QR Code"
+    "qrError": "Failed to generate QR Code",
+    "couponDescription": "Please show it to the store for verification."
   },
   "couponCarousel": {
     "claimButton": "Claim Coupon",
