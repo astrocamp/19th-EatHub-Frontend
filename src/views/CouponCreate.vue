@@ -1,7 +1,9 @@
 <template>
   <MerchantNavBar />
   <div class="p-6 max-w-xl mx-auto pt-28">
-    <h1 class="text-2xl font-bold mb-6 md:text-3xl text-center text-neutral">{{ t('couponCreate.title') }}</h1>
+    <h1 class="text-2xl font-bold mb-6 md:text-3xl text-center text-neutral">
+      {{ t('couponCreate.title') }}
+    </h1>
 
     <form @submit.prevent="submit" class="space-y-4">
       <input
@@ -90,7 +92,7 @@
       </div>
     </form>
   </div>
-  <Footer />
+  <base-footer />
 </template>
 
 <script setup>
@@ -99,7 +101,7 @@ import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import axios from '@/axios';
 import { useAuthStore } from '@/stores/auth';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
 import { useAlertStore } from '@/stores/alert';
 
@@ -133,8 +135,14 @@ const submit = async () => {
     router.push({ name: 'MerchantDashboard' });
   } catch (error) {
     if (error.response?.status === 403) {
-      alert.trigger(error.response.data.error || t('alert.createForbidden'), 'warning');
-    } else if (error.response?.data && typeof error.response.data === 'object') {
+      alert.trigger(
+        error.response.data.error || t('alert.createForbidden'),
+        'warning',
+      );
+    } else if (
+      error.response?.data &&
+      typeof error.response.data === 'object'
+    ) {
       const messages = Object.values(error.response.data).flat().join('\n');
       alert.trigger(messages, 'warning');
     } else {

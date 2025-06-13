@@ -1,5 +1,5 @@
 <template>
-  <Navbar></Navbar>
+  <NavBar />
   <section
     class="min-h-screen flex items-center justify-center bg-base-200 p-4"
   >
@@ -63,14 +63,14 @@
       </section>
     </div>
   </section>
-  <Footer></Footer>
+  <base-footer />
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import axios from '@/axios';
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import { useAlertStore } from '@/stores/alert';
 import { useI18n } from 'vue-i18n';
 

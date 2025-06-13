@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar></Navbar>
+    <NavBar />
     <section
       class="min-h-screen flex items-center justify-center bg-base-200 p-4"
     >
@@ -25,13 +25,16 @@
               required
             />
             <div class="flex gap-3">
-            <router-link 
-                to="/forgot-password" 
+              <router-link
+                to="/forgot-password"
                 class="btn btn-outline btn-primary flex-1 rounded-xl text-sm md:text-lg"
               >
                 {{ t('merchantLogin.forgotPassword') }}
               </router-link>
-              <button class="btn btn-primary flex-1 rounded-xl text-white text-sm md:text-lg" type="submit">
+              <button
+                class="btn btn-primary flex-1 rounded-xl text-white text-sm md:text-lg"
+                type="submit"
+              >
                 {{ t('merchantLogin.login') }}
               </button>
             </div>
@@ -57,7 +60,7 @@
         </section>
       </div>
     </section>
-    <Footer></Footer>
+    <base-footer />
   </div>
 </template>
 
@@ -66,8 +69,8 @@ import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 
 const { t } = useI18n();
 const email = ref('');

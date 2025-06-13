@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-base-100 text-base-content">
-    <Navbar></Navbar>
+    <NavBar />
 
     <main class="max-w-3xl mx-auto px-6 md:px-4 py-10 text-left pt-28">
       <h1 class="text-2xl md:text-3xl font-bold mb-6 text-center">
@@ -100,13 +100,13 @@
       </section>
     </main>
 
-    <Footer></Footer>
+    <base-footer />
   </div>
 </template>
 
 <script setup>
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();

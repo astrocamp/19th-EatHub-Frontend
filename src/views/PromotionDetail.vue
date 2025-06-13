@@ -6,7 +6,9 @@
       <!-- 動態名稱標題 -->
       <div class="bg-white rounded-lg shadow-sm mb-6">
         <div class="bg-neutral text-white px-6 py-4 rounded-t-lg">
-          <h1 class="text-xl font-bold text-center md:text-2xl">{{ t('promotionDetail.title') }}</h1>
+          <h1 class="text-xl font-bold text-center md:text-2xl">
+            {{ t('promotionDetail.title') }}
+          </h1>
         </div>
 
         <!-- 活動圖片區域 -->
@@ -27,7 +29,9 @@
 
           <!-- 動態詳細內容 -->
           <div class="space-y-4">
-            <h2 class="text-lg font-semibold text-neutral"> {{ t('promotionDetail.sectionTitle') }}</h2>
+            <h2 class="text-lg font-semibold text-neutral">
+              {{ t('promotionDetail.sectionTitle') }}
+            </h2>
             <div class="text-neutral leading-relaxed">
               <p>{{ promotion?.description }}</p>
             </div>
@@ -46,7 +50,7 @@
       </div>
     </div>
 
-    <Footer />
+    <base-footer />
   </div>
 </template>
 
@@ -56,7 +60,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import axios from '@/axios';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 
 const { t } = useI18n();
 const route = useRoute();

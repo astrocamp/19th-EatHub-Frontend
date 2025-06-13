@@ -1,7 +1,9 @@
 <template>
   <MerchantNavBar />
   <div class="max-w-5xl w-full mx-auto pt-28 pb-28 px-4">
-    <h1 class="text-2xl md:text-3xl text-neutral font-bold mb-4">{{ coupon.title }}</h1>
+    <h1 class="text-2xl md:text-3xl text-neutral font-bold mb-4">
+      {{ coupon.title }}
+    </h1>
 
     <p class="w-full mb-2 text-base md:text-xl text-neutral font-medium">
       {{ t('couponDetail.validPeriod') }}
@@ -14,7 +16,9 @@
     <p class="mb-2 text-base md:text-xl font-medium text-neutral">
       {{ t('couponDetail.description') }}{{ coupon.description }}
     </p>
-    <p class="mb-2 text-base md:text-xl font-medium text-neutral">{{ t('couponDetail.discount') }}{{ coupon.discount }}</p>
+    <p class="mb-2 text-base md:text-xl font-medium text-neutral">
+      {{ t('couponDetail.discount') }}{{ coupon.discount }}
+    </p>
 
     <div class="mb-4 text-base md:text-xl font-medium text-neutral">
       <p>{{ t('couponDetail.total') }}{{ coupon.total }}</p>
@@ -23,7 +27,6 @@
     </div>
 
     <div class="flex justify-between gap-4">
-     
       <button
         class="flex-1 border-1 border-primary text-primary py-2 px-4 rounded-xl hover:bg-gray-100"
         @click="goMerchantDashboard"
@@ -34,11 +37,11 @@
         class="flex-1 bg-primary text-white py-2 px-4 rounded-xl hover:bg-neutral text-base md:text-lg"
         @click="goToUsage"
       >
-      {{ t('couponDetail.viewUsage') }}
+        {{ t('couponDetail.viewUsage') }}
       </button>
     </div>
   </div>
-  <Footer />
+  <base-footer />
 </template>
 
 <script setup>
@@ -47,7 +50,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import axios from '@/axios';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 
 const { t } = useI18n();
 const route = useRoute();

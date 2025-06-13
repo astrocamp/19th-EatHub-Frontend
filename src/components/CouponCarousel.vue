@@ -6,7 +6,7 @@
       :style="`transform: translateX(-${currentIndex * 100}%);`"
     >
       <div
-        v-for="(coupon, index) in coupons"
+        v-for="coupon in coupons"
         :key="coupon.uuid"
         class="w-full flex-shrink-0 mt-4"
       >
