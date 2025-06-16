@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <Navbar />
+    <NavBar />
     <div class="flex-1 p-6 max-w-screen-lg mx-auto pt-30">
       <h1 class="text-2xl md:text-3xl text-neutral text-center font-bold mb-4">
         {{ t('myCoupons.title') }}
@@ -50,17 +50,16 @@
         />
       </div>
     </div>
-    <Footer />
+    <base-footer />
   </div>
 </template>
-
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import axios from '@/axios';
 import CouponCard from '@/components/CouponCard.vue';
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();

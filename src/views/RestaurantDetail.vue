@@ -25,10 +25,7 @@
       class="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between mb-1 max-w-screen-lg mx-auto px-4"
     >
       <div class="flex items-center">
-        <h1
-          class="text-2xl md:text-4xl font-bold md:mt-4 mb-2
-         break-words"
-        >
+        <h1 class="text-2xl md:text-4xl font-bold md:mt-4 mb-2 break-words">
           {{ restaurant.name }}
         </h1>
       </div>
@@ -38,14 +35,21 @@
           :restaurant-name="restaurant.name"
           :restaurant-rating="restaurant.googleRating || '4.5'"
         />
-        <button v-if="!isMerchant" @click="toggleFavorite" class="btn px-6 rounded-xl bg-gray-200">
+        <button
+          v-if="!isMerchant"
+          @click="toggleFavorite"
+          class="btn px-6 rounded-xl bg-gray-200"
+        >
           <font-awesome-icon
             :icon="[isFavorite ? 'fas' : 'far', 'heart']"
             :class="isFavorite ? 'text-red-500' : 'text-gray-400'"
             class="text-xl md:text-2xl"
           />
         </button>
-        <button @click="navigateToAddress" class="btn px-6 rounded-xl bg-primary">
+        <button
+          @click="navigateToAddress"
+          class="btn px-6 rounded-xl bg-primary"
+        >
           <font-awesome-icon
             :icon="['fas', 'location-arrow']"
             class="text-xl md:text-2xl text-white"
@@ -156,7 +160,7 @@
           v-if="!isMerchant"
           :disabled="hasReviewed"
           @click="handleAddReviewClick"
-          class="btn btn-sm  border bg-gray-100 border-gray-200 text-gray-500 rounded-xl px-4 md:px-6 cursor-pointer hover:bg-gray-300 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base py-2 md:py-5 md:mt-6"
+          class="btn btn-sm border bg-gray-100 border-gray-200 text-gray-500 rounded-xl px-4 md:px-6 cursor-pointer hover:bg-gray-300 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base py-2 md:py-5 md:mt-6"
         >
           {{
             hasReviewed
@@ -248,7 +252,7 @@
       </div>
     </div>
   </div>
-  <Footer />
+  <base-footer />
 </template>
 
 <script setup>
@@ -258,7 +262,7 @@ import { useRouter } from 'vue-router';
 import axios from '@/axios';
 import Navbar from '@/components/Navbar.vue';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import GoogleMapEmbed from '@/components/GoogleMapEmbed.vue';
 import PromotionCarousel from '@/components/PromotionCarousel.vue';
 import CouponCarousel from '@/components/CouponCarousel.vue';
@@ -344,7 +348,7 @@ const fetchRestaurantData = async () => {
     store.addRecentViewedUuid(restaurantUuid);
   } catch (error) {
     if (error.response && error.response.status === 404) {
-      router.push({ name: 'NotFound' }); 
+      router.push({ name: 'NotFound' });
     } else {
       alert.trigger(t('restaurantDetail.loadRestaurantFailed'), 'error');
     }

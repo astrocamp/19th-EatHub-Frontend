@@ -64,7 +64,10 @@
         </div>
 
         <div class="modal-action mt-6">
-          <button class="btn btn-primary w-full text-white rounded-xl text-base md:text-xl py-6 hover:btn-secondary" @click="confirmSelections">
+          <button
+            class="btn btn-primary w-full text-white rounded-xl text-base md:text-xl py-6 hover:btn-secondary"
+            @click="confirmSelections"
+          >
             {{ t('index.confirm') }}
           </button>
         </div>
@@ -89,7 +92,9 @@
           {{ t('index.completeSelection') }}
         </h3>
         <div class="space-y-2">
-          <p class="text-gray-700 text-base md:tex-xl">{{ t('index.ensureSelection') }}</p>
+          <p class="text-gray-700 text-base md:tex-xl">
+            {{ t('index.ensureSelection') }}
+          </p>
           <ul class="list-disc list-inside space-y-1 ml-4 text-base md:text-xl">
             <li v-if="flavors.length === 0" class="text-error">
               {{ t('index.atLeastOneFlavor') }}
@@ -103,7 +108,10 @@
           </ul>
         </div>
         <div class="modal-action">
-          <button class="btn btn-outline text-base md:text-xl rounded-xl" @click="closeValidationModal">
+          <button
+            class="btn btn-outline text-base md:text-xl rounded-xl"
+            @click="closeValidationModal"
+          >
             {{ t('index.close') }}
           </button>
         </div>
@@ -124,7 +132,7 @@
     <div
       class="md:pt-5 pt-20 pb-20 space-y-4 text-center bg-page-bg bg-no-repeat bg-auto bg-left-top lg:bg-[left_1000px_top_0]"
     >
-      <Slogan />
+      <BaseSlogan />
       <div
         class="w-full max-w-[340px] md:max-w-[700px] mx-auto px-4 bg-white rounded-xl text-white shadow-[0_0_12px_rgba(0,0,0,0.2)] md:mt-5"
       >
@@ -216,16 +224,16 @@
       </router-link>
     </div>
     <IntroductionCard />
-    <Footer></Footer>
+    <base-footer />
   </div>
 </template>
 
 <script setup>
 import Navbar from '@/components/Navbar.vue';
 import MerchantNavBar from '@/components/MerchantNavBar.vue';
-import Footer from '@/components/Footer.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
-import Slogan from '@/components/Slogan.vue';
+import BaseSlogan from '@/components/BaseSlogan.vue';
 import IntroductionCard from '@/components/IntroductionCard.vue';
 import { ref, onMounted, computed } from 'vue';
 import axios from '@/axios';
@@ -409,7 +417,7 @@ let flavorInterval, mainInterval, typeInterval;
 const runSlotMachine = async () => {
   // 先驗證選項是否完整
   const validation = validateSelections();
-  
+
   if (!validation.isValid) {
     showValidationModal.value = true;
     return;

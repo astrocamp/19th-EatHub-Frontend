@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <Navbar></Navbar>
+    <NavBar />
     <RestaurantBindModal v-if="showBindModal" @close="showBindModal = false" />
     <section
       class="min-h-screen flex items-center justify-center bg-base-200 p-4"
@@ -10,7 +10,9 @@
           @submit.prevent="handleSignup"
           class="bg-base-100 shadow-xl rounded-xl p-8 space-y-4"
         >
-          <h1 class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6">
+          <h1
+            class="text-2xl md:text-3xl text-neutral font-bold text-center mb-6"
+          >
             {{ t('merchantSignup.title') }}
           </h1>
 
@@ -40,8 +42,15 @@
             />
           </section>
 
-          <button class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg"> {{ t('merchantSignup.signup') }}</button>
-          <p v-if="errorMessage" class="text-red-500 text-sm text-lift whitespace-pre-line">
+          <button
+            class="btn btn-primary w-full rounded-xl text-white text-base md:text-lg"
+          >
+            {{ t('merchantSignup.signup') }}
+          </button>
+          <p
+            v-if="errorMessage"
+            class="text-red-500 text-sm text-lift whitespace-pre-line"
+          >
             {{ errorMessage }}
           </p>
           <div class="text-center space-x-2">
@@ -63,17 +72,17 @@
       </div>
     </section>
 
-    <Footer></Footer>
+    <base-footer />
   </div>
 </template>
 
 <script setup>
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
-import { ref , onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import RestaurantBindModal from '@/components/RestaurantBindModal.vue';
 
 const { t } = useI18n();

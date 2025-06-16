@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 import { mount } from 'cypress/vue';
 import AddReview from '@/components/AddReview.vue';
 import { createTestingPinia } from '@pinia/testing';

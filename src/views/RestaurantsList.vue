@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen max-w-screen-lg mx-auto md:px-4 py-25">
-    <Navbar />
+    <NavBar />
     <div class="bg-white">
       <div class="flex justify-center items-center mx-auto py-5 text-neutral">
         <h1 class="text-2xl md:text-3xl font-bold mb-4">
@@ -8,9 +8,9 @@
           <span v-if="dishResult">：{{ dishResult }}</span>
         </h1>
       </div>
-      <section class=" sm:px-0 pb-8">
+      <section class="sm:px-0 pb-8">
         <ul
-          class="mx-6 grid grid-cols-1 md:grid-cols-2  gap-5 place-items-center p-0 list-none"
+          class="mx-6 grid grid-cols-1 md:grid-cols-2 gap-5 place-items-center p-0 list-none"
         >
           <li
             v-for="r in topTenRestaurants"
@@ -25,14 +25,13 @@
         </ul>
       </section>
     </div>
-
   </div>
-  <Footer />
+  <base-footer />
 </template>
 
 <script setup>
-import Navbar from '@/components/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
+import BaseFooter from '@/components/BaseFooter.vue';
 import RestaurantCard from '@/components/RestaurantCard.vue';
 import { computed, onMounted } from 'vue';
 import { useRestaurantStore } from '@/stores/restaurant';
