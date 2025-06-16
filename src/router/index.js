@@ -5,9 +5,9 @@ import axios from '@/axios';
 import NotFound from '@/views/NotFound.vue';
 
 const routes = [
-  { path: '/', component: () => import('../views/Home.vue') },
-  { path: '/login', component: () => import('../views/Login.vue') },
-  { path: '/signup', component: () => import('../views/Signup.vue') },
+  { path: '/', component: () => import('../views/HomePage.vue') },
+  { path: '/login', component: () => import('../views/LoginPage.vue') },
+  { path: '/signup', component: () => import('../views/SignupPage.vue') },
   {
     path: '/forgot-password',
     component: () => import('../views/ForgotPassword.vue'),
