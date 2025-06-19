@@ -12,6 +12,8 @@ EatHub 是一個專為選擇困難症設計的美食推薦平台。根據你的�
 
 專案網址 : https://eathub.today
 
+專案影片介紹：https://www.youtube.com/watch?v=MzvneJR2EGg
+
 ## 四大核心功能
 
 ### 智慧推薦在地美食
