@@ -1,17 +1,19 @@
 // stores/auth.js
 import { defineStore } from 'pinia';
+import { ref } from 'vue';
 import axios from '@/axios';
 
-export const useAuthStore = defineStore('auth', {
-  state: () => ({
-    user: null,
-  }),
-  actions: {
-    async login(email, password) {
+export const useAuthStore = defineStore(
+  'auth',
+  () => {
+    const user = ref(null);
+
+    const login = async (email, password) => {
       const response = await axios.post('/auth/login', { email, password });
-      this.user = response.data.user;
-    },
-    async signup(firstName, lastName, userName, email, password) {
+      user.value = response.data.user;
+    };
+
+    const signup = async (firstName, lastName, userName, email, password) => {
       await axios.post('/auth/signup', {
         firstName,
         lastName,
@@ -19,32 +21,48 @@ export const useAuthStore = defineStore('auth', {
         email,
         password,
       });
-    },
-    async merchantSignup(userName, email, password) {
+    };
+
+    const merchantSignup = async (userName, email, password) => {
       await axios.post(
         '/auth/merchant/signup/',
         {
           user_name: userName,
-          email: email,
-          password: password,
-          license_url: '', // 可留空，日後支援上傳
+          email,
+          password,
+          license_url: '',
         },
         { withCredentials: true },
       );
-    },
-    async logout() {
+    };
+
+    const logout = async () => {
       await axios.post('/auth/logout');
-      this.user = null;
-    },
-    setUser(user) {
-      this.user = user;
-    },
-    clearUser() {
-      this.user = null;
+      user.value = null;
+    };
+
+    const setUser = (newUser) => {
+      user.value = newUser;
+    };
+
+    const clearUser = () => {
+      user.value = null;
+    };
+
+    return {
+      user,
+      login,
+      signup,
+      merchantSignup,
+      logout,
+      setUser,
+      clearUser,
+    };
+  },
+  {
+    persist: {
+      key: 'auth',
+      paths: ['user'],
     },
   },
-  persist: {
-    key: 'auth', // localStorage key
-    paths: ['user'], // value key
-  },
-});
+);

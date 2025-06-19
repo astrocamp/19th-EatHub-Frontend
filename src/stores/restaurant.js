@@ -31,9 +31,7 @@ export const useRestaurantStore = defineStore(
       recentViewedRestaurants.value = recentViewedRestaurants.value.filter(
         (r) => r.placeId !== restaurant.placeId,
       );
-
       recentViewedRestaurants.value.unshift(restaurant);
-
       if (recentViewedRestaurants.value.length > 12) {
         recentViewedRestaurants.value = recentViewedRestaurants.value.slice(
           0,
@@ -42,17 +40,15 @@ export const useRestaurantStore = defineStore(
       }
     };
 
-
     const addRecentViewedUuid = (uuid) => {
       recentViewedUuids.value = recentViewedUuids.value.filter(
-        (id) => id !== uuid
+        (id) => id !== uuid,
       );
       recentViewedUuids.value.unshift(uuid);
       if (recentViewedUuids.value.length > 12) {
         recentViewedUuids.value = recentViewedUuids.value.slice(0, 12);
       }
     };
-
 
     return {
       restaurants,
@@ -62,8 +58,8 @@ export const useRestaurantStore = defineStore(
       recentViewedRestaurants,
       setResults,
       setSelections,
-      addRecentViewedUuid,
       setRecentViewedRestaurant,
+      addRecentViewedUuid,
     };
   },
   {
